@@ -16,8 +16,13 @@ If you deliver your plugin, the plugin has it's own copy of this library and the
 
 Hint: Because of multiple autoloaders of plugins, it could be, that different versions of this library exists and suddenly your plugin use an old version of an other plugin! So you should keep up to date your plugin with `composer update`.
 
+### Input-GUI's
+* [MultiSelectSearchInputGUI](./doc/MultiSelectSearchInputGUI.md)
+
 ### Dependencies
 * [composer](https://getcomposer.org)
+* [npm](https://nodejs.org)
+* [select2](https://www.npmjs.com/package/select2)
 * [srag/dic](https://packagist.org/packages/srag/dic)
 
 Please use it for further development!
