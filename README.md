@@ -1,4 +1,4 @@
-Custom ILIAS-PropertyForm-Input-GUI's
+Custom Input-GUI's
 
 ### Usage
 
@@ -18,6 +18,7 @@ Hint: Because of multiple autoloaders of plugins, it could be, that different ve
 
 ### Input-GUI's
 * [MultiSelectSearchInputGUI](./doc/MultiSelectSearchInputGUI.md)
+* [MultiSelectSearchInput2GUI](./doc/MultiSelectSearchInput2GUI.md)
 
 ### Dependencies
 * [composer](https://getcomposer.org)
