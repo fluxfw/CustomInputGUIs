@@ -6,6 +6,7 @@ use ilMultiSelectInputGUI;
 use ilTemplate;
 use ilUtil;
 use srag\DIC\DICTrait;
+use srDefaultAccessChecker;
 
 /**
  * Class MultiSelectSearchInputGUI
@@ -64,7 +65,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 		self::dic()->template()->addJavaScript($dir . "/node_modules/select2/dist/js/select2.min.js");
 		self::dic()->template()->addJavaScript($dir . "/node_modules/select2/dist/js/i18n/" . self::dic()->user()->getCurrentLanguage() . ".js");
 		self::dic()->template()->addCss($dir . "/node_modules/select2/dist/css/select2.min.css");
-		$this->setInputTemplate(new ilTemplate(__DIR__ . "/../templates/tpl.multiple_select.html", true, true));
+		$this->setInputTemplate(new ilTemplate(__DIR__ . "/../templates/tpl.multiple_select.html"));
 		$this->setWidth("308px");
 	}
 
@@ -74,7 +75,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 *
 	 * @return boolean Input ok, true/false
 	 */
-	public function checkInput()/*:bool*/ {
+	public function checkInput()/*: bool*/ {
 		//var_dump($this->getValue());
 		if ($this->getRequired() && count($this->getValue()) == 0) {
 			$this->setAlert(self::dic()->language()->txt("msg_input_is_required"));
@@ -89,7 +90,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	/**
 	 * @return array
 	 */
-	public function getSubItems()/*:array*/ {
+	public function getSubItems()/*: array*/ {
 		return array();
 	}
 
@@ -97,7 +98,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	/**
 	 * @return string
 	 */
-	public function render()/*:string*/ {
+	public function render()/*: string*/ {
 		$tpl = $this->getInputTemplate();
 		$values = $this->getValue();
 		$options = $this->getOptions();
@@ -155,7 +156,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 * @deprecated setting inline style items from the controller is bad practice. please use the setClass together with an appropriate css class.
 	 */
 	public function setHeight(/*string*/
-		$height)/*:void*/ {
+		$height)/*: void*/ {
 		$this->height = $height;
 	}
 
@@ -165,7 +166,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 *
 	 * @deprecated setting inline style items from the controller is bad practice. please use the setClass together with an appropriate css class.
 	 */
-	public function getHeight()/*:string*/ {
+	public function getHeight()/*: string*/ {
 		return $this->height;
 	}
 
@@ -176,7 +177,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 * @deprecated setting inline style items from the controller is bad practice. please use the setClass together with an appropriate css class.
 	 */
 	public function setWidth(/*string*/
-		$width)/*:void*/ {
+		$width)/*: void*/ {
 		$this->width = $width;
 	}
 
@@ -186,7 +187,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 *
 	 * @deprecated setting inline style items from the controller is bad practice. please use the setClass together with an appropriate css class.
 	 */
-	public function getWidth()/*:string*/ {
+	public function getWidth()/*: string*/ {
 		return $this->width;
 	}
 
@@ -195,7 +196,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 * @param string $css_class
 	 */
 	public function setCssClass(/*string*/
-		$css_class)/*:void*/ {
+		$css_class)/*: void*/ {
 		$this->css_class = $css_class;
 	}
 
@@ -203,7 +204,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	/**
 	 * @return string
 	 */
-	public function getCssClass()/*:string*/ {
+	public function getCssClass()/*: string*/ {
 		return $this->css_class;
 	}
 
@@ -212,7 +213,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 * @param int $minimum_input_length
 	 */
 	public function setMinimumInputLength(/*int*/
-		$minimum_input_length)/*:void*/ {
+		$minimum_input_length)/*: void*/ {
 		$this->minimum_input_length = $minimum_input_length;
 	}
 
@@ -220,7 +221,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	/**
 	 * @return int
 	 */
-	public function getMinimumInputLength()/*:int*/ {
+	public function getMinimumInputLength()/*: int*/ {
 		return $this->minimum_input_length;
 	}
 
@@ -229,7 +230,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 * @param string $ajax_link setting the ajax link will lead to ignoration of the "setOptions" function as the link given will be used to get the
 	 */
 	public function setAjaxLink(/*string*/
-		$ajax_link)/*:void*/ {
+		$ajax_link)/*: void*/ {
 		$this->ajax_link = $ajax_link;
 	}
 
@@ -237,7 +238,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	/**
 	 * @return string
 	 */
-	public function getAjaxLink()/*:string*/ {
+	public function getAjaxLink()/*: string*/ {
 		return $this->ajax_link;
 	}
 
@@ -248,7 +249,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 * TODO: What is this?
 	 */
 	public function setAccessChecker(/*srDefaultAccessChecker*/
-		$access_checker)/*:void*/ {
+		$access_checker)/*: void*/ {
 		$this->access_checker = $access_checker;
 	}
 
@@ -267,7 +268,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 * @param ilTemplate $input_template
 	 */
 	public function setInputTemplate(/*ilTemplate*/
-		$input_template)/*:void*/ {
+		$input_template)/*: void*/ {
 		$this->input_template = $input_template;
 	}
 
@@ -285,7 +286,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 *
 	 * @return string the real postvar.
 	 */
-	protected function searchPostVar()/*:string*/ {
+	protected function searchPostVar()/*: string*/ {
 		if (substr($this->getPostVar(), - 2) == "[]") {
 			return substr($this->getPostVar(), 0, - 2);
 		} else {
@@ -298,7 +299,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 	 * @param array $array
 	 */
 	public function setValueByArray(/*array*/
-		$array)/*:void*/ {
+		$array)/*: void*/ {
 		//		print_r($array);
 
 		$val = $array[$this->searchPostVar()];
