@@ -30,5 +30,10 @@
     "psr-4": {
       "srag\\CustomInputGUIs\\": "src/"
     }
+  },
+  "config": {
+    "classmap-authoritative": true,
+    "optimize-autoloader": true,
+    "sort-packages": true
   }
 }
