@@ -1,7 +1,6 @@
 {
   "name": "srag/custominputguis",
   "description": "Custom Input-GUI's",
-  "version": "0.2.1",
   "type": "library",
   "keywords": [
     "ILIAS",
