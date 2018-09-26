@@ -3,7 +3,7 @@ Custom Input-GUI's
 ### Usage
 
 #### Composer
-First add the follow to your `composer.json` file:
+First add the following to your `composer.json` file:
 ```json
 "require": {
   "srag/custominputguis": ">=0.1.0"
