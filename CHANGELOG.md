@@ -1,6 +1,9 @@
 # Changelog
 
-## [0.2.1]
+## [0.2.3]
+- Fix for not displayed ajax data.
+
+## [0.2.2]
 - Fix
 
 ## [0.2.1]
