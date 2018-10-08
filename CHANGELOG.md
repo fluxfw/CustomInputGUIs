@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.2.4]
+- Supports latest DICTrait
+
 ## [0.2.3]
 - Fix for not displayed ajax data.
 
