@@ -244,27 +244,6 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 
 
 	/**
-	 * @param srDefaultAccessChecker $access_checker
-	 *
-	 * TODO: What is this?
-	 */
-	public function setAccessChecker(/*srDefaultAccessChecker*/
-		$access_checker)/*: void*/ {
-		$this->access_checker = $access_checker;
-	}
-
-
-	/**
-	 * @return srDefaultAccessChecker
-	 *
-	 * TODO: What is this?
-	 */
-	public function getAccessChecker()/*srDefaultAccessChecker*/ {
-		return $this->access_checker;
-	}
-
-
-	/**
 	 * @param ilTemplate $input_template
 	 */
 	public function setInputTemplate(/*ilTemplate*/
