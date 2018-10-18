@@ -19,11 +19,13 @@ Hint: Because of multiple autoloaders of plugins, it could be, that different ve
 ### Input-GUI's
 * [MultiSelectSearchInputGUI](./doc/MultiSelectSearchInputGUI.md)
 * [MultiSelectSearchInput2GUI](./doc/MultiSelectSearchInput2GUI.md)
+* [ScreenshotsInputGUI](./src/ScreenshotsInputGUI/doc/ScreenshotsInputGUI.md)
 
 ### Dependencies
 * PHP >=5.6
 * [composer](https://getcomposer.org)
 * [npm](https://nodejs.org)
+* [html2canvas](https://www.npmjs.com/package/html2canvas)
 * [select2](https://www.npmjs.com/package/select2)
 * [srag/dic](https://packagist.org/packages/srag/dic)
 
