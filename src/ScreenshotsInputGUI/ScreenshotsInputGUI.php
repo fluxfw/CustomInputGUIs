@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\Plugins\ScreenshotsInputGUI\Screenshot;
+namespace srag\CustomInputGUIs\ScreenshotsInputGUI;
 
 use GuzzleHttp\Psr7\UploadedFile;
 use ilFormException;
@@ -16,7 +16,7 @@ use srag\DIC\Plugin\PluginInterface;
 /**
  * Class ScreenshotsInputGUI
  *
- * @package srag\Plugins\ScreenshotsInputGUI\Screenshot
+ * @package srag\CustomInputGUIs\ScreenshotsInputGUI
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  *
