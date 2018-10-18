@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.3.0]
+- ScreenshotsInputGUI
+
 ## [0.2.5]
 - fix for use json values for in array bug
 
