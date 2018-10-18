@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.3.1]
+- Fix ScreenshotsInputGUI namespace
+
 ## [0.3.0]
 - ScreenshotsInputGUI
 
