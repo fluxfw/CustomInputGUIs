@@ -58,14 +58,15 @@ class MultiSelectSearchInput2GUI extends MultiSelectSearchInputGUI {
 	 */
 	public function render()/*: string*/ {
 		$tpl = $this->getInputTemplate();
-		$values = $this->getValueAsJson();
+		$json_values = $this->getValueAsJson();
+		$values = $this->getValue();
 		$options = $this->getOptions();
 
 		$tpl->setVariable('POST_VAR', $this->getPostVar());
 		$tpl->setVariable('ID', $this->stripLastStringOccurrence($this->getPostVar(), "[]"));
 		$tpl->setVariable('ESCAPED_ID', $this->escapePostVar($this->getPostVar()));
 		$tpl->setVariable('WIDTH', $this->getWidth());
-		$tpl->setVariable('PRELOAD', $values);
+		$tpl->setVariable('PRELOAD', $json_values);
 		$tpl->setVariable('HEIGHT', $this->getHeight());
 		$tpl->setVariable('PLACEHOLDER', $this->getPlaceholder());
 		$tpl->setVariable('MINIMUM_INPUT_LENGTH', $this->getMinimumInputLength());

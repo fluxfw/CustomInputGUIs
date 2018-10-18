@@ -21,6 +21,7 @@ Hint: Because of multiple autoloaders of plugins, it could be, that different ve
 * [MultiSelectSearchInput2GUI](./doc/MultiSelectSearchInput2GUI.md)
 
 ### Dependencies
+* PHP >=5.6
 * [composer](https://getcomposer.org)
 * [npm](https://nodejs.org)
 * [select2](https://www.npmjs.com/package/select2)
