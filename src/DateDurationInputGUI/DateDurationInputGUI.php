@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\AVL\Plugins\MailLogger\Log;
+namespace srag\CustomInputGUIs\DateDurationInputGUI;
 
 use ilCalendarUtil;
 use ilDateDurationInputGUI;
