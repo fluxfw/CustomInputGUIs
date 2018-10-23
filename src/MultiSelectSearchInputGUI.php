@@ -6,7 +6,6 @@ use ilMultiSelectInputGUI;
 use ilTemplate;
 use ilUtil;
 use srag\DIC\DICTrait;
-use srDefaultAccessChecker;
 
 /**
  * Class MultiSelectSearchInputGUI
