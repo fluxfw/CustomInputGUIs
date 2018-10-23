@@ -122,24 +122,42 @@ il.ScreenshotsInputGUI.prototype = {
 		// Hide modal on the screenshot
 		this.hideModal();
 
-		html2canvas($("html")[0]).then(function (canvas) {
+		html2canvas($("html")[0]).then(this.addPageScreenshot2.bind(this)).catch(function (err) {
 			// Restore modal
 			this.restoreModal();
 
-			// Convert canvas screenshot to png blob for file upload
-			canvas.toBlob(function (blob) {
-				var screenshot = new File([blob], this.constructor.PAGE_SCREENSHOT_NAME + ".png", {type: blob.type});
-
-				this.screenshots.push(screenshot);
-
-				this.updateScreenshots();
-			}.bind(this), "image/png");
-		}.bind(this)).catch(function (err) {
-			// Restore modal
-			this.restoreModal();
-
+			//console.log(err);
 			alert(err);
 		}.bind(this));
+	},
+
+	/**
+	 *
+	 * @param {HTMLCanvasElement} canvas
+	 */
+	addPageScreenshot2: function (canvas) {
+		// Restore modal
+		this.restoreModal();
+
+		// Convert canvas screenshot to png blob for file upload
+		canvas.toBlob(this.addPageScreenshot3.bind(this), "image/png");
+	},
+
+	/**
+	 *
+	 * @param {Blob} blob
+	 */
+	addPageScreenshot3: function (blob) {
+		var screenshot;
+		try {
+			screenshot = new File([blob], this.constructor.PAGE_SCREENSHOT_NAME + ".png", {type: blob.type});
+		} catch (err) {
+			screenshot = blob;
+		}
+
+		this.screenshots.push(screenshot);
+
+		this.updateScreenshots();
 	},
 
 	/**
@@ -278,26 +296,31 @@ il.ScreenshotsInputGUI.prototype = {
 		this.$screenshots.empty();
 		this.removePreviewURLCache();
 
-		this.screenshots.forEach(function (screenshot) {
-			var $screenshot = $(this.constructor.SCREENSHOT_TEMPLATE);
-			var $screenshot_name = $(".screenshot_name", $screenshot);
-			var $screenshot_remove = $(".screenshot_remove", $screenshot);
-			var $screenshot_preview_link = $(".screenshot_preview_link", $screenshot);
-			var $screenshot_preview = $(".screenshot_preview", $screenshot);
+		this.screenshots.forEach(this.updateScreenshot, this);
+	},
 
-			var preview_url = URL.createObjectURL(screenshot);
+	/**
+	 * @param {File} screenshot
+	 */
+	updateScreenshot: function (screenshot) {
+		var $screenshot = $(this.constructor.SCREENSHOT_TEMPLATE);
+		var $screenshot_name = $(".screenshot_name", $screenshot);
+		var $screenshot_remove = $(".screenshot_remove", $screenshot);
+		var $screenshot_preview_link = $(".screenshot_preview_link", $screenshot);
+		var $screenshot_preview = $(".screenshot_preview", $screenshot);
 
-			$screenshot_name.text(screenshot.name);
+		var preview_url = URL.createObjectURL(screenshot);
 
-			$screenshot_remove.click(this.removeScreenshot.bind(this, screenshot));
+		$screenshot_name.text(screenshot.name);
 
-			$screenshot_preview_link.prop("href", preview_url);
-			$screenshot_preview.prop("src", preview_url);
-			$screenshot_preview.prop("alt", screenshot.name);
+		$screenshot_remove.click(this.removeScreenshot.bind(this, screenshot));
 
-			this.$screenshots.append($screenshot);
+		$screenshot_preview_link.prop("href", preview_url);
+		$screenshot_preview.prop("src", preview_url);
+		$screenshot_preview.prop("alt", screenshot.name);
 
-			this.previewURLCache.push(preview_url);
-		}, this);
+		this.$screenshots.append($screenshot);
+
+		this.previewURLCache.push(preview_url);
 	}
 };

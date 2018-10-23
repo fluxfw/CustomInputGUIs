@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.6.1]
+- Fix IE and Edge in ScreenshotsInputGUI
+
 ## [0.6.0]
 - IE11 polyfills for ScreenshotsInputGUI
 - Improve ScreenshotsInputGUI
