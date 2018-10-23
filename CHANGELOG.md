@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.4.0]
+- NumberInputGUI gui for support in table filter
+
 ## [0.3.1]
 - Fix ScreenshotsInputGUI namespace
 

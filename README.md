@@ -19,6 +19,7 @@ Hint: Because of multiple autoloaders of plugins, it could be, that different ve
 ### Input-GUI's
 * [MultiSelectSearchInputGUI](./doc/MultiSelectSearchInputGUI.md)
 * [MultiSelectSearchInput2GUI](./doc/MultiSelectSearchInput2GUI.md)
+* [NumberInputGUI](./src/NumberInputGUI/doc/NumberInputGUI.md)
 * [ScreenshotsInputGUI](./src/ScreenshotsInputGUI/doc/ScreenshotsInputGUI.md)
 
 ### Dependencies
