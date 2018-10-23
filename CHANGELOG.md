@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.6.0]
+- IE11 polyfills for ScreenshotsInputGUI
+- Improve ScreenshotsInputGUI
+
 ## [0.5.3]
 - Fix
 

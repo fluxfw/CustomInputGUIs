@@ -62,6 +62,32 @@ il.ScreenshotsInputGUI.prototype = {
 	/**
 	 * @type {jQuery|null}
 	 */
+	$add_page_screenshot: null,
+
+	/**
+	 * @type {jQuery|null}
+	 */
+	$add_screenshot: null,
+
+	/**
+	 * @type {jQuery|null}
+	 */
+	$form: null,
+
+	/**
+	 * @type {jQuery|null}
+	 */
+	$screenshot_file_input: null,
+
+	/**
+	 * @type {jQuery|null}
+	 */
+	$screenshots: null,
+
+
+	/**
+	 * @type {jQuery|null}
+	 */
 	element: null,
 
 	/**
@@ -83,6 +109,11 @@ il.ScreenshotsInputGUI.prototype = {
 	 * @type {File[]}
 	 */
 	screenshots: [],
+
+	/**
+	 * @type {string}
+	 */
+	submitButtonID: [],
 
 	/**
 	 *
@@ -115,9 +146,7 @@ il.ScreenshotsInputGUI.prototype = {
 	 *
 	 */
 	addScreenshot: function () {
-		var $screenshot_file_input = $(".screenshot_file_input", this.element);
-
-		$screenshot_file_input.click();
+		this.$screenshot_file_input.click();
 	},
 
 	/**
@@ -165,13 +194,16 @@ il.ScreenshotsInputGUI.prototype = {
 	init: function () {
 		this.element = $('input[type="file"][name="' + this.post_var + '"]').parent();
 
-		var $add_screenshot = $(".add_screenshot", this.element);
-		var $add_page_screenshot = $(".add_page_screenshot", this.element);
-		var $screenshot_file_input = $(".screenshot_file_input", this.element);
+		this.$add_screenshot = $(".add_screenshot", this.element);
+		this.$add_page_screenshot = $(".add_page_screenshot", this.element);
+		this.$screenshot_file_input = $(".screenshot_file_input", this.element);
+		this.$form = this.$screenshot_file_input.parents("form");
+		this.$screenshots = $(".screenshots", this.element);
 
-		$add_screenshot.click(this.addScreenshot.bind(this));
-		$add_page_screenshot.click(this.addPageScreenshot.bind(this));
-		$screenshot_file_input.change(this.addScreenshotOnChange.bind(this));
+		this.$add_screenshot.click(this.addScreenshot.bind(this));
+		this.$add_page_screenshot.click(this.addPageScreenshot.bind(this));
+		this.$screenshot_file_input.change(this.addScreenshotOnChange.bind(this));
+		this.$form.submit(this.submit.bind(this));
 	},
 
 	/**
@@ -206,13 +238,44 @@ il.ScreenshotsInputGUI.prototype = {
 		}
 	},
 
+
+	/**
+	 * @returns {boolean}
+	 */
+	submit: function () {
+		var $submit = $("#" + this.submitButtonID);
+
+		var post_url = this.$form.attr("action");
+
+		var data = new FormData(this.$form[0]); // Supports files upload
+		data.append($submit.prop("name"), $submit.val()); // Send submit button with cmd
+
+		this.addScreenshotsToUpload(data);
+
+		$.ajax({
+			type: "post",
+			url: post_url,
+			contentType: false,
+			processData: false,
+			data: data,
+			success: this.submitFunction.bind(this)
+		});
+
+		return false;
+	},
+
+	/**
+	 *
+	 */
+	submitFunction: function () {
+
+	},
+
 	/**
 	 *
 	 */
 	updateScreenshots: function () {
-		var $screenshots = $(".screenshots", this.element);
-
-		$screenshots.empty();
+		this.$screenshots.empty();
 		this.removePreviewURLCache();
 
 		this.screenshots.forEach(function (screenshot) {
@@ -232,7 +295,7 @@ il.ScreenshotsInputGUI.prototype = {
 			$screenshot_preview.prop("src", preview_url);
 			$screenshot_preview.prop("alt", screenshot.name);
 
-			$screenshots.append($screenshot);
+			this.$screenshots.append($screenshot);
 
 			this.previewURLCache.push(preview_url);
 		}, this);
