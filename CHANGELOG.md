@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.5.0]
+- Some more custom input guis: DateDurationInputGUI, TextAreaInputGUI and TextInputGUI
+
 ## [0.4.0]
 - NumberInputGUI gui for support in table filter
 
