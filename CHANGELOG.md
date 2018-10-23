@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.5.1]
+- Fix
+
 ## [0.5.0]
 - Some more custom input guis: DateDurationInputGUI, TextAreaInputGUI and TextInputGUI
 
