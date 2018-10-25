@@ -283,7 +283,7 @@ class MultiLineInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, 
 					if (method_exists($input, 'setValue')) {
 						$input->setValue($out_array[$item_num][$input_key]);
 					} elseif ($input instanceof ilDateTimeInputGUI) {
-						$input->setDate(new ilDate($out_array[$item_num][$input_key]['date'], IL_CAL_DATE));
+						$input->setDate(new ilDate($out_array[$item_num][$input_key], IL_CAL_DATE));
 					}
 				}
 			}
