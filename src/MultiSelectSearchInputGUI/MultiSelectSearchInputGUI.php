@@ -63,10 +63,10 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI {
 
 		self::dic()->mainTemplate()->addJavaScript($dir . "/node_modules/select2/dist/js/select2.full.min.js");
 		self::dic()->mainTemplate()->addJavaScript($dir . "/node_modules/select2/dist/js/i18n/" . self::dic()->user()->getCurrentLanguage() . ".js");
-		self::dic()->mainTemplate()->addJavaScript(__DIR__ . "/src/js/multiselectsearchinputgui.min.js");
+		self::dic()->mainTemplate()->addJavaScript($dir . "/js/multiselectsearchinputgui.min.js");
 		self::dic()->mainTemplate()->addCss($dir . "/node_modules/select2/dist/css/select2.min.css");
-		self::dic()->mainTemplate()->addCss(__DIR__ . "/src/css/multiselectsearchinputgui.min.css");
-		$this->setInputTemplate(new ilTemplate(__DIR__ . "/src/templates/tpl.multiple_select.html", true, true));
+		self::dic()->mainTemplate()->addCss($dir . "/css/multiselectsearchinputgui.min.css");
+		$this->setInputTemplate(new ilTemplate(__DIR__ . "/templates/tpl.multiple_select.html", true, true));
 		$this->setWidth("308px");
 	}
 
