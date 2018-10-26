@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.8.2]
+- do not show selected options in search results, show one option per line, adopt…
+
 ## [0.8.1]
 - Waiter no console log
 
