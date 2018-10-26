@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.8.1]
+- Waiter no console log
+
 ## [0.8.0]
 - Waiter
 - Min CSS
