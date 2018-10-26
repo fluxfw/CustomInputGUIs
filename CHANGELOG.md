@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.8.0]
+- Waiter
+- Min CSS
+ 
 ## [0.7.4]
 - Fix ilDateInputGUI in MultiLineInputGUI
 

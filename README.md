@@ -26,6 +26,7 @@ Hint: Because of multiple autoloaders of plugins, it could be, that different ve
 * [ScreenshotsInputGUI](./src/ScreenshotsInputGUI/doc/ScreenshotsInputGUI.md)
 * [TextAreaInputGUI](./src/TextAreaInputGUI/doc/TextAreaInputGUI.md)
 * [TextInputGUI](./src/TextInputGUI/doc/TextInputGUI.md)
+* [Waiter](./src/Waiter/doc/Waiter.md)
 
 ### Dependencies
 * ILIAS 5.2 or ILIAS 5.3
