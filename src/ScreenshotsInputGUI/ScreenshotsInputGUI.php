@@ -192,17 +192,51 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable {
 
 	/**
 	 * @param string[] $allowed_formats
+	 *
+	 * @return self
 	 */
-	public function setAllowedFormats(array $allowed_formats)/*: void*/ {
+	public function setAllowedFormats(array $allowed_formats): self {
 		$this->allowed_formats = $allowed_formats;
+
+		return $this;
 	}
 
 
 	/**
 	 * @param PluginInterface $plugin
+	 *
+	 * @return self
 	 */
-	public function setPlugin(PluginInterface $plugin)/*: void*/ {
+	public function setPlugin(PluginInterface $plugin): self {
 		$this->plugin = $plugin;
+
+		return $this;
+	}
+
+
+	/**
+	 * @param string $post_var
+	 *
+	 * @return self
+	 */
+	public function setPostVar(/*string*/
+		$post_var): self {
+		$this->postvar = $post_var;
+
+		return $this;
+	}
+
+
+	/**
+	 * @param string $title
+	 *
+	 * @return self
+	 */
+	public function setTitle(/*string*/
+		$title): self {
+		$this->title = $title;
+
+		return $this;
 	}
 
 
