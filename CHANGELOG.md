@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.8.5]
+- MultiSelectSearchInputGUI: Fix require js and css path
+
 ## [0.8.4]
 - Minify dependencies
 
