@@ -212,7 +212,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable {
 	 * @throws ilFormException
 	 */
 	public function setValue(array $screenshots)/*: void*/ {
-		//throw new ilFormException("ScreenshotInputGUI does not support set screenshots!");
+		//throw new ilFormException("ScreenshotsInputGUI does not support set screenshots!");
 	}
 
 
@@ -222,6 +222,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable {
 	 * @throws ilFormException
 	 */
 	public function setValueByArray($values)/*: void*/ {
-		//throw new ilFormException("ScreenshotInputGUI does not support set screenshots!");
+		//throw new ilFormException("ScreenshotsInputGUI does not support set screenshots!");
 	}
 }

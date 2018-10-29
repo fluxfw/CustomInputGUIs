@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.0]
+- StaticHTMLPresentationInputGUI
+
+## [0.8.6]
+- adopt with of container to longest selected option
+
 ## [0.8.5]
 - MultiSelectSearchInputGUI: Fix require js and css path
 
