@@ -173,7 +173,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable {
 	/**
 	 * @return string
 	 */
-	protected function render(): string {
+	public function render(): string {
 		$this->initJS();
 
 		$screenshots_tpl = $this->getPlugin()->template(__DIR__ . "/templates/screenshots.html", true, true, false);
@@ -245,7 +245,8 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable {
 	 *
 	 * @throws ilFormException
 	 */
-	public function setValue(array $screenshots)/*: void*/ {
+	public function setValue(/*array*/
+		$screenshots)/*: void*/ {
 		//throw new ilFormException("ScreenshotsInputGUI does not support set screenshots!");
 	}
 
@@ -255,7 +256,8 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable {
 	 *
 	 * @throws ilFormException
 	 */
-	public function setValueByArray($values)/*: void*/ {
+	public function setValueByArray(/*array*/
+		$values)/*: void*/ {
 		//throw new ilFormException("ScreenshotsInputGUI does not support set screenshots!");
 	}
 }
