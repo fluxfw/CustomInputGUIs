@@ -102,6 +102,19 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI {
 
 
 	/**
+	 * @param string $title
+	 *
+	 * @return self
+	 */
+	public function setTitle(/*string*/
+		$title): self {
+		$this->title = $title;
+
+		return $this;
+	}
+
+
+	/**
 	 * @param string $value
 	 *
 	 * @throws ilFormException
