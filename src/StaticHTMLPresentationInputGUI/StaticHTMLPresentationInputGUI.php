@@ -27,10 +27,9 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI {
 	 * StaticHTMLPresentationInputGUI constructor
 	 *
 	 * @param string $title
-	 * @param string $post_var
 	 */
-	public function __construct(string $title = "", string $post_var = "") {
-		parent::__construct($title, $post_var);
+	public function __construct(string $title = "") {
+		parent::__construct($title, "");
 	}
 
 
@@ -81,7 +80,7 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI {
 	/**
 	 * @return string
 	 */
-	protected function render(): string {
+	public function render(): string {
 		$iframe_tpl = new ilTemplate(__DIR__ . "/templates/iframe.html", true, true);
 
 		$iframe_tpl->setVariable("URL", $this->getDataUrl());
@@ -92,9 +91,13 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI {
 
 	/**
 	 * @param string $html
+	 *
+	 * @return self
 	 */
-	public function setHtml(string $html)/*: void*/ {
+	public function setHtml(string $html): self {
 		$this->html = $html;
+
+		return $this;
 	}
 
 
