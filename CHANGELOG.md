@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.9.1]
+- StaticHTMLPresentationInputGUI
+
 ## [0.9.0]
 - StaticHTMLPresentationInputGUI
 
