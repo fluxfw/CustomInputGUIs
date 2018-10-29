@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.8.4]
+- Minify dependencies
+
 ## [0.8.3]
 - min css
 
