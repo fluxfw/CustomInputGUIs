@@ -38,6 +38,9 @@ Hint: Because of multiple autoloaders of plugins, it could be, that different ve
 * [html2canvas](https://www.npmjs.com/package/html2canvas)
 * [select2](https://www.npmjs.com/package/select2)
 * [srag/dic](https://packagist.org/packages/srag/dic)
+* [babel-minfiy -g](https://www.npmjs.com/package/babel-minify)
+* [clean-css-cli](https://www.npmjs.com/package/clean-css-cli)
+* [less -g](https://www.npmjs.com/package/less)
 
 Please use it for further development!
 
