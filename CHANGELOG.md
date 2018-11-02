@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.10.1]
+- Fix js and css path for sub folder ILIAS installations
+
 ## [0.10.0]
 - Template which supports output base64 data inline javascript
 
