@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.10.0]
+- Template which supports output base64 data inline javascript
+
 ## [0.9.4]
 - adopt container width to longest select option
 
