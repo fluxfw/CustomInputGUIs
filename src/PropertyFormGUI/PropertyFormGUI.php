@@ -136,9 +136,7 @@ abstract class PropertyFormGUI extends BasePropertyFormGUI {
 			}
 		}
 
-		if (self::dic()->language()->exists(self::plugin()->getPluginObject()->getPrefix() . "_" . $key . "_info")) {
-			$item->setInfo($this->txt($key . "_info"));
-		}
+		$item->setInfo($this->txt($key . "_info", ""));
 
 		$this->setPropertiesToItem($item, $field);
 
@@ -272,13 +270,19 @@ abstract class PropertyFormGUI extends BasePropertyFormGUI {
 
 
 	/**
-	 * @param string $key
+	 * @param string      $key
+	 * @param string|null $default
 	 *
 	 * @return string
 	 */
 	protected function txt(/*string*/
-		$key)/*: string*/ {
-		return self::plugin()->translate($key);
+		$key,/*?string*/
+		$default = NULL)/*: string*/ {
+		if ($default !== NULL) {
+			return self::plugin()->translate($key, "", [], true, "", $default);
+		} else {
+			return self::plugin()->translate($key);
+		}
 	}
 
 
