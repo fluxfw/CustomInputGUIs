@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.11.1]
+- Fix PropertyFormGUI
+
 ## [0.11.0]
 - new PropertyFormGUI
 

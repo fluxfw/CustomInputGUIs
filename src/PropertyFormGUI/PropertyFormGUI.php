@@ -117,8 +117,6 @@ abstract class PropertyFormGUI extends BasePropertyFormGUI {
 	 * @return ilFormPropertyGUI|ilFormSectionHeaderGUI|ilRadioOption
 	 */
 	private final function getItem($key, array $field, $parent_item) {
-		$value = $this->getValue($key);
-
 		/**
 		 * @var ilFormPropertyGUI|ilFormSectionHeaderGUI|ilRadioOption $item
 		 */
@@ -144,7 +142,11 @@ abstract class PropertyFormGUI extends BasePropertyFormGUI {
 
 		$this->setPropertiesToItem($item, $field);
 
-		$this->setValueToItem($item, $value);
+		if ($item instanceof ilFormPropertyGUI) {
+			$value = $this->getValue($key);
+
+			$this->setValueToItem($item, $value);
+		}
 
 		$this->items_cache[$key] = $item;
 
@@ -159,9 +161,11 @@ abstract class PropertyFormGUI extends BasePropertyFormGUI {
 		foreach ($fields as $key => $field) {
 			$item = $this->items_cache[$key];
 
-			$value = $this->getValueFromItem($item);
+			if ($item instanceof ilFormPropertyGUI) {
+				$value = $this->getValueFromItem($item);
 
-			$this->setValue($key, $value);
+				$this->setValue($key, $value);
+			}
 
 			if (is_array($field[self::PROPERTY_SUBITEMS])) {
 				$this->getValueFromItems($field[self::PROPERTY_SUBITEMS]);
@@ -221,6 +225,7 @@ abstract class PropertyFormGUI extends BasePropertyFormGUI {
 
 				case self::PROPERTY_OPTIONS:
 					$property = "setOptions";
+					$property_value = [ $property_value ];
 					break;
 
 				case self::PROPERTY_REQUIRED:
@@ -241,7 +246,7 @@ abstract class PropertyFormGUI extends BasePropertyFormGUI {
 					$property_value = [ $property_value ];
 				}
 
-				call_user_func([ $item, $property ], $property_value);
+				call_user_func_array([ $item, $property ], $property_value);
 			}
 		}
 	}
@@ -258,7 +263,9 @@ abstract class PropertyFormGUI extends BasePropertyFormGUI {
 			if ($item instanceof ilDateTimeInputGUI) {
 				$item->setDate($value);
 			} else {
-				$item->setValue($value);
+				if (!$item instanceof ilRadioOption) {
+					$item->setValue($value);
+				}
 			}
 		}
 	}
