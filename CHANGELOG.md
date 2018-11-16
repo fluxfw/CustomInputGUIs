@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.13.2]
+- TableGUI
+
 ## [0.13.1]
 - TableGUI
 

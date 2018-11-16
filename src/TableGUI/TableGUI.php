@@ -3,7 +3,6 @@
 namespace srag\CustomInputGUIs\TableGUI;
 
 use ilFormPropertyGUI;
-use ilTableFilterItem;
 use srag\CustomInputGUIs\PropertyFormGUI\Items\Items;
 use srag\CustomInputGUIs\TableGUI\Exception\TableGUIException;
 use srag\DIC\Exception\DICException;
@@ -64,7 +63,6 @@ abstract class TableGUI extends BaseTableGUI {
 	 *
 	 * @throws TableGUIException $filters needs to be an array!
 	 * @throws TableGUIException $field needs to be an array!
-	 * @throws TableGUIException item must be an instance of ilTableFilterItem!
 	 */
 	public final function initFilter()/*: void*/ {
 		$this->setDisableFilterHiding(true);
@@ -82,9 +80,9 @@ abstract class TableGUI extends BaseTableGUI {
 
 			$item = Items::getItem($key, $field, $this, $this);
 
-			if (!($item instanceof ilTableFilterItem)) {
+			/*if (!($item instanceof ilTableFilterItem)) {
 				throw new TableGUIException("\$item must be an instance of ilTableFilterItem!");
-			}
+			}*/
 
 			$this->filter_cache[$key] = $item;
 
