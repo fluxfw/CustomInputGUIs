@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.11.7]
+- Fix MultiLineInputGUI
+
 ## [0.11.6]
 - Fix
 
