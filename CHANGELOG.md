@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.13.3]
+- CheckboxInputGUI
+
 ## [0.13.2]
 - TableGUI
 
