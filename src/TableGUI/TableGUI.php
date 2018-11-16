@@ -111,7 +111,7 @@ abstract class TableGUI extends BaseTableGUI {
 	 *
 	 * @return string
 	 */
-	protected final function txt(/*string*/
+	public final function txt(/*string*/
 		$key,/*?string*/
 		$default = NULL)/*: string*/ {
 		if ($default !== NULL) {
@@ -134,7 +134,7 @@ abstract class TableGUI extends BaseTableGUI {
 	 * @throws TableGUIException Your class needs to implement the ROW_TEMPLATE constant!
 	 */
 	private final function checkRowTemplateConst()/*: void*/ {
-		if (!defined("static::ROW_TEMPLATE") || empty(static::ROW_TEMPLATE) || !class_exists(static::ROW_TEMPLATE)) {
+		if (!defined("static::ROW_TEMPLATE") || empty(static::ROW_TEMPLATE)) {
 			throw new TableGUIException("Your class needs to implement the ROW_TEMPLATE constant!");
 		}
 	}

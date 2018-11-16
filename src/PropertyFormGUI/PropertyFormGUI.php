@@ -154,7 +154,7 @@ abstract class PropertyFormGUI extends BasePropertyFormGUI {
 	 *
 	 * @return string
 	 */
-	protected final function txt(/*string*/
+	public final function txt(/*string*/
 		$key,/*?string*/
 		$default = NULL)/*: string*/ {
 		if ($default !== NULL) {
