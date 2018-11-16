@@ -59,8 +59,9 @@ abstract class BaseTableGUI extends ilTable2GUI {
 	/**
 	 *
 	 */
-	protected abstract function initCommands()/*: void*/
-	;
+	protected function initCommands()/*: void*/ {
+
+	}
 
 
 	/**
@@ -73,8 +74,9 @@ abstract class BaseTableGUI extends ilTable2GUI {
 	/**
 	 *
 	 */
-	protected abstract function initExport()/*: void*/
-	;
+	protected function initExport()/*: void*/ {
+
+	}
 
 
 	/**
@@ -132,8 +134,7 @@ abstract class BaseTableGUI extends ilTable2GUI {
 	/**
 	 *
 	 */
-	public /*abstract*/
-	function fillHeader() {
+	public function fillHeader() {
 		parent::fillHeader();
 	}
 
@@ -151,8 +152,7 @@ abstract class BaseTableGUI extends ilTable2GUI {
 	/**
 	 *
 	 */
-	public /*abstract*/
-	function fillFooter() {
+	public function fillFooter() {
 		parent::fillFooter();
 	}
 
@@ -160,8 +160,7 @@ abstract class BaseTableGUI extends ilTable2GUI {
 	/**
 	 * @param ilCSVWriter $csv
 	 */
-	protected /*abstract*/
-	function fillHeaderCSV( /*ilCSVWriter*/
+	protected function fillHeaderCSV( /*ilCSVWriter*/
 		$csv) {
 		parent::fillHeaderCSV($csv);
 	}
@@ -171,8 +170,7 @@ abstract class BaseTableGUI extends ilTable2GUI {
 	 * @param ilCSVWriter $csv
 	 * @param array       $result
 	 */
-	protected /*abstract*/
-	function fillRowCSV(/*ilCSVWriter*/
+	protected function fillRowCSV(/*ilCSVWriter*/
 		$csv, /*array*/
 		$result) {
 		parent::fillRowCSV($csv, $result);
@@ -183,8 +181,7 @@ abstract class BaseTableGUI extends ilTable2GUI {
 	 * @param ilExcel $excel
 	 * @param int     $row
 	 */
-	protected /*abstract*/
-	function fillHeaderExcel(ilExcel $excel, /*int*/
+	protected function fillHeaderExcel(ilExcel $excel, /*int*/
 		&$row) {
 		parent::fillHeaderExcel($excel, $row);
 	}
@@ -195,8 +192,7 @@ abstract class BaseTableGUI extends ilTable2GUI {
 	 * @param int     $row
 	 * @param array   $result
 	 */
-	protected /*abstract*/
-	function fillRowExcel(ilExcel $excel, /*int*/
+	protected function fillRowExcel(ilExcel $excel, /*int*/
 		&$row, /*array*/
 		$result) {
 		parent::fillRowExcel($excel, $row, $result);
