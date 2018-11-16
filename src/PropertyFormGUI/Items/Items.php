@@ -3,6 +3,7 @@
 namespace srag\CustomInputGUIs\PropertyFormGUI\Items;
 
 use ilCheckboxInputGUI;
+use ilCustomInputGUI;
 use ilDateTimeInputGUI;
 use ilFormPropertyGUI;
 use ilFormSectionHeaderGUI;
@@ -75,10 +76,14 @@ final class Items {
 			if ($item instanceof ilDateTimeInputGUI) {
 				return $item->getDate();
 			} else {
-				if ($item->getMulti()) {
-					return $item->getMultiValues();
+				if (!($item instanceof ilCustomInputGUI)) {
+					if ($item->getMulti()) {
+						return $item->getMultiValues();
+					} else {
+						return $item->getValue();
+					}
 				} else {
-					return $item->getValue();
+					return NULL;
 				}
 			}
 		}
@@ -142,7 +147,7 @@ final class Items {
 			if ($item instanceof ilDateTimeInputGUI) {
 				$item->setDate($value);
 			} else {
-				if (!$item instanceof ilRadioOption) {
+				if (!($item instanceof ilRadioOption || $item instanceof ilCustomInputGUI)) {
 					$item->setValue($value);
 				}
 			}

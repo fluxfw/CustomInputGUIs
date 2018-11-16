@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.13.4]
+- Fix ilCustomInputGUI
+
 ## [0.13.3]
 - CheckboxInputGUI
 
