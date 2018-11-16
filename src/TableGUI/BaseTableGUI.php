@@ -35,6 +35,7 @@ abstract class BaseTableGUI extends ilTable2GUI {
 			|| strpos($parent_cmd, "resetFilter") === 0)) {
 			$this->initTable();
 		} else {
+			// Speed up
 			$this->initFilter();
 		}
 	}
@@ -52,6 +53,13 @@ abstract class BaseTableGUI extends ilTable2GUI {
 	 *
 	 */
 	protected abstract function initColumns()/*: void*/
+	;
+
+
+	/**
+	 *
+	 */
+	protected abstract function initCommands()/*: void*/
 	;
 
 
@@ -95,7 +103,7 @@ abstract class BaseTableGUI extends ilTable2GUI {
 	/**
 	 *
 	 */
-	protected function initTable()/*: void*/ {
+	protected final function initTable()/*: void*/ {
 		$this->initAction();
 
 		$this->initTitle();
@@ -109,6 +117,8 @@ abstract class BaseTableGUI extends ilTable2GUI {
 		$this->initExport();
 
 		$this->initRowTemplate();
+
+		$this->initCommands();
 	}
 
 
