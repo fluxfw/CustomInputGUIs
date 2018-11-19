@@ -76,7 +76,7 @@ final class Items {
 			return $item->getDate();
 		}
 
-		if (method_exists($item, "getValue")) {
+		if (method_exists($item, "getValue") && !($item instanceof ilRadioOption)) {
 			if ($item->getMulti()) {
 				return $item->getMultiValues();
 			} else {
