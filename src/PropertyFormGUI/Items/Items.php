@@ -85,7 +85,7 @@ final class Items {
 				if ($item instanceof ilNumberInputGUI) {
 					$value = floatval($value);
 				} else {
-					if (empty($value)) {
+					if (empty($value) && !is_array($value)) {
 						$value = "";
 					}
 				}
