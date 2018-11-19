@@ -2,9 +2,9 @@
 
 namespace srag\CustomInputGUIs\PropertyFormGUI\Items;
 
-use ilCustomInputGUI;
 use ilFormPropertyGUI;
 use ilFormSectionHeaderGUI;
+use ilNumberInputGUI;
 use ilPropertyFormGUI;
 use ilRadioOption;
 use srag\CustomInputGUIs\PropertyFormGUI\Exception\PropertyFormGUIException;
@@ -76,14 +76,18 @@ final class Items {
 			return $item->getDate();
 		}
 
-		if (!($item instanceof ilCustomInputGUI)) {
+		if (method_exists($item, "getValue")) {
 			if ($item->getMulti()) {
 				return $item->getMultiValues();
 			} else {
 				$value = $item->getValue();
 
-				if (empty($value)) {
-					$value = "";
+				if ($item instanceof ilNumberInputGUI) {
+					$value = floatval($value);
+				} else {
+					if (empty($value)) {
+						$value = "";
+					}
 				}
 
 				return $value;
@@ -157,7 +161,7 @@ final class Items {
 			return;
 		}
 
-		if (!($item instanceof ilRadioOption || $item instanceof ilCustomInputGUI)) {
+		if (method_exists($item, "setValue") && !($item instanceof ilRadioOption)) {
 			$item->setValue($value);
 		}
 	}

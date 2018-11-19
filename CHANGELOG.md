@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.13.8]
+- Fix getValue, setValue
+
 ## [0.13.7]
 - Improve TableGUI
 
