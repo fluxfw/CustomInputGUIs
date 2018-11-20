@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.13.10]
+- hasSessionValue
+
 ## [0.13.9]
 - Fix getValue, setValue
 
