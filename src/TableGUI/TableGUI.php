@@ -60,6 +60,18 @@ abstract class TableGUI extends BaseTableGUI {
 
 
 	/**
+	 * @param string $field_id
+	 *
+	 * @return bool
+	 */
+	protected final function hasSessionValue(/*string*/
+		$field_id)/*: bool*/ {
+		// Note: Set on first visit, false on reset filter, string if is set
+		return (isset($_SESSION["form_" . $this->getId()][$field_id]) && $_SESSION["form_" . $this->getId()][$field_id] !== false);
+	}
+
+
+	/**
 	 * @inheritdoc
 	 */
 	protected function initColumns()/*: void*/ {
