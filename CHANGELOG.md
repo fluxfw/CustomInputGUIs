@@ -1,6 +1,9 @@
 # Changelog
 
 ## [0.13.11]
+- TableGUI: Auto txt for columns
+
+## [0.13.11]
 - Call hasSessionValue
 
 ## [0.13.10]
