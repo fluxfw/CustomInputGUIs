@@ -113,7 +113,9 @@ abstract class TableGUI extends BaseTableGUI {
 
 			$this->addFilterItem($item);
 
-			$item->readFromSession();
+			if ($this->hasSessionValue($item->getFieldId())) { // Supports filter default values
+				$item->readFromSession();
+			}
 		}
 	}
 
