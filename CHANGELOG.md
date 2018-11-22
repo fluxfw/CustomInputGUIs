@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.13.15]
+- Removed unnecessary BasePropertyFormGUI and BaseTableGUI
+
 ## [0.13.14]
 - Fix
 
