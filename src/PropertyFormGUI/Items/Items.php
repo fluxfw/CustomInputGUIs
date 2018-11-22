@@ -12,7 +12,7 @@ use srag\CustomInputGUIs\PropertyFormGUI\PropertyFormGUI;
 use srag\CustomInputGUIs\TableGUI\TableGUI;
 
 /**
- * Class BasePropertyFormGUI
+ * Class Items
  *
  * @package srag\CustomInputGUIs\PropertyFormGUI\Items
  *
