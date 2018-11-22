@@ -76,7 +76,7 @@ abstract class TableGUI extends BaseTableGUI {
 	 */
 	protected function initColumns()/*: void*/ {
 		foreach ($this->getSelectableColumns() as &$column) {
-			if (empty($column["txt"])) {
+			if (!isset($column["txt"])) {
 				$column["txt"] = $this->txt($column["id"]);
 			}
 
