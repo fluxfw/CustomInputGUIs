@@ -13,6 +13,8 @@ use srag\DIC\DICTrait;
  * @package srag\CustomInputGUIs\TableGUI
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
+ *
+ * @deprecated
  */
 abstract class BaseTableGUI extends ilTable2GUI {
 
