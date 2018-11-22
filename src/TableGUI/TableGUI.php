@@ -302,22 +302,11 @@ abstract class TableGUI extends ilTable2GUI {
 	 *
 	 * @return string
 	 */
-	protected function getColumnValue(/*string*/
+	protected abstract function getColumnValue(/*string*/
 		$column, /*array*/
 		$row, /*bool*/
-		$raw_export = false)/*: string*/ {
-		switch ($column) {
-			default:
-				$column = $row[$column];
-				break;
-		}
-
-		if (!empty($column)) {
-			return $column;
-		} else {
-			return "";
-		}
-	}
+		$raw_export = false)/*: string*/
+	;
 
 
 	/**
