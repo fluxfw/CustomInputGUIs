@@ -57,7 +57,7 @@ abstract class TableGUI extends ilTable2GUI {
 			|| strpos($parent_cmd, "resetFilter") === 0)) {
 			$this->initTable();
 		} else {
-			// Speed up
+			// Speed up, not init data, only filter
 			$this->initFilter();
 		}
 	}
