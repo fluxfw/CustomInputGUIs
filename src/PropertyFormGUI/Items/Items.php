@@ -155,7 +155,7 @@ final class Items {
 
 
 	/**
-	 * @param ilFormPropertyGUI|ilFormSectionHeaderGUI|ilRadioOption $item
+	 * @param ilFormPropertyGUI|ilFormSectionHeaderGUI|ilRadioOption|ilImageFileInputGUI $item
 	 * @param mixed                                                  $value
 	 */
 	public static function setValueToItem($item, $value)/*: void*/ {
