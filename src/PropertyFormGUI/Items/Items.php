@@ -4,6 +4,7 @@ namespace srag\CustomInputGUIs\PropertyFormGUI\Items;
 
 use ilFormPropertyGUI;
 use ilFormSectionHeaderGUI;
+use ilImageFileInputGUI;
 use ilNumberInputGUI;
 use ilPropertyFormGUI;
 use ilRadioOption;
@@ -172,6 +173,10 @@ final class Items {
 
 		if (method_exists($item, "setValue") && !($item instanceof ilRadioOption)) {
 			$item->setValue($value);
+		}
+
+		if (method_exists($item, "setImage")) {
+			$item->setImage($value);
 		}
 	}
 
