@@ -4,7 +4,6 @@ namespace srag\CustomInputGUIs\PropertyFormGUI\Items;
 
 use ilFormPropertyGUI;
 use ilFormSectionHeaderGUI;
-use ilImageFileInputGUI;
 use ilNumberInputGUI;
 use ilPropertyFormGUI;
 use ilRadioOption;
@@ -85,6 +84,10 @@ final class Items {
 			return $item->getDate();
 		}
 
+		if (method_exists($item, "getImage")) {
+			return $item->getImage();
+		}
+
 		if (method_exists($item, "getValue") && !($item instanceof ilRadioOption)) {
 			if ($item->getMulti()) {
 				return $item->getMultiValues();
@@ -155,7 +158,7 @@ final class Items {
 
 
 	/**
-	 * @param ilFormPropertyGUI|ilFormSectionHeaderGUI|ilRadioOption|ilImageFileInputGUI $item
+	 * @param ilFormPropertyGUI|ilFormSectionHeaderGUI|ilRadioOption $item
 	 * @param mixed                                                  $value
 	 */
 	public static function setValueToItem($item, $value)/*: void*/ {
@@ -171,12 +174,14 @@ final class Items {
 			return;
 		}
 
-		if (method_exists($item, "setValue") && !($item instanceof ilRadioOption)) {
-			$item->setValue($value);
-		}
-
 		if (method_exists($item, "setImage")) {
 			$item->setImage($value);
+
+			return;
+		}
+
+		if (method_exists($item, "setValue") && !($item instanceof ilRadioOption)) {
+			$item->setValue($value);
 		}
 	}
 
