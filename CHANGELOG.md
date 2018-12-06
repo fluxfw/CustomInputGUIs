@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.13.21]
+- PropertyFormGUIException::CODE_X
+- TableGUIException::CODE_X
+- Throws DICException in PropertyFormGUI::txt and TableGUI::txt again
+
 ## [0.13.20]
 - PropertyForm: getImage, setImage
 
