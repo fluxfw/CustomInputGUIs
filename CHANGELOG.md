@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.14.1]
+- Min css changes
+
 ## [0.14.0]
 - HiddenInputGUI
 
