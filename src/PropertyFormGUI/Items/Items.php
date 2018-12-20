@@ -138,6 +138,7 @@ final class Items {
 					break;
 
 				case PropertyFormGUI::PROPERTY_CLASS:
+				case PropertyFormGUI::PROPERTY_NOT_ADD:
 				case PropertyFormGUI::PROPERTY_SUBITEMS:
 				case PropertyFormGUI::PROPERTY_VALUE:
 					break;

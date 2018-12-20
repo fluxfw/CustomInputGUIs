@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.14.2]
+- PROPERTY_NOT_ADD
+
 ## [0.14.1]
 - Min css changes
 
