@@ -7,6 +7,7 @@ use ilExcel;
 use ilFormPropertyGUI;
 use ilTable2GUI;
 use srag\CustomInputGUIs\PropertyFormGUI\Items\Items;
+use srag\CustomInputGUIs\PropertyFormGUI\PropertyFormGUI;
 use srag\CustomInputGUIs\TableGUI\Exception\TableGUIException;
 use srag\DIC\DICTrait;
 
@@ -116,6 +117,10 @@ abstract class TableGUI extends ilTable2GUI {
 		foreach ($this->filter_fields as $key => $field) {
 			if (!is_array($field)) {
 				throw new TableGUIException("\$field needs to be an array!", TableGUIException::CODE_INVALID_FIELD);
+			}
+
+			if ($field[PropertyFormGUI::PROPERTY_NOT_ADD]) {
+				continue;
 			}
 
 			$item = Items::getItem($key, $field, $this, $this);
