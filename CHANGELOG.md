@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.15.1]
+- CustomInputGUIsTrait
+
 ## [0.15.0]
 - ProgressMeter (From ILIAS 5.4)
 
