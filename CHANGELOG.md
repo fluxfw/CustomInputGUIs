@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.15.0]
+- ProgressMeter (From ILIAS 5.4)
+
 ## [0.14.2]
 - PROPERTY_NOT_ADD
 
