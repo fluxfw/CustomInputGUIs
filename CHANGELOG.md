@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.16.0]
+- ConfigPropertyFormGUI, ObjectPropertyFormGUI
+
 ## [0.15.3]
 - Not auto call setTitle/setInfo if it manuelly should set
 
