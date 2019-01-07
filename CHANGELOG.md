@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.16.1]
+- ObjectPropertyFormGUI
+
 ## [0.16.0]
 - ConfigPropertyFormGUI, ObjectPropertyFormGUI
 
