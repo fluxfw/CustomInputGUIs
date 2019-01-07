@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.16.2]
+- ObjectPropertyFormGUI
+
 ## [0.16.1]
 - ObjectPropertyFormGUI
 
