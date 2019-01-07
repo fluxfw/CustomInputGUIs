@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.15.2]
+- Use native ProgressMeterFactory on ILIAS 5.4
+
 ## [0.15.1]
 - CustomInputGUIsTrait
 
