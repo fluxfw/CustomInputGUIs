@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.15.3]
+- Not auto call setTitle/setInfo if it manuelly should set
+
 ## [0.15.2]
 - Use native ProgressMeterFactory on ILIAS 5.4
 
