@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.16.4]
+- Revert "Fix broken ilTableGUI render function"
+
 ## [0.16.3]
 - Fix broken ilTableGUI render function
 
