@@ -177,6 +177,15 @@ abstract class TableGUI extends ilTable2GUI {
 
 
 	/**
+	 * @return string
+	 */
+	public function render()/*: string*/ {
+		// Fix broken ilTableGUI render function
+		return $this->getHTML();
+	}
+
+
+	/**
 	 * @param string      $key
 	 * @param string|null $default
 	 *
