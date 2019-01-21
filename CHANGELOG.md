@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.16.9]
+- Fix use native ProgressMeterFactory on ILIAS 5.4
+
 ## [0.16.8]
 - Fix use native ProgressMeterFactory on ILIAS 5.4
 
