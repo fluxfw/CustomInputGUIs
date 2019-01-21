@@ -2,7 +2,7 @@
 
 namespace srag\CustomInputGUIs;
 
-use ILIAS\UI\Implementation\Component\Glyph\Factory as ProgressMeterFactoryCore;
+use ILIAS\UI\Implementation\Component\Card\Factory as ProgressMeterFactoryCore;
 use srag\CustomInputGUIs\ProgressMeter\Implementation\Factory as ProgressMeterFactory;
 use srag\DIC\DICTrait;
 
