@@ -10,7 +10,7 @@ use srag\CustomInputGUIs\ProgressMeter\Component\ProgressMeter as ProgressMeterC
 /**
  * Class ProgressMeter
  *
- * https://github.com/ILIAS-eLearning/ILIAS/tree/trunk/src/UI/Implementation/Component/Card/ProgressMeter.php
+ * https://github.com/ILIAS-eLearning/ILIAS/tree/trunk/src/UI/Implementation/Component/Chart/ProgressMeter/ProgressMeter.php
  *
  * @package srag\CustomInputGUIs\ProgressMeter\Implementation
  *
