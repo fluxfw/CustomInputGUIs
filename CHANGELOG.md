@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.17.3]
+- ViewControlModeGUI
+
 ## [0.17.2]
 - ViewControlModeGUI
 
