@@ -100,7 +100,7 @@ class ViewControlModeGUI {
 			$actions[$txt] = $this->link . "&" . self::CMD_HANDLE_BUTTONS . "=" . $id;
 		}
 
-		return self::output()->output(self::dic()->ui()->factory()->viewControl()->mode($actions, "")
+		return self::output()->getHTML(self::dic()->ui()->factory()->viewControl()->mode($actions, "")
 			->withActive($this->buttons[$this->getActiveId()]));
 	}
 
