@@ -124,7 +124,7 @@ class ViewControlModeGUI {
 		if ($active_id === NULL || !isset($this->buttons[$active_id])) {
 			return $active_id = $this->default_active_id;
 		}
-
+self::dic()->ctrl()->setReturn()
 		return $active_id;
 	}
 }
