@@ -100,7 +100,7 @@ class ViewControlModeGUI {
 			$actions[$txt] = $this->link . "&" . self::CMD_HANDLE_BUTTONS . "=" . $id;
 		}
 
-		return self::output()->output(self::dic()->ui()->factory()->viewControl()->mode($actions, "")
+		return self::output()->getHTML(self::dic()->ui()->factory()->viewControl()->mode($actions, "")
 			->withActive($this->buttons[$this->getActiveId()]));
 	}
 
@@ -121,10 +121,10 @@ class ViewControlModeGUI {
 	public function getActiveId(): string {
 		$active_id = ilSession::get(self::CMD_HANDLE_BUTTONS . "_" . $this->id);
 
-		if (empty($active_id) || !isset($this->buttons[$active_id])) {
+		if ($active_id === NULL || !isset($this->buttons[$active_id])) {
 			return $active_id = $this->default_active_id;
 		}
-
+self::dic()->ctrl()->setReturn()
 		return $active_id;
 	}
 }
