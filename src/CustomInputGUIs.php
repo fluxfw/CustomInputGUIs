@@ -4,6 +4,7 @@ namespace srag\CustomInputGUIs;
 
 use ILIAS\UI\Implementation\Component\Chart\ProgressMeter\Factory as ProgressMeterFactoryCore;
 use srag\CustomInputGUIs\ProgressMeter\Implementation\Factory as ProgressMeterFactory;
+use srag\CustomInputGUIs\ViewControlModeGUI\ViewControlModeGUI;
 use srag\DIC\DICTrait;
 
 /**
@@ -47,5 +48,13 @@ final class CustomInputGUIs {
 		} else {
 			return new ProgressMeterFactory();
 		}
+	}
+
+
+	/**
+	 * @return ViewControlModeGUI
+	 */
+	public function viewControlModeGUI() {
+		return new ViewControlModeGUI();
 	}
 }
