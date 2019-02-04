@@ -94,6 +94,8 @@ class ViewControlModeGUI {
 	 * @return string
 	 */
 	public function render(): string {
+		ilSession::set(self::CMD_HANDLE_BUTTONS . "_" . $this->id . "_url", $_SERVER["REQUEST_URI"]);
+
 		$actions = [];
 
 		foreach ($this->buttons as $id => $txt) {
@@ -112,6 +114,8 @@ class ViewControlModeGUI {
 		$active_id = filter_input(INPUT_GET, self::CMD_HANDLE_BUTTONS);
 
 		ilSession::set(self::CMD_HANDLE_BUTTONS . "_" . $this->id, $active_id);
+
+		self::dic()->ctrl()->redirectToURL(ilSession::get(self::CMD_HANDLE_BUTTONS . "_" . $this->id . "_url"));
 	}
 
 
@@ -124,7 +128,7 @@ class ViewControlModeGUI {
 		if ($active_id === NULL || !isset($this->buttons[$active_id])) {
 			return $active_id = $this->default_active_id;
 		}
-self::dic()->ctrl()->setReturn()
+
 		return $active_id;
 	}
 }
