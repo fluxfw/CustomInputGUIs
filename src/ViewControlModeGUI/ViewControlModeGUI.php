@@ -94,12 +94,14 @@ class ViewControlModeGUI {
 	 * @return string
 	 */
 	public function render(): string {
-		return self::output()->output(self::dic()->ui()->factory()->viewControl()
-			->mode(array_reduce($this->buttons, function (array $actions, string $txt, string $id): array {
-				$actions[$txt] = $this->link . "&" . self::CMD_HANDLE_BUTTONS . "=" . $id;
+		$actions = [];
 
-				return $actions;
-			}, []), "")->withActive($this->buttons[$this->getActiveId()]));
+		foreach ($this->buttons as $id => $txt) {
+			$actions[$txt] = $this->link . "&" . self::CMD_HANDLE_BUTTONS . "=" . $id;
+		}
+
+		return self::output()->output(self::dic()->ui()->factory()->viewControl()->mode($actions, "")
+			->withActive($this->buttons[$this->getActiveId()]));
 	}
 
 
