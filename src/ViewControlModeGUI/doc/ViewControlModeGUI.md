@@ -5,6 +5,7 @@ TODO:
 * ILIAS 5.3
 * PHP >=7.0
 * [composer](https://getcomposer.org)
+* [srag/dic](https://packagist.org/packages/srag/dic)
 
 ### Adjustment suggestions
 * Adjustment suggestions by pull requests on https://git.studer-raimann.ch/ILIAS/Plugins/SrTile/tree/develop
