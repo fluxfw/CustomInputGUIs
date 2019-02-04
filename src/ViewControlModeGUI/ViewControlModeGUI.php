@@ -121,7 +121,7 @@ class ViewControlModeGUI {
 	public function getActiveId(): string {
 		$active_id = ilSession::get(self::CMD_HANDLE_BUTTONS . "_" . $this->id);
 
-		if (empty($active_id) || !isset($this->buttons[$active_id])) {
+		if ($active_id === NULL || !isset($this->buttons[$active_id])) {
 			return $active_id = $this->default_active_id;
 		}
 
