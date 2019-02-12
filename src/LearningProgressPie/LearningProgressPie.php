@@ -31,6 +31,7 @@ class LearningProgressPie {
 		ilLPStatus::LP_STATUS_COMPLETED_NUM => "#BDCF32",
 		ilLPStatus::LP_STATUS_FAILED => "#B06060"
 	];
+	const BASE_ID = "learningprogresspie_";
 	/**
 	 * @var bool
 	 */
@@ -148,7 +149,7 @@ class LearningProgressPie {
 
 				$tpl = new ilTemplate(__DIR__ . "/templates/chart.html", false, false);
 
-				$tpl->setVariable("ID", $this->id);
+				$tpl->setVariable("ID", self::BASE_ID . $this->id);
 				$tpl->setVariable("DATA", json_encode($data));
 				$tpl->setVariable("COUNT", count($this->obj_ids));
 
