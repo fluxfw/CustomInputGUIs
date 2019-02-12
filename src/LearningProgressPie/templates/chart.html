@@ -2,6 +2,7 @@
 <script>
 	(function () {
 		var data = {DATA};
+		var show_legend = {SHOW_LEGEND};
 
 
 		var size = 160,
@@ -18,8 +19,8 @@
 			});
 
 		var svg = d3.select('#{ID}').append("svg")
-			.attr("width", 320)
-			.attr("height", 160)
+			.attr("width", (show_legend ? (size * 2) : size))
+			.attr("height", size)
 			.append("g")
 			.attr("transform", "translate(" + size / 2 + "," + size / 2 + ")");
 
@@ -53,7 +54,7 @@
 			.attr('y', 10)
 			.text({COUNT});
 
-		if ({SHOW_LEGEND}) {
+		if (show_legend) {
 			// https://stackoverflow.com/questions/32298837/how-to-add-a-nice-legend-to-a-d3-pie-chart
 			var legendG = svg.selectAll(".legend")
 				.data(pie(data))
