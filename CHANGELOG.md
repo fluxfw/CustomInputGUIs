@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.18.1]
+- LearningProgressPie
+
 ## [0.18.0]
 - LearningProgressPie
 
