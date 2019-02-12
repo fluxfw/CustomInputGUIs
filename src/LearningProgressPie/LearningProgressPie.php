@@ -145,10 +145,6 @@ class LearningProgressPie {
 				return $data;
 			}, []);
 
-			$data = array_filter($data, function (int $data): bool {
-				return ($data > 0);
-			});
-
 			$data = array_map(function (int $status) use ($data): array {
 				return [
 					"color" => self::LP_STATUS_COLOR[$status],
@@ -157,6 +153,10 @@ class LearningProgressPie {
 					"value" => $data[$status]
 				];
 			}, self::LP_STATUS);
+
+			$data = array_filter($data, function (array $data): bool {
+				return ($data["value"] > 0);
+			});
 
 			$data = array_values($data);
 
