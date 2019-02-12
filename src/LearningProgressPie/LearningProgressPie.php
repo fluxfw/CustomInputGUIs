@@ -126,9 +126,9 @@ class LearningProgressPie {
 				return $data;
 			}, []);
 
-			$data = array_values(array_filter($data, function (int $data): bool {
+			$data = array_filter($data, function (int $data): bool {
 				return ($data > 0);
-			}));
+			});
 
 			$data = array_map(function (int $status) use ($data): array {
 				return [
@@ -138,6 +138,8 @@ class LearningProgressPie {
 					"value" => $data[$status]
 				];
 			}, self::LP_STATUS);
+
+			$data = array_values($data);
 
 			if (count($data) > 0) {
 				$this->initJs();
