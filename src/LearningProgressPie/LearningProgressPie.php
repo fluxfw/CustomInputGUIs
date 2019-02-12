@@ -22,8 +22,8 @@ class LearningProgressPie {
 	const LP_STATUS = [
 		ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM,
 		ilLPStatus::LP_STATUS_IN_PROGRESS_NUM,
-		ilLPStatus::LP_STATUS_COMPLETED_NUM,
-		ilLPStatus::LP_STATUS_FAILED_NUM
+		ilLPStatus::LP_STATUS_COMPLETED_NUM
+		//ilLPStatus::LP_STATUS_FAILED_NUM
 	];
 	const LP_STATUS_COLOR = [
 		ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM => "#DDDDDD",
@@ -179,6 +179,8 @@ class LearningProgressPie {
 	 * @return string
 	 */
 	private function getText(int $status): string {
+		self::dic()->language()->loadLanguageModule("trac");
+
 		return ilLearningProgressBaseGUI::_getStatusText($status);
 	}
 }
