@@ -3,6 +3,7 @@
 namespace srag\CustomInputGUIs;
 
 use ILIAS\UI\Implementation\Component\Chart\ProgressMeter\Factory as ProgressMeterFactoryCore;
+use srag\CustomInputGUIs\LearningProgressPie\LearningProgressPie;
 use srag\CustomInputGUIs\ProgressMeter\Implementation\Factory as ProgressMeterFactory;
 use srag\CustomInputGUIs\ViewControlModeGUI\ViewControlModeGUI;
 use srag\DIC\DICTrait;
@@ -34,6 +35,14 @@ final class CustomInputGUIs {
 		}
 
 		return self::$instance;
+	}
+
+
+	/**
+	 * @return LearningProgressPie
+	 */
+	public function LearningProgressPie() {
+		return new LearningProgressPie();
 	}
 
 
