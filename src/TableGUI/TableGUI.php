@@ -287,7 +287,9 @@ abstract class TableGUI extends ilTable2GUI {
 			}
 		}
 
-		$excel->setBold("A" . $row . ":" . $excel->getColumnCoord($col - 1) . $row);
+		if ($col > 0) {
+			$excel->setBold("A" . $row . ":" . $excel->getColumnCoord($col - 1) . $row);
+		}
 	}
 
 
