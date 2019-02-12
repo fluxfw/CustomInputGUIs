@@ -126,7 +126,7 @@ class LearningProgressPie {
 				return $data;
 			}, []);
 
-			$data = array_values(array_filter($data, function (array $data): bool {
+			$data = array_values(array_filter($data, function (int $data): bool {
 				return ($data > 0);
 			}));
 
