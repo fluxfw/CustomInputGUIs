@@ -4,8 +4,7 @@
 		var data = {DATA};
 
 
-		var width = 160,
-			height = 160,
+		var size = 160,
 			radius = 90;
 
 		var arc = d3.arc()
@@ -19,10 +18,10 @@
 			});
 
 		var svg = d3.select('#{ID}').append("svg")
-			.attr("width", width)
-			.attr("height", height)
+			.attr("width", 320)
+			.attr("height", 160)
 			.append("g")
-			.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+			.attr("transform", "translate(" + size / 2 + "," + size / 2 + ")");
 
 		var g = svg.selectAll(".arc")
 			.data(pie(data))
@@ -54,28 +53,30 @@
 			.attr('y', 10)
 			.text({COUNT});
 
-		// https://stackoverflow.com/questions/32298837/how-to-add-a-nice-legend-to-a-d3-pie-chart
-		var legendG = svg.selectAll(".legend")
-			.data(pie(data))
-			.enter().append("g")
-			.attr("transform", function (d, i) {
-				return "translate(" + (width - 60) + "," + (i * 15 + 20) + ")";
-			})
-			.attr("class", "legend");
+		if ({SHOW_LEGEND}) {
+			// https://stackoverflow.com/questions/32298837/how-to-add-a-nice-legend-to-a-d3-pie-chart
+			var legendG = svg.selectAll(".legend")
+				.data(pie(data))
+				.enter().append("g")
+				.attr("transform", function (d, i) {
+					return "translate(" + (size - 60) + "," + (i * 15 + 20) + ")";
+				})
+				.attr("class", "legend");
 
-		legendG.append("rect")
-			.attr("width", 10)
-			.attr("height", 10)
-			.attr("fill", function (d) {
-				return d.data.color;
-			});
+			legendG.append("rect")
+				.attr("width", 10)
+				.attr("height", 10)
+				.attr("fill", function (d) {
+					return d.data.color;
+				});
 
-		legendG.append("text")
-			.text(function (d) {
-				return d.data.title;
-			})
-			.style("font-size", 12)
-			.attr("y", 10)
-			.attr("x", 11);
+			legendG.append("text")
+				.text(function (d) {
+					return d.data.title;
+				})
+				.style("font-size", 12)
+				.attr("y", 10)
+				.attr("x", 11);
+		}
 	})();
 </script>

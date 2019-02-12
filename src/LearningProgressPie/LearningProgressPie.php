@@ -31,6 +31,7 @@ class LearningProgressPie {
 		ilLPStatus::LP_STATUS_COMPLETED_NUM => "#BDCF32",
 		ilLPStatus::LP_STATUS_FAILED => "#B06060"
 	];
+	const BASE_ID = "learningprogresspie_";
 	/**
 	 * @var bool
 	 */
@@ -46,7 +47,11 @@ class LearningProgressPie {
 	/**
 	 * @var string
 	 */
-	protected $id;
+	protected $id = "";
+	/**
+	 * @var bool
+	 */
+	protected $show_legend = true;
 
 
 	/**
@@ -88,6 +93,18 @@ class LearningProgressPie {
 	 */
 	public function withId(string $id): self {
 		$this->id = $id;
+
+		return $this;
+	}
+
+
+	/**
+	 * @param bool show_legend
+	 *
+	 * @return self
+	 */
+	public function withShowLegend(bool $show_legend): self {
+		$this->show_legend = $show_legend;
 
 		return $this;
 	}
@@ -148,9 +165,10 @@ class LearningProgressPie {
 
 				$tpl = new ilTemplate(__DIR__ . "/templates/chart.html", false, false);
 
-				$tpl->setVariable("ID", $this->id);
+				$tpl->setVariable("ID", self::BASE_ID . $this->id);
 				$tpl->setVariable("DATA", json_encode($data));
-				$tpl->setVariable("COUNT", count($this->obj_ids));
+				$tpl->setVariable("COUNT", json_encode(count($this->obj_ids)));
+				$tpl->setVariable("SHOW_LEGEND", json_encode($this->show_legend));
 
 				return self::output()->getHTML($tpl);
 			}
