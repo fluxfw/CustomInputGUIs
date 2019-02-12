@@ -104,6 +104,8 @@ class LearningProgressPie {
 			$dir = "./" . substr($dir, strpos($dir, "/Customizing/") + 1);
 
 			self::dic()->mainTemplate()->addJavaScript($dir . "/../../node_modules/d3/dist/d3.min.js");
+
+			self::dic()->mainTemplate()->addCss($dir . "/css/learningprogresspie.css");
 		}
 	}
 
