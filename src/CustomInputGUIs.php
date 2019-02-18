@@ -44,7 +44,7 @@ final class CustomInputGUIs {
 	public function learningProgressPie() {
 		return new LearningProgressPie();
 	}
-c
+
 
 	/**
 	 * @return ProgressMeterFactoryCore|ProgressMeterFactory
