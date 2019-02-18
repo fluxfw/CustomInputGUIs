@@ -35,10 +35,6 @@ abstract class AbstractLearningProgressPie {
 	 */
 	protected static $init = false;
 	/**
-	 * @var int
-	 */
-	protected $usr_id;
-	/**
 	 * @var string
 	 */
 	protected $id = "";
@@ -53,18 +49,6 @@ abstract class AbstractLearningProgressPie {
 	 */
 	public function __construct() {
 
-	}
-
-
-	/**
-	 * @param int $usr_id
-	 *
-	 * @return self
-	 */
-	public function withUsrId(int $usr_id): self {
-		$this->usr_id = $usr_id;
-
-		return $this;
 	}
 
 
