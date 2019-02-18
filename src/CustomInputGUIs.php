@@ -41,10 +41,10 @@ final class CustomInputGUIs {
 	/**
 	 * @return LearningProgressPie
 	 */
-	public function LearningProgressPie() {
+	public function learningProgressPie() {
 		return new LearningProgressPie();
 	}
-
+c
 
 	/**
 	 * @return ProgressMeterFactoryCore|ProgressMeterFactory
