@@ -45,6 +45,8 @@ class CountLearningProgressPie extends AbstractLearningProgressPie {
 	 * @inheritdoc
 	 */
 	protected function getCount(): int {
-		return count($this->count);
+		return array_reduce($this->count, function (int $sum, int $count): int {
+			return ($sum + $count);
+		}, 0);
 	}
 }
