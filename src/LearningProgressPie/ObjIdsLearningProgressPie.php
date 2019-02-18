@@ -19,6 +19,10 @@ class ObjIdsLearningProgressPie extends AbstractLearningProgressPie {
 	 * @var int[]
 	 */
 	protected $obj_ids = [];
+	/**
+	 * @var int
+	 */
+	protected $usr_id;
 
 
 	/**
@@ -28,6 +32,18 @@ class ObjIdsLearningProgressPie extends AbstractLearningProgressPie {
 	 */
 	public function withObjIds(array $obj_ids): self {
 		$this->obj_ids = $obj_ids;
+
+		return $this;
+	}
+
+
+	/**
+	 * @param int $usr_id
+	 *
+	 * @return self
+	 */
+	public function withUsrId(int $usr_id): self {
+		$this->usr_id = $usr_id;
 
 		return $this;
 	}

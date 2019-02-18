@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.19.1]
+- CountLearningProgressPie
+
 ## [0.19.0]
 - CountLearningProgressPie
 
