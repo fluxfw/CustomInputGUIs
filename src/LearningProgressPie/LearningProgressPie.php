@@ -7,7 +7,7 @@ use srag\DIC\DICTrait;
 /**
  * Class LearningProgressPie
  *
- * @package srag\CustomInputGUIs
+ * @package srag\CustomInputGUIs\LearningProgressPie
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  *
