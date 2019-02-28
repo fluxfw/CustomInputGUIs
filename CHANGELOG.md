@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.19.3]
+- Support MultiSelectSearchInputGUI in table filter and toolbar
+
 ## [0.19.2]
 - CountLearningProgressPie
 
