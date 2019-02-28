@@ -580,9 +580,7 @@ class MultiLineInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, 
 	 * @inheritdoc
 	 */
 	public function getToolbarHTML()/*: string*/ {
-		$html = $this->render("toolbar");
-
-		return $html;
+		return $this->render("toolbar");
 	}
 
 
