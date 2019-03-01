@@ -147,7 +147,7 @@ abstract class AbstractLearningProgressPie {
 
 
 	/**
-	 * @return array
+	 * @return int[]
 	 */
 	protected abstract function parseData(): array;
 

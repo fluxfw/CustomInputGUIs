@@ -18,7 +18,7 @@ class CountLearningProgressPie extends AbstractLearningProgressPie {
 
 
 	/**
-	 * @param array $count
+	 * @param int[] $count
 	 *
 	 * @return self
 	 */

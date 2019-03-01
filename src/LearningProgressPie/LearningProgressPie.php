@@ -48,4 +48,12 @@ final class LearningProgressPie {
 	public function objIds(): ObjIdsLearningProgressPie {
 		return new ObjIdsLearningProgressPie();
 	}
+
+
+	/**
+	 * @return UsrIdsLearningProgressPie
+	 */
+	public function usrIds(): UsrIdsLearningProgressPie {
+		return new UsrIdsLearningProgressPie();
+	}
 }

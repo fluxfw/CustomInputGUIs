@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.19.4]
+- UsrIdsLearningProgressPie
+
 ## [0.19.3]
 - Support MultiSelectSearchInputGUI in table filter and toolbar
 
