@@ -7,43 +7,43 @@ use ilLPStatus;
 use ilObjectLP;
 
 /**
- * Class ObjIdsLearningProgressPie
+ * Class UsrIdsLearningProgressPie
  *
  * @package srag\CustomInputGUIs\LearningProgressPie
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
-class ObjIdsLearningProgressPie extends AbstractLearningProgressPie {
+class UsrIdsLearningProgressPie extends AbstractLearningProgressPie {
 
-	/**
-	 * @var int[]
-	 */
-	protected $obj_ids = [];
 	/**
 	 * @var int
 	 */
-	protected $usr_id;
+	protected $obj_id;
+	/**
+	 * @var int[]
+	 */
+	protected $usr_ids = [];
 
 
 	/**
-	 * @param int[] $obj_ids
+	 * @param int $obj_id
 	 *
 	 * @return self
 	 */
-	public function withObjIds(array $obj_ids): self {
-		$this->obj_ids = $obj_ids;
+	public function withObjId(int $obj_id): self {
+		$this->obj_id = $obj_id;
 
 		return $this;
 	}
 
 
 	/**
-	 * @param int $usr_id
+	 * @param int[] $usr_ids
 	 *
 	 * @return self
 	 */
-	public function withUsrId(int $usr_id): self {
-		$this->usr_id = $usr_id;
+	public function withUsrIds(array $usr_ids): self {
+		$this->usr_ids = $usr_ids;
 
 		return $this;
 	}
@@ -53,9 +53,9 @@ class ObjIdsLearningProgressPie extends AbstractLearningProgressPie {
 	 * @inheritdoc
 	 */
 	protected function parseData(): array {
-		if (count($this->obj_ids) > 0) {
-			return array_reduce($this->obj_ids, function (array $data, int $obj_id): array {
-				$status = $this->getStatus($obj_id);
+		if (count($this->usr_ids) > 0) {
+			return array_reduce($this->usr_ids, function (array $data, int $usr_id): array {
+				$status = $this->getStatus($usr_id);
 
 				if (!isset($data[$status])) {
 					$data[$status] = 0;
@@ -75,19 +75,19 @@ class ObjIdsLearningProgressPie extends AbstractLearningProgressPie {
 	 * @inheritdoc
 	 */
 	protected function getCount(): int {
-		return count($this->obj_ids);
+		return count($this->usr_ids);
 	}
 
 
 	/**
-	 * @param int $obj_id
+	 * @param int $usr_id
 	 *
 	 * @return int
 	 */
-	private function getStatus(int $obj_id): int {
+	private function getStatus(int $usr_id): int {
 		// Avoid exit
-		if (ilObjectLP::getInstance($obj_id)->getCurrentMode() != ilLPObjSettings::LP_MODE_UNDEFINED) {
-			$status = intval(ilLPStatus::_lookupStatus($obj_id, $this->usr_id));
+		if (ilObjectLP::getInstance($this->obj_id)->getCurrentMode() != ilLPObjSettings::LP_MODE_UNDEFINED) {
+			$status = intval(ilLPStatus::_lookupStatus($this->obj_id, $usr_id));
 		} else {
 			$status = ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM;
 		}
