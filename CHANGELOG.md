@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.19.7]
+- Fixes
+
 ## [0.19.6]
 - Fixes
 
