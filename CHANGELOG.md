@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.19.6]
+- Fixes
+
 ## [0.19.5]
 - MultiLineInputGUI: Fix date format on public page
 
