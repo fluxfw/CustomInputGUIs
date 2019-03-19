@@ -1,21 +1,21 @@
 <?php
 
-namespace srag\CustomInputGUIs\ViewControlModeGUI;
+namespace srag\CustomInputGUIs\ViewControlModeUI;
 
 use ilSession;
 use srag\DIC\DICTrait;
 
 /**
- * Class ViewControlModeGUI
+ * Class ViewControlModeUI
  *
- * @package srag\CustomInputGUIs\ViewControlModeGUI
+ * @package srag\CustomInputGUIs\ViewControlModeUI
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
-class ViewControlModeGUI {
+class ViewControlModeUI {
 
 	use DICTrait;
-	const CMD_HANDLE_BUTTONS = "ViewControlModeGUIHandleButtons";
+	const CMD_HANDLE_BUTTONS = "ViewControlModeUIHandleButtons";
 	/**
 	 * @var array
 	 */
@@ -35,7 +35,7 @@ class ViewControlModeGUI {
 
 
 	/**
-	 * ViewControlModeGUI constructor
+	 * ViewControlModeUI constructor
 	 */
 	public function __construct() {
 
