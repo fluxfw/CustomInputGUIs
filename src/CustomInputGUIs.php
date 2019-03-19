@@ -27,7 +27,7 @@ final class CustomInputGUIs {
 	/**
 	 * @return self
 	 */
-	public static function getInstance(): self {
+	public static function getInstance()/*: self*/ {
 		if (self::$instance === null) {
 			self::$instance = new self();
 		}
