@@ -39,7 +39,7 @@ final class CustomInputGUIs {
 	/**
 	 * CustomInputGUIs constructor
 	 */
-	public function __construct() {
+	private function __construct() {
 
 	}
 
