@@ -20,7 +20,6 @@ So I recommand to use [srag/librariesnamespacechanger](https://packagist.org/pac
 
 ### Input-GUI's
 * [CheckboxInputGUI](./src/CheckboxInputGUI/doc/CheckboxInputGUI.md)
-* [CommentsUI](./src/CommentsUI/doc/CommentsUI.md)
 * [DateDurationInputGUI](./src/DateDurationInputGUI/doc/DateDurationInputGUI.md)
 * [GlyphGUI](./src/GlyphGUI/doc/GlyphGUI.md)
 * [HiddenInputGUI](./src/HiddenInputGUI/doc/HiddenInputGUI.md)

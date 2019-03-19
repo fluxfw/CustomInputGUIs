@@ -3,7 +3,6 @@
 namespace srag\CustomInputGUIs;
 
 use ILIAS\UI\Implementation\Component\Chart\ProgressMeter\Factory as ProgressMeterFactoryCore;
-use srag\CustomInputGUIs\CommentsUI\CommentsUI;
 use srag\CustomInputGUIs\LearningProgressPieUI\LearningProgressPieUI;
 use srag\CustomInputGUIs\ProgressMeter\Implementation\Factory as ProgressMeterFactory;
 use srag\CustomInputGUIs\ViewControlModeUI\ViewControlModeUI;
@@ -42,14 +41,6 @@ final class CustomInputGUIs {
 	 */
 	public function __construct() {
 
-	}
-
-
-	/**
-	 * @return CommentsUI
-	 */
-	public function comments() {
-		return new CommentsUI();
 	}
 
 
