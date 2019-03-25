@@ -9,7 +9,6 @@ use ILIAS\FileUpload\DTO\ProcessingStatus;
 use ILIAS\FileUpload\DTO\UploadResult;
 use ilTemplate;
 use srag\DIC\DICTrait;
-use srag\DIC\Plugin\Plugin;
 use srag\DIC\Plugin\Pluginable;
 use srag\DIC\Plugin\PluginInterface;
 
@@ -39,9 +38,9 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable {
 	 */
 	protected $screenshots = [];
 	/**
-	 * @var Plugin|null
+	 * @var PluginInterface|null
 	 */
-	protected $plugin = NULL;
+	protected $plugin = null;
 
 
 	/**
