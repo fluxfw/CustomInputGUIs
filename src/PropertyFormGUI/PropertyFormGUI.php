@@ -7,6 +7,7 @@ use ilFormSectionHeaderGUI;
 use ilPropertyFormGUI;
 use ilRadioGroupInputGUI;
 use ilRadioOption;
+use srag\CustomInputGUIs\MultiLineInputGUI\MultiLineInputGUI;
 use srag\CustomInputGUIs\PropertyFormGUI\Exception\PropertyFormGUIException;
 use srag\CustomInputGUIs\PropertyFormGUI\Items\Items;
 use srag\DIC\DICTrait;
@@ -127,16 +128,22 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI {
 			}
 
 			if (is_array($field[self::PROPERTY_SUBITEMS])) {
-				$this->getFields($field[self::PROPERTY_SUBITEMS], $item);
+				if (!($item instanceof MultiLineInputGUI)) {
+					$this->getFields($field[self::PROPERTY_SUBITEMS], $item);
+				}
 			}
 
-			if ($parent_item instanceof ilRadioGroupInputGUI) {
-				$parent_item->addOption($item);
+			if ($parent_item instanceof MultiLineInputGUI) {
+				$parent_item->addInput($item);
 			} else {
-				if ($parent_item instanceof ilPropertyFormGUI) {
-					$parent_item->addItem($item);
+				if ($parent_item instanceof ilRadioGroupInputGUI) {
+					$parent_item->addOption($item);
 				} else {
-					$parent_item->addSubItem($item);
+					if ($parent_item instanceof ilPropertyFormGUI) {
+						$parent_item->addItem($item);
+					} else {
+						$parent_item->addSubItem($item);
+					}
 				}
 			}
 		}
@@ -196,7 +203,9 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI {
 				}
 
 				if (is_array($field[self::PROPERTY_SUBITEMS])) {
-					$this->storeFormItems($field[self::PROPERTY_SUBITEMS]);
+					if (!($item instanceof MultiLineInputGUI)) {
+						$this->storeFormItems($field[self::PROPERTY_SUBITEMS]);
+					}
 				}
 			}
 		}
