@@ -33,6 +33,9 @@ abstract class TableGUI extends ilTable2GUI {
 	 * @var string
 	 */
 	const LANG_MODULE = "";
+	/**
+	 * @var string
+	 */
 	const EXPORT_PDF = 3;
 	/**
 	 * @var array
@@ -247,11 +250,11 @@ abstract class TableGUI extends ilTable2GUI {
 	public function setExportFormats(array $formats)/*: void*/ {
 		parent::setExportFormats($formats);
 
-		$valid = [ self::EXPORT_PDF => "tbl_export_pdf" ];
+		$valid = [ self::EXPORT_PDF => "pdf" ];
 
-		foreach ($formats as $format) {
-			if (array_key_exists($format, $valid)) {
-				$this->export_formats[$format] = $valid[$format];
+		foreach ($formats as $format => $txt) {
+			if (isset($valid[$format])) {
+				$this->export_formats[$format] = self::plugin()->getPluginObject()->getPrefix() . "_tablegui_export_" . $txt;
 			}
 		}
 	}
@@ -353,7 +356,11 @@ abstract class TableGUI extends ilTable2GUI {
 	protected function exportPDF(/*bool*/
 		$send = false)/*: void*/ {
 
+		$css = file_get_contents(__DIR__ . "/css/table_pdf_export.css");
+
 		$tpl = new ilTemplate(__DIR__ . "/templates/table_pdf_export.html", true, true);
+
+		$tpl->setVariable("CSS", $css);
 
 		$tpl->setCurrentBlock("header");
 		foreach ($this->fillHeaderPDF() as $column) {
