@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.20.0]
+- TableGUI PDF export
+- Fix TableGUI excel export
+
 ## [0.19.11]
 - PropertyFormGUI supports MultiLineInputGUI
 
