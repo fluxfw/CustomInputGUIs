@@ -34,7 +34,7 @@ abstract class TableGUI extends ilTable2GUI {
 	 */
 	const LANG_MODULE = "";
 	/**
-	 * @var string
+	 * @var int
 	 */
 	const EXPORT_PDF = 3;
 	/**
@@ -264,7 +264,7 @@ abstract class TableGUI extends ilTable2GUI {
 	 * @param int  $format
 	 * @param bool $send
 	 */
-	public function exportData(/*string*/
+	public function exportData(/*int*/
 		$format, /*bool*/
 		$send = false)/*: void*/ {
 		switch ($format) {
