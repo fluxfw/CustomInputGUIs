@@ -36,6 +36,10 @@ abstract class TableGUI extends ilTable2GUI {
 	/**
 	 * @var int
 	 */
+	const DEFAULT_FORMAT = 0;
+	/**
+	 * @var int
+	 */
 	const EXPORT_PDF = 3;
 	/**
 	 * @var array
@@ -438,7 +442,7 @@ abstract class TableGUI extends ilTable2GUI {
 	protected abstract function getColumnValue(/*string*/
 		$column, /*array*/
 		$row, /*int*/
-		$format = 0)/*: string*/
+		$format = self::DEFAULT_FORMAT)/*: string*/
 	;
 
 
