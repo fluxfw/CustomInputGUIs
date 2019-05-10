@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.20.2]
+- Use export format in `getColumnValue`
+
 ## [0.20.1]
 - Improvments TableGUI PDF export
 

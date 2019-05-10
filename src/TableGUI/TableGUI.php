@@ -303,7 +303,7 @@ abstract class TableGUI extends ilTable2GUI {
 		$row)/*: void*/ {
 		foreach ($this->getSelectableColumns() as $column) {
 			if ($this->isColumnSelected($column["id"])) {
-				$csv->addColumn($this->getColumnValue($column["id"], $row, true));
+				$csv->addColumn($this->getColumnValue($column["id"], $row, self::EXPORT_CSV));
 			}
 		}
 
@@ -343,7 +343,7 @@ abstract class TableGUI extends ilTable2GUI {
 		$col = 0;
 		foreach ($this->getSelectableColumns() as $column) {
 			if ($this->isColumnSelected($column["id"])) {
-				$excel->setCell($row, $col, $this->getColumnValue($column["id"], $result));
+				$excel->setCell($row, $col, $this->getColumnValue($column["id"], $result, self::EXPORT_EXCEL));
 				$col ++;
 			}
 		}
@@ -420,7 +420,7 @@ abstract class TableGUI extends ilTable2GUI {
 
 		foreach ($this->getSelectableColumns() as $column) {
 			if ($this->isColumnSelected($column["id"])) {
-				$strings[] = $this->getColumnValue($column["id"], $row, true);
+				$strings[] = $this->getColumnValue($column["id"], $row, self::EXPORT_PDF);
 			}
 		}
 
@@ -431,14 +431,14 @@ abstract class TableGUI extends ilTable2GUI {
 	/**
 	 * @param string $column
 	 * @param array  $row
-	 * @param bool   $raw_export
+	 * @param int    $format
 	 *
 	 * @return string
 	 */
 	protected abstract function getColumnValue(/*string*/
 		$column, /*array*/
-		$row, /*bool*/
-		$raw_export = false)/*: string*/
+		$row, /*int*/
+		$format = 0)/*: string*/
 	;
 
 
