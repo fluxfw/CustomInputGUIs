@@ -250,11 +250,11 @@ abstract class TableGUI extends ilTable2GUI {
 	public function setExportFormats(array $formats)/*: void*/ {
 		parent::setExportFormats($formats);
 
-		$valid = [ self::EXPORT_PDF => "PDF" ];
+		$valid = [ self::EXPORT_PDF => "pdf" ];
 
 		foreach ($formats as $format => $txt) {
 			if (isset($valid[$format])) {
-				$this->export_formats[$format] = $txt;
+				$this->export_formats[$format] = self::plugin()->getPluginObject()->getPrefix() . "_tablegui_export_" . $txt;
 			}
 		}
 	}
