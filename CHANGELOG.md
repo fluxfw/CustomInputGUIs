@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.20.1]
+- Improvments TableGUI PDF export
+
 ## [0.20.0]
 - TableGUI PDF export
 - Fix TableGUI excel export
