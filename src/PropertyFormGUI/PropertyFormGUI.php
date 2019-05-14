@@ -130,9 +130,7 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI {
 			}
 
 			if (is_array($field[self::PROPERTY_SUBITEMS])) {
-				if (!($item instanceof MultiLineInputGUI)) {
-					$this->getFields($field[self::PROPERTY_SUBITEMS], $item);
-				}
+				$this->getFields($field[self::PROPERTY_SUBITEMS], $item);
 			}
 
 			if ($parent_item instanceof MultiLineInputGUI) {
