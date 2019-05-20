@@ -501,14 +501,4 @@ abstract class TableGUI extends ilTable2GUI {
 	 *
 	 */
 	protected abstract function initTitle()/*: void*/ ;
-
-
-	/**
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	protected final function strToCamelCase($string) {
-		return str_replace("_", "", ucwords($string, "_"));
-	}
 }
