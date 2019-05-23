@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.20.8]
+- NumberInputGUI in toolbar
+
 ## [0.20.7]
 - PHPDoc
 
