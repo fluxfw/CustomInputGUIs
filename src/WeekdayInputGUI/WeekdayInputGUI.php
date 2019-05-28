@@ -100,7 +100,7 @@ class WeekdayInputGUI extends ilFormPropertyGUI implements ilTableFilterItem {
 			$tpl->parseCurrentBlock();
 		}
 
-		return $tpl->get();
+		return self::output()->getHTML($tpl);
 	}
 
 
