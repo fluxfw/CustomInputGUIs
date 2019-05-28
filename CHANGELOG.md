@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.21.0]
+- WeekdayInputGUI
+
 ## [0.20.8]
 - NumberInputGUI in toolbar
 
