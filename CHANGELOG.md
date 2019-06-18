@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.22.6]
+- Some improvments
+
 ## [0.22.5]
 - Fix render multiple legend entries
 

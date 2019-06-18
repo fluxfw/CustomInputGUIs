@@ -28,7 +28,7 @@ class Renderer extends AbstractComponentRenderer {
 	 * @inheritDoc
 	 */
 	protected function getComponentInterfaceName(): array {
-		return [ PieChart::class ];
+		return [ PieChartInterface::class ];
 	}
 
 
@@ -102,6 +102,6 @@ class Renderer extends AbstractComponentRenderer {
 		$tpl->setVariable("TOTAL_VALUE", round($total_value, 2));
 		$tpl->parseCurrentBlock();
 
-		return $tpl->get();
+		return self::output()->getHTML($tpl);
 	}
 }
