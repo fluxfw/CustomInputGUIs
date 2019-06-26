@@ -35,7 +35,7 @@ class Renderer extends AbstractComponentRenderer {
 	/**
 	 * @inheritDoc
 	 */
-	public function render(Component $component, RendererInterface $default_renderer) {
+	public function render(Component $component, RendererInterface $default_renderer): string {
 		$this->checkComponent($component);
 
 		return $this->renderStandard($component, $default_renderer);
