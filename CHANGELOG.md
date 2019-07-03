@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.22.8]
+- Allow `storeForm` multiple in `PropertyFormGUI` (`checkInput`!!!)
+
 ## [0.22.7]
 - Supports `ilFormSectionHeaderGUI` as sub item in `PropertyFormGUI`
 
