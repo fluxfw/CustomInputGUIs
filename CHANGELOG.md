@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.22.7]
+- Supports `ilFormSectionHeaderGUI` as sub item in `PropertyFormGUI`
+
 ## [0.22.6]
 - Some improvments
 

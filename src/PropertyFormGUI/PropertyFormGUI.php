@@ -2,11 +2,13 @@
 
 namespace srag\CustomInputGUIs\PropertyFormGUI;
 
+use Closure;
 use ilFormPropertyGUI;
 use ilFormSectionHeaderGUI;
 use ilPropertyFormGUI;
 use ilRadioGroupInputGUI;
 use ilRadioOption;
+use ilSubEnabledFormPropertyGUI;
 use srag\CustomInputGUIs\MultiLineInputGUI\MultiLineInputGUI;
 use srag\CustomInputGUIs\PropertyFormGUI\Exception\PropertyFormGUIException;
 use srag\CustomInputGUIs\PropertyFormGUI\Items\Items;
@@ -142,7 +144,14 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI {
 					if ($parent_item instanceof ilPropertyFormGUI) {
 						$parent_item->addItem($item);
 					} else {
-						$parent_item->addSubItem($item);
+						if ($item instanceof ilFormSectionHeaderGUI) {
+							// Fix 'Call to undefined method ilFormSectionHeaderGUI::setParent()'
+							Closure::bind(function (ilFormSectionHeaderGUI $item)/*:void*/ {
+								$this->sub_items[] = $item; // https://github.com/ILIAS-eLearning/ILIAS/blob/b8a2a3a203d8fb5bab988849ab43616be7379551/Services/Form/classes/class.ilSubEnabledFormPropertyGUI.php#L45
+							}, $parent_item, ilSubEnabledFormPropertyGUI::class)($item);
+						} else {
+							$parent_item->addSubItem($item);
+						}
 					}
 				}
 			}
