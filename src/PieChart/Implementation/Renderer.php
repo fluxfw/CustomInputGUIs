@@ -4,9 +4,7 @@ namespace srag\CustomInputGUIs\PieChart\Implementation;
 
 use ILIAS\UI\Component\Component;
 use ILIAS\UI\Implementation\Render\AbstractComponentRenderer;
-use ILIAS\UI\Implementation\Render\ilTemplateWrapper;
 use ILIAS\UI\Renderer as RendererInterface;
-use ilTemplate;
 use srag\CustomInputGUIs\PieChart\Component\PieChart as PieChartInterface;
 use srag\DIC\DICTrait;
 
@@ -54,7 +52,7 @@ class Renderer extends AbstractComponentRenderer {
 
 		self::dic()->mainTemplate()->addCss($dir . "/css/piechart.css");
 
-		$tpl = new ilTemplateWrapper(self::dic()->mainTemplate(), new ilTemplate(__DIR__ . "/../templates/tpl.piechart.html", true, true));
+		$tpl = $this->getTemplate("tpl.piechart.html", true, true);
 
 		foreach ($component->getSections() as $section) {
 			$tpl->setCurrentBlock("section");
@@ -103,5 +101,13 @@ class Renderer extends AbstractComponentRenderer {
 		$tpl->parseCurrentBlock();
 
 		return self::output()->getHTML($tpl);
+	}
+
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getTemplatePath(/*string*/ $name): string {
+		return __DIR__ . "/../templates/" . $name;
 	}
 }

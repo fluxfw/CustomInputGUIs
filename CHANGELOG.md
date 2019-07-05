@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.22.9]
+- Improve template path
+
 ## [0.22.8]
 - Allow `storeForm` multiple in `PropertyFormGUI` (`checkInput`!!!)
 
