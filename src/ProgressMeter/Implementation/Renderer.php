@@ -6,10 +6,8 @@ namespace srag\CustomInputGUIs\ProgressMeter\Implementation;
 
 use ILIAS\UI\Component;
 use ILIAS\UI\Implementation\Render\AbstractComponentRenderer;
-use ILIAS\UI\Implementation\Render\ilTemplateWrapper;
 use ILIAS\UI\Implementation\Render\Template;
 use ILIAS\UI\Renderer as RendererInterface;
-use ilTemplate;
 use srag\DIC\DICTrait;
 
 /**
@@ -22,7 +20,7 @@ use srag\DIC\DICTrait;
  * @author  Ralph Dittrich <dittrich@qualitus.de>
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  *
- * @since ILIAS 5.4
+ * @since   ILIAS 5.4
  */
 class Renderer extends AbstractComponentRenderer {
 
@@ -71,13 +69,11 @@ class Renderer extends AbstractComponentRenderer {
 	 * @return string
 	 */
 	protected function renderStandard(Standard $component, RendererInterface $default_renderer) {
-		$hasComparison = ($component->getComparison() != NULL && $component->getComparison() > 0);
+		$hasComparison = ($component->getComparison() != null && $component->getComparison() > 0);
 		if ($hasComparison) {
-			$tpl = new ilTemplateWrapper(self::dic()->mainTemplate(), new ilTemplate(__DIR__
-				. "/../templates/tpl.progressmeter_two_bar.html", true, true));
+			$tpl = $this->getTemplate("tpl.progressmeter_two_bar.html", true, true);
 		} else {
-			$tpl = new ilTemplateWrapper(self::dic()->mainTemplate(), new ilTemplate(__DIR__
-				. "/../templates/tpl.progressmeter_one_bar.html", true, true));
+			$tpl = $this->getTemplate("tpl.progressmeter_one_bar.html", true, true);
 		}
 
 		// set "responsive class" false
@@ -117,13 +113,11 @@ class Renderer extends AbstractComponentRenderer {
 	 * @return string
 	 */
 	protected function renderFixedSize(FixedSize $component, RendererInterface $default_renderer) {
-		$hasComparison = ($component->getComparison() != NULL && $component->getComparison() > 0);
+		$hasComparison = ($component->getComparison() != null && $component->getComparison() > 0);
 		if ($hasComparison) {
-			$tpl = new ilTemplateWrapper(self::dic()->mainTemplate(), new ilTemplate(__DIR__
-				. "/../templates/tpl.progressmeter_two_bar.html", true, true));
+			$tpl = $this->getTemplate("tpl.progressmeter_two_bar.html", true, true);
 		} else {
-			$tpl = new ilTemplateWrapper(self::dic()->mainTemplate(), new ilTemplate(__DIR__
-				. "/../templates/tpl.progressmeter_one_bar.html", true, true));
+			$tpl = $this->getTemplate("tpl.progressmeter_one_bar.html", true, true);
 		}
 
 		// set "responsive class" false
@@ -163,7 +157,7 @@ class Renderer extends AbstractComponentRenderer {
 	 * @return string
 	 */
 	protected function renderMini(Mini $component, RendererInterface $default_renderer) {
-		$tpl = new ilTemplateWrapper(self::dic()->mainTemplate(), new ilTemplate(__DIR__ . "/../templates/tpl.progressmeter_mini.html", true, true));
+		$tpl = $this->getTemplate("tpl.progressmeter_mini.html", true, true);
 
 		// new vars
 		/*
@@ -349,5 +343,13 @@ class Renderer extends AbstractComponentRenderer {
 	 */
 	protected function getComponentInterfaceName() {
 		return [ ProgressMeter::class ];
+	}
+
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getTemplatePath(/*string*/ $name): string {
+		return __DIR__ . "/../templates/" . $name;
 	}
 }
