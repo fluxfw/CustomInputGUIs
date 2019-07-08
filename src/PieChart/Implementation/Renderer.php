@@ -4,6 +4,7 @@ namespace srag\CustomInputGUIs\PieChart\Implementation;
 
 use ILIAS\UI\Component\Component;
 use ILIAS\UI\Implementation\Render\AbstractComponentRenderer;
+use ILIAS\UI\Implementation\Render\ResourceRegistry;
 use ILIAS\UI\Renderer as RendererInterface;
 use srag\CustomInputGUIs\PieChart\Component\PieChart as PieChartInterface;
 use srag\DIC\DICTrait;
@@ -47,11 +48,6 @@ class Renderer extends AbstractComponentRenderer {
 	 * @return string
 	 */
 	protected function renderStandard(PieChartInterface $component, RendererInterface $default_renderer): string {
-		$dir = __DIR__;
-		$dir = "./" . substr($dir, strpos($dir, "/Customizing/") + 1) . "/..";
-
-		self::dic()->mainTemplate()->addCss($dir . "/css/piechart.css");
-
 		$tpl = $this->getTemplate("tpl.piechart.html", true, true);
 
 		foreach ($component->getSections() as $section) {
@@ -101,6 +97,19 @@ class Renderer extends AbstractComponentRenderer {
 		$tpl->parseCurrentBlock();
 
 		return self::output()->getHTML($tpl);
+	}
+
+
+	/**
+	 * @inheritDoc
+	 */
+	public function registerResources(ResourceRegistry $registry): void {
+		parent::registerResources($registry);
+
+		$dir = __DIR__;
+		$dir = "./" . substr($dir, strpos($dir, "/Customizing/") + 1) . "/..";
+
+		$registry->register($dir . "/css/piechart.css");
 	}
 
 
