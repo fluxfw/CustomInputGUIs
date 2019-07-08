@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.22.10]
+- Fixes
+
 ## [0.22.9]
 - Improve template path
 
