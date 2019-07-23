@@ -34,7 +34,7 @@ class TextInputGUIWithModernAutoComplete extends TextInputGUI {
 			iljQueryUtil::initjQuery();
 			iljQueryUtil::initjQueryUI();
 
-			self::dic()->mainTemplate()->addJavaScript($dir . "/node_modules/babel-polyfill/dist/polyfill.min.js");
+			self::dic()->mainTemplate()->addJavaScript($dir . "/../../node_modules/babel-polyfill/dist/polyfill.min.js");
 
 			self::dic()->mainTemplate()->addJavaScript($dir . "/js/text_input_gui_with_modern_auto_complete.min.js");
 
