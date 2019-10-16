@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.23.6]
+- Make ProgressMeter run again with PHP 7.0
+
 ## [0.23.5]
 - MultiLineInputGUI: fix PHP 7.2
 
