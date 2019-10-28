@@ -61,40 +61,54 @@ abstract class AbstractLearningProgressPieUI {
 	}
 
 
+    /**
+     * @return array
+     */
+    public function getDataOnly() : array
+    {
+        $data = $this->parseData();
+
+        $data = array_map(function (int $status) use ($data): array {
+            return [
+                "color" => self::LP_STATUS_COLOR[$status],
+                "title" => $this->getText($status),
+                "value" => $data[$status]
+            ];
+        }, self::LP_STATUS);
+
+        $data = array_filter($data, function (array $data) : bool {
+            return ($data["value"] > 0);
+        });
+
+        $data = array_values($data);
+
+        return [
+            "data"  => $data,
+            "count" => $this->getCount()
+        ];
+    }
+
+
 	/**
 	 * @return string
 	 */
 	public function render(): string {
-		$data = $this->parseData();
+        $data_only = $this->getDataOnly();
+        $data = $data_only["data"];
+        $count = $data_only["count"];
 
-		if (count($data) > 0) {
+        if (count($data) > 0) {
 
-			$data = array_map(function (int $status) use ($data): array {
-				return [
-					"color" => self::LP_STATUS_COLOR[$status],
-					"title" => $this->getText($status),
-					"value" => $data[$status]
-				];
-			}, self::LP_STATUS);
+            $data = array_map(function (array $data)/*: PieChartItemInterface*/ {
+                return self::customInputGUIs()
+                    ->pieChartItem($data["title"], $data["value"], new Color($data["color"][0], $data["color"][1], $data["color"][2]));
+            }, $data);
 
-			$data = array_filter($data, function (array $data): bool {
-				return ($data["value"] > 0);
-			});
+            return self::output()->getHTML(self::customInputGUIs()->pieChart($data)->withShowLegend($this->show_legend)
+                ->withCustomTotalValue($count));
+        }
 
-			$data = array_values($data);
-
-			$data = array_map(function (array $data)/*: PieChartItemInterface*/ {
-				return self::customInputGUIs()
-					->pieChartItem($data["title"], $data["value"], new Color($data["color"][0], $data["color"][1], $data["color"][2]));
-			}, $data);
-
-			if (count($data) > 0) {
-				return self::output()->getHTML(self::customInputGUIs()->pieChart($data)->withShowLegend($this->show_legend)
-					->withCustomTotalValue($this->getCount()));
-			}
-		}
-
-		return "";
+        return "";
 	}
 
 
