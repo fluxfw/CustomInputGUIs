@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.24.0]
+- `getDataOnly` for `LearningProgressPieUI`
+
 ## [0.23.6]
 - Make ProgressMeter run again with PHP 7.0
 
