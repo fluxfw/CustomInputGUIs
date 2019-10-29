@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.24.1]
+- `getDataOnly` for `LearningProgressPieUI`
+
 ## [0.24.0]
 - `getDataOnly` for `LearningProgressPieUI`
 
