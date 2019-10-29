@@ -39,6 +39,14 @@ abstract class AbstractLearningProgressPieUI {
 	 * @var bool
 	 */
 	protected $show_legend = true;
+    /**
+     * @var bool
+     */
+	protected $show_empty = false;
+    /**
+     * @var array|null
+     */
+    protected $cache = null;
 
 
 	/**
@@ -62,30 +70,58 @@ abstract class AbstractLearningProgressPieUI {
 
 
     /**
+     * @param bool $show_empty
+     *
+     * @return self
+     */
+    public function withShowEmpty(bool $show_empty): self {
+        $this->show_empty = $show_empty;
+
+        return $this;
+    }
+
+
+    /**
      * @return array
      */
-    public function getDataOnly() : array
+    public function getTitles() : array
     {
-        $data = $this->parseData();
-
-        $data = array_map(function (int $status) use ($data): array {
-            return [
-                "color" => self::LP_STATUS_COLOR[$status],
-                "title" => $this->getText($status),
-                "value" => $data[$status]
-            ];
+        return array_map(function (int $status) : string {
+            return $this->getText($status);
         }, self::LP_STATUS);
+    }
 
-        $data = array_filter($data, function (array $data) : bool {
-            return ($data["value"] > 0);
-        });
 
-        $data = array_values($data);
+    /**
+     * @return array
+     */
+    public function getData() : array
+    {
+        if ($this->cache === null) {
 
-        return [
-            "data"  => $data,
-            "count" => $this->getCount()
-        ];
+            $data = $this->parseData();
+
+            $data = array_map(function (int $status) use ($data): array {
+                return [
+                    "color" => self::LP_STATUS_COLOR[$status],
+                    "title" => $this->getText($status),
+                    "value" => ($data[$status] ?: 0)
+                ];
+            }, self::LP_STATUS);
+
+            if (!$this->show_empty) {
+                $data = array_filter($data, function (array $data) : bool {
+                    return ($data["value"] > 0);
+                });
+            }
+
+            $this->cache = [
+                "data"  => $data,
+                "count" => $this->getCount()
+            ];
+        }
+
+        return $this->cache;
     }
 
 
@@ -93,11 +129,13 @@ abstract class AbstractLearningProgressPieUI {
 	 * @return string
 	 */
 	public function render(): string {
-        $data_only = $this->getDataOnly();
-        $data = $data_only["data"];
-        $count = $data_only["count"];
+        $data = $this->getData();
+        $count = $data["count"];
+        $data = $data["data"];
 
         if (count($data) > 0) {
+
+            $data = array_values($data);
 
             $data = array_map(function (array $data)/*: PieChartItemInterface*/ {
                 return self::customInputGUIs()
