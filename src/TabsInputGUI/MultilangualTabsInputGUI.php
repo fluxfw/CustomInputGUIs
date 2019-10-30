@@ -28,7 +28,7 @@ class MultilangualTabsInputGUI
     {
         $tabs = [];
 
-        foreach (self::dic()->language()->getInstalledLanguages() as $lang_key) {
+        foreach (self::getLanguages() as $lang_key => $lang_title) {
             $tab_items = [];
 
             foreach ($items as $item_key => $item) {
@@ -39,7 +39,7 @@ class MultilangualTabsInputGUI
             $tab = [
                 PropertyFormGUI::PROPERTY_CLASS    => TabsInputGUITab::class,
                 PropertyFormGUI::PROPERTY_SUBITEMS => $tab_items,
-                "setTitle"                         => strtoupper($lang_key),
+                "setTitle"                         => $lang_title,
                 "setActive"                        => ($lang_key === self::dic()->language()->getLangKey())
             ];
 
@@ -56,9 +56,9 @@ class MultilangualTabsInputGUI
      */
     public static function generateLegacy(TabsInputGUI $tabs, array $inputs)/*:void*/
     {
-        foreach (self::dic()->language()->getInstalledLanguages() as $lang_key) {
+        foreach (self::getLanguages() as $lang_key => $lang_title) {
             $tab = new TabsInputGUITab();
-            $tab->setTitle(strtoupper($lang_key));
+            $tab->setTitle($lang_title);
             $tab->setActive($lang_key === self::dic()->language()->getLangKey());
 
             foreach ($inputs as $input) {
@@ -69,6 +69,17 @@ class MultilangualTabsInputGUI
 
             $tabs->addTab($tab);
         }
+    }
+
+
+    /**
+     * @return array
+     */
+    public static function getLanguages() : array
+    {
+        $lang_keys = self::dic()->language()->getInstalledLanguages();
+
+        return array_combine($lang_keys, array_map("strtoupper", $lang_keys));
     }
 
 
