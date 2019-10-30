@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.25.2]
+- `TabsInputGUI`
+
 ## [0.25.1]
 - `MultilangualTabsInputGUI`
 
