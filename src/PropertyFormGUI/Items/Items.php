@@ -11,6 +11,7 @@ use srag\CustomInputGUIs\MultiLineInputGUI\MultiLineInputGUI;
 use srag\CustomInputGUIs\PropertyFormGUI\Exception\PropertyFormGUIException;
 use srag\CustomInputGUIs\PropertyFormGUI\PropertyFormGUI;
 use srag\CustomInputGUIs\TableGUI\TableGUI;
+use srag\CustomInputGUIs\TabsInputGUI\TabsInputGUITab;
 use TypeError;
 
 /**
@@ -59,7 +60,9 @@ final class Items {
 					$item->setTitle($parent->txt($key));
 				}
 
-				$item->setPostVar($key);
+                if(!($item instanceof TabsInputGUITab)) {
+                    $item->setPostVar($key);
+                }
 			}
 		}
 
