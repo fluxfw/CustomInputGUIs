@@ -142,8 +142,8 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
         $tpl = new ilTemplate(__DIR__ . "/templates/tabs_input_gui.html", true, true);
 
         foreach ($this->tabs as $i => $tab) {
-            $tab_id = "tab_" . $counter . "_" . $i;
-            $tab_content_id = "tab_content_" . $counter . "_" . $i;
+            $tab_id = "tabsinputgui_tab_" . $counter . "_" . $i;
+            $tab_content_id = "tabsinputgui_tab_content_" . $counter . "_" . $i;
 
             $tpl->setCurrentBlock("tab");
             $tpl->setVariable("TAB_ID", $tab_id);
