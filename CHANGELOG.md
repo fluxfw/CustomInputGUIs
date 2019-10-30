@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.25.0]
+- `TabsInputGUI`
+- `MultilangualTabsInputGUI`
+
 ## [0.24.1]
 - `getDataOnly` for `LearningProgressPieUI`
 
