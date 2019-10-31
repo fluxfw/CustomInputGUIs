@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.25.3]
+- `StaticHTMLPresentationInputGUI`: Fix charset
+
 ## [0.25.2]
 - `TabsInputGUI`
 
