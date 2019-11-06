@@ -37,7 +37,7 @@ class InputGUIWrapperUIInputComponent extends Input
         $this->input = $input;
 
         if (self::version()->is60()) {
-            parent::__construct($data_factory = new DataFactory(), self::dic()->refinery(), "", null);
+            parent::__construct(new DataFactory(), self::dic()->refinery(), "", null);
         } else {
             parent::__construct($data_factory = new DataFactory(), new ValidationFactory($data_factory, self::dic()->language()), new TransformationFactory(), "", null);
         }
