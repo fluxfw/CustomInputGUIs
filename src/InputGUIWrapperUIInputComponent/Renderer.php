@@ -66,7 +66,7 @@ class Renderer extends InputRenderer
         parent::registerResources($registry);
 
         $dir = __DIR__;
-        $dir = "./" . substr($dir, strpos($dir, "/Customizing/") + 1) . "/..";
+        $dir = "./" . substr($dir, strpos($dir, "/Customizing/") + 1);
 
         $registry->register($dir . "/css/InputGUIWrapperUIInputComponent.css");
     }
