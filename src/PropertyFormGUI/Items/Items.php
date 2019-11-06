@@ -4,6 +4,7 @@ namespace srag\CustomInputGUIs\PropertyFormGUI\Items;
 
 use ilFormPropertyGUI;
 use ilFormSectionHeaderGUI;
+use ILIAS\UI\Component\Input\Field\Input;
 use ilNumberInputGUI;
 use ilPropertyFormGUI;
 use ilRadioOption;
@@ -12,6 +13,7 @@ use srag\CustomInputGUIs\PropertyFormGUI\Exception\PropertyFormGUIException;
 use srag\CustomInputGUIs\PropertyFormGUI\PropertyFormGUI;
 use srag\CustomInputGUIs\TableGUI\TableGUI;
 use srag\CustomInputGUIs\TabsInputGUI\TabsInputGUITab;
+use srag\CustomInputGUIs\UIInputComponentWrapperInputGUI\UIInputComponentWrapperInputGUI;
 use TypeError;
 
 /**
@@ -36,40 +38,56 @@ final class Items
      */
     public static final function getItem($key, array $field, $parent_item, $parent)
     {
-        if (!class_exists($field[PropertyFormGUI::PROPERTY_CLASS])) {
-            throw new PropertyFormGUIException("Class " . $field[PropertyFormGUI::PROPERTY_CLASS]
-                . " not exists!", PropertyFormGUIException::CODE_INVALID_PROPERTY_CLASS);
-        }
-
         /**
          * @var ilFormPropertyGUI|ilFormSectionHeaderGUI|ilRadioOption $item
          */
-        $item = new $field[PropertyFormGUI::PROPERTY_CLASS]();
+        if ($field[PropertyFormGUI::PROPERTY_CLASS] instanceof Input) {
+            $item = new UIInputComponentWrapperInputGUI($field[PropertyFormGUI::PROPERTY_CLASS], $key);
 
-        if ($item instanceof ilFormSectionHeaderGUI) {
-            if (!$field["setTitle"]) {
-                $item->setTitle($parent->txt($key));
-            }
-        } else {
-            if ($item instanceof ilRadioOption) {
-                if (!$field["setTitle"]) {
-                    $item->setTitle($parent->txt($parent_item->getPostVar() . "_" . $key));
-                }
-
-                $item->setValue($key);
-            } else {
+            if (empty($item->getTitle())) {
                 if (!$field["setTitle"]) {
                     $item->setTitle($parent->txt($key));
                 }
+            }
 
-                if (!($item instanceof TabsInputGUITab)) {
-                    $item->setPostVar($key);
+            if (empty($item->getInfo())) {
+                if (!$field["setInfo"]) {
+                    $item->setInfo($parent->txt($key . "_info", ""));
                 }
             }
-        }
+        } else {
+            if (!class_exists($field[PropertyFormGUI::PROPERTY_CLASS])) {
+                throw new PropertyFormGUIException("Class " . $field[PropertyFormGUI::PROPERTY_CLASS]
+                    . " not exists!", PropertyFormGUIException::CODE_INVALID_PROPERTY_CLASS);
+            }
 
-        if (!$field["setInfo"]) {
-            $item->setInfo($parent->txt($key . "_info", ""));
+            $item = new $field[PropertyFormGUI::PROPERTY_CLASS]();
+
+            if ($item instanceof ilFormSectionHeaderGUI) {
+                if (!$field["setTitle"]) {
+                    $item->setTitle($parent->txt($key));
+                }
+            } else {
+                if ($item instanceof ilRadioOption) {
+                    if (!$field["setTitle"]) {
+                        $item->setTitle($parent->txt($parent_item->getPostVar() . "_" . $key));
+                    }
+
+                    $item->setValue($key);
+                } else {
+                    if (!$field["setTitle"]) {
+                        $item->setTitle($parent->txt($key));
+                    }
+
+                    if (!($item instanceof TabsInputGUITab)) {
+                        $item->setPostVar($key);
+                    }
+                }
+            }
+
+            if (!$field["setInfo"]) {
+                $item->setInfo($parent->txt($key . "_info", ""));
+            }
         }
 
         self::setPropertiesToItem($item, $field);

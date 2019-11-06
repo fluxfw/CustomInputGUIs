@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.26.0]
+- `InputGUIWrapperUIInputComponent` and `UIInputComponentWrapperInputGUI`
+
 ## [0.25.3]
 - `StaticHTMLPresentationInputGUI`: Fix charset
 
