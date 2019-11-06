@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.26.1]
+- Fix
+
 ## [0.26.0]
 - `InputGUIWrapperUIInputComponent` and `UIInputComponentWrapperInputGUI`
 
