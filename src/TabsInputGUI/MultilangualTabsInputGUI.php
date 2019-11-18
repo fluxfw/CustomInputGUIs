@@ -21,13 +21,14 @@ class MultilangualTabsInputGUI
 
     /**
      * @param array $items
+     * @param bool  $default_language
      * @param bool  $default_required
      *
      * @return array
      */
-    public static function generate(array $items, bool $default_required = true) : array
+    public static function generate(array $items, bool $default_language = false, bool $default_required = true) : array
     {
-        foreach (self::getLanguages(true) as $lang_key => $lang_title) {
+        foreach (self::getLanguages($default_language) as $lang_key => $lang_title) {
             $tab_items = [];
 
             foreach ($items as $item_key => $item) {
@@ -57,11 +58,12 @@ class MultilangualTabsInputGUI
     /**
      * @param TabsInputGUI        $tabs
      * @param ilFormPropertyGUI[] $inputs
+     * @param bool                $default_language
      * @param bool                $default_required
      */
-    public static function generateLegacy(TabsInputGUI $tabs, array $inputs, bool $default_required = true)/*:void*/
+    public static function generateLegacy(TabsInputGUI $tabs, array $inputs, bool $default_language = false, bool $default_required = true)/*:void*/
     {
-        foreach (self::getLanguages(true) as $lang_key => $lang_title) {
+        foreach (self::getLanguages($default_language) as $lang_key => $lang_title) {
             $tab = new TabsInputGUITab();
             $tab->setTitle($lang_title);
             $tab->setActive($lang_key === "default");
