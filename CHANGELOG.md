@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.26.4]
+- `MultilangualTabsInputGUI` default language
+
 ## [0.26.3]
 - `MultilangualTabsInputGUI` default language
 

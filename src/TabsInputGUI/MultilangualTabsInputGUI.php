@@ -45,7 +45,7 @@ class MultilangualTabsInputGUI
                 PropertyFormGUI::PROPERTY_CLASS    => TabsInputGUITab::class,
                 PropertyFormGUI::PROPERTY_SUBITEMS => $tab_items,
                 "setTitle"                         => $lang_title,
-                "setActive"                        => ($lang_key === "default")
+                "setActive"                        => ($lang_key === ($default_language ? "default" : self::dic()->language()->getLangKey()))
             ];
 
             $tabs[] = $tab;
@@ -66,7 +66,7 @@ class MultilangualTabsInputGUI
         foreach (self::getLanguages($default_language) as $lang_key => $lang_title) {
             $tab = new TabsInputGUITab();
             $tab->setTitle($lang_title);
-            $tab->setActive($lang_key === "default");
+            $tab->setActive($lang_key === ($default_language ? "default" : self::dic()->language()->getLangKey()));
 
             foreach ($inputs as $input) {
                 $tab_input = clone $input;
