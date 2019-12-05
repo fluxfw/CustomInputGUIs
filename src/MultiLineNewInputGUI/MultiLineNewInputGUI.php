@@ -267,7 +267,7 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     /**
      * @param bool $show_sort
      */
-    public function setShowSort(bool $show_sort) : void
+    public function setShowSort(bool $show_sort)/* : void*/
     {
         $this->show_sort = $show_sort;
     }
