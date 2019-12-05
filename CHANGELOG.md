@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.27.0]
+- New `MultiLineNewInputGUI`
+- Optimized `TabsInputGUI` to work with `MultiLineNewInputGUI`
+- Optimized `MultiSelectSearchInputGUI` ajax
+- Deprecated `MultiLineInputGUI`, `MultiSelectSearchInput2GUI` and `GlyphGUI`
+
 ## [0.26.4]
 - `MultilangualTabsInputGUI` default language
 
