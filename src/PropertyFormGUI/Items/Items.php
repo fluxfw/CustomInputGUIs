@@ -179,7 +179,9 @@ final class Items
 
             if ($input->getInfo()) {
                 $input_info_tpl = new ilTemplate(__DIR__ . "/templates/input_gui_input_info.html", true, true);
+
                 $input_info_tpl->setVariable("INFO", $input->getInfo());
+
                 $input_tpl->setVariable("INFO", self::output()->getHTML($input_info_tpl));
             }
 

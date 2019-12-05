@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.27.1]
+- `MultiLineNewInputGUI`: Possibility to disable sort
+
 ## [0.27.0]
 - New `MultiLineNewInputGUI`
 - Optimized `TabsInputGUI` to work with `MultiLineNewInputGUI`
