@@ -36,6 +36,10 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
      */
     protected $show_input_label = self::SHOW_INPUT_LABEL_ONCE;
     /**
+     * @var bool
+     */
+    protected $show_sort = true;
+    /**
      * @var array
      */
     protected $value = [];
@@ -136,6 +140,15 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
 
 
     /**
+     * @return int
+     */
+    public function getShowInputLabel() : int
+    {
+        return $this->show_input_label;
+    }
+
+
+    /**
      * @inheritDoc
      */
     public function getTableFilterHTML() : string
@@ -182,11 +195,11 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
 
 
     /**
-     * @return int
+     * @return bool
      */
-    public function getShowInputLabel() : int
+    public function isShowSort() : bool
     {
-        return $this->show_input_label;
+        return $this->show_sort;
     }
 
 
@@ -213,9 +226,15 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
                 return 'il.MultiLineNewInputGUI.init($("#' . $id . '").parent().parent().parent())';
             })));
 
-            $tpl->setVariable("UP", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->sortAscending()));
+            if ($this->show_sort) {
+                $sort_tpl = new ilTemplate(__DIR__ . "/templates/multi_line_new_input_gui_sort.html", true, true);
 
-            $tpl->setVariable("DOWN", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->sortDescending()));
+                $sort_tpl->setVariable("UP", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->sortAscending()));
+
+                $sort_tpl->setVariable("DOWN", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->sortDescending()));
+
+                $tpl->setVariable("SORT", self::output()->getHTML($sort_tpl));
+            }
 
             $tpl->setVariable("REMOVE", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->remove()));
 
@@ -242,6 +261,15 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     public function setShowInputLabel(int $show_input_label)/* : void*/
     {
         $this->show_input_label = $show_input_label;
+    }
+
+
+    /**
+     * @param bool $show_sort
+     */
+    public function setShowSort(bool $show_sort) : void
+    {
+        $this->show_sort = $show_sort;
     }
 
 

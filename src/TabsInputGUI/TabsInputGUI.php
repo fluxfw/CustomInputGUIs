@@ -199,7 +199,9 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
 
             if (!empty($tab->getInfo())) {
                 $info_tpl = new ilTemplate(__DIR__ . "/../PropertyFormGUI/Items/templates/input_gui_input_info.html", true, true);
+
                 $info_tpl->setVariable("INFO", $tab->getInfo());
+
                 $tpl->setVariable("INFO", self::output()->getHTML($info_tpl));
             }
 
