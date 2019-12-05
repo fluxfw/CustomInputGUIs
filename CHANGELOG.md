@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.27.2]
+- `MultiLineNewInputGUI`: Add new line below
+
 ## [0.27.1]
 - `MultiLineNewInputGUI`: Possibility to disable sort
 

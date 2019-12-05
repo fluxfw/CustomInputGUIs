@@ -13,7 +13,7 @@ il.MultiLineNewInputGUI = {
 
         this.init(cloned_el);
 
-        el.after(cloned_el);
+        el.before(cloned_el);
 
         this.update(el.parent());
     },
