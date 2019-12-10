@@ -236,7 +236,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
     /**
      * @param int|null $minimum_input_length
      */
-    public function setMinimumInputLength(/*?int*/ $minimum_input_length)/*: void*/
+    public function setMinimumInputLength(/*?int*/ $minimum_input_length = null)/*: void*/
     {
         $this->minimum_input_length = $minimum_input_length;
     }
