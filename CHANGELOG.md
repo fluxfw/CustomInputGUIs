@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.27.4]
+## [x]
 - `MultiLineNewInputGUI`: Fix input fields with show label once
 - `MultiLineNewInputGUI`: Supports `ilDateTimeInputGUI`
 
