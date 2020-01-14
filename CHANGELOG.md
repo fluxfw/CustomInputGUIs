@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.27.4]
+- `MultiLineNewInputGUI`: Fix input fields with show label once
+
 ## [0.27.3]
 - Optimized `MultiSelectSearchInputGUI` ajax
 
