@@ -237,6 +237,9 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
             }
 
             $tpl->setVariable("REMOVE", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->remove()));
+            if (count($this->getInputs()) < 2) {
+                $tpl->setVariable("HIDE_REMOVE", self::output()->getHTML(new ilTemplate(__DIR__ . "/templates/multi_line_new_input_gui_hide_remove.html", false, false)));
+            }
 
             $tpl->parseCurrentBlock();
         }

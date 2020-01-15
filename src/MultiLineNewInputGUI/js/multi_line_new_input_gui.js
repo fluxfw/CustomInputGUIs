@@ -7,7 +7,6 @@ il.MultiLineNewInputGUI = {
 
         $("[name]", el).each(function (i2, el2) {
             el2.value = "";
-
             if ("checked" in el2) {
                 el2.checked = false;
             }
@@ -123,6 +122,12 @@ il.MultiLineNewInputGUI = {
                     }
                 }.bind(this));
             }.bind(this));
+        }
+
+        if (el.children().length > 1) {
+            $("span[data-action=remove]", el).show();
+        } else {
+            $("span[data-action=remove]", el).hide();
         }
     }
 };

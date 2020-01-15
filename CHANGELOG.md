@@ -1,8 +1,10 @@
 # Changelog
 
 ## [x]
-- `MultiLineNewInputGUI`: Fix input fields with show label once
-- `MultiLineNewInputGUI`: Supports `ilDateTimeInputGUI`
+- Improve `MultiLineNewInputGUI`
+    - Fix input fields with show label once
+    - Supports `ilDateTimeInputGUI`
+    - Hide remove button if only one row
 
 ## [0.27.3]
 - Optimized `MultiSelectSearchInputGUI` ajax
