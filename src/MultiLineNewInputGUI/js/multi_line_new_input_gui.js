@@ -94,10 +94,10 @@ il.MultiLineNewInputGUI = {
             this.clone_template = el.clone();
 
             $("[name]", this.clone_template).each(function (i2, el2) {
-                el2.value = "";
-
                 if ("checked" in el2) {
                     el2.checked = false;
+                } else {
+                    el2.value = "";
                 }
             });
 

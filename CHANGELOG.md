@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.28.1]
+- Fix `ilCheckboxInputGUI` in `MultiLineNewInputGUI`
+
 ## [0.28.0]
 - Improve `MultiLineNewInputGUI`
     - Fix input fields with show label once
