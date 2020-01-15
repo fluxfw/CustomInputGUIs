@@ -103,16 +103,16 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
 
 
     /**
-     * @param bool $need_one_at_least
+     * @param bool $need_one_line_at_least
      *
      * @return ilFormPropertyGUI[][]
      */
-    public function getInputs(bool $need_one_at_least = true) : array
+    public function getInputs(bool $need_one_line_at_least = true) : array
     {
         if ($this->inputs_generated === null) {
             $this->inputs_generated = [];
 
-            foreach (array_values($this->getValue($need_one_at_least)) as $i => $value) {
+            foreach (array_values($this->getValue($need_one_line_at_least)) as $i => $value) {
                 $inputs = [];
 
                 foreach ($this->inputs as $input) {
@@ -169,15 +169,15 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
 
 
     /**
-     * @param bool $need_one_at_least
+     * @param bool $need_one_line_at_least
      *
      * @return array
      */
-    public function getValue(bool $need_one_at_least = true) : array
+    public function getValue(bool $need_one_line_at_least = false) : array
     {
         $values = $this->value;
 
-        if ($need_one_at_least && empty($values)) {
+        if ($need_one_line_at_least && empty($values)) {
             $values = [[]];
         }
 
@@ -219,6 +219,8 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
 
         $tpl = new ilTemplate(__DIR__ . "/templates/multi_line_new_input_gui.html", true, true);
 
+        $remove_first_line = (!$this->required && empty($this->getValue(false)));
+        $tpl->setVariable("REMOVE_FIRST_LINE", $remove_first_line);
         $tpl->setVariable("REQUIRED", $this->required);
         $tpl->setVariable("SHOW_INPUT_LABEL", $this->show_input_label);
 
@@ -239,6 +241,10 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
         $tpl->setCurrentBlock("line");
 
         foreach ($this->getInputs() as $inputs) {
+            if ($remove_first_line) {
+                $tpl->setVariable("HIDE_LINE", self::output()->getHTML(new ilTemplate(__DIR__ . "/templates/multi_line_new_input_gui_hide.html", false, false)));
+            }
+
             $tpl->setVariable("INPUTS", Items::renderInputs($inputs));
 
             $tpl->setVariable("ADD", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->add()->withAdditionalOnLoadCode(function (string $id) : string {

@@ -13,19 +13,24 @@ il.MultiLineNewInputGUI = {
     },
 
     /**
-     * @param {jQuery} el
+     *
      */
-    addFirstLine: function (el) {
-        el.hide();
+    addFirstLine: function () {
+        this.add_first_line.hide();
 
         var cloned_el = this.clone_template.clone();
 
         this.init(cloned_el);
 
-        el.parent().parent().children().eq(1).append(cloned_el);
+        this.add_first_line.parent().parent().children().eq(1).append(cloned_el);
 
-        this.update(el.parent().parent().children().eq(1));
+        this.update(this.add_first_line.parent().parent().children().eq(1));
     },
+
+    /**
+     * @type {jQuery|null}
+     */
+    add_first_line: null,
 
     /**
      * @type {Array}
@@ -97,6 +102,18 @@ il.MultiLineNewInputGUI = {
             });
 
             $(".alert", this.clone_template).remove();
+
+            this.clone_template.show();
+
+            if (el.parent().parent().data("remove_first_line")) {
+                this.remove(el);
+
+                return;
+            }
+        }
+
+        if (add_first_line) {
+            this.add_first_line = el;
         }
 
         $("[data-cached_options_id]", el).each(function (i2, el2) {
@@ -163,7 +180,7 @@ il.MultiLineNewInputGUI = {
             $("span[data-action=remove]", el).show();
 
             if (el.children().length === 0) {
-                el.parent().children().first().children().first().show();
+                this.add_first_line.show();
             }
         }
     }
