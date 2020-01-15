@@ -203,13 +203,13 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
      */
     protected final function storeFormCheck()/*: bool*/
     {
+        $this->setValuesByPost();
+
         $this->check_input_called = false; // Fix 'Error: ilPropertyFormGUI->checkInput() called twice.'
 
         if (!$this->checkInput()) {
             return false;
         }
-
-        $this->setValuesByPost();
 
         return true;
     }
