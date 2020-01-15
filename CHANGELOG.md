@@ -4,7 +4,8 @@
 - Improve `MultiLineNewInputGUI`
     - Fix input fields with show label once
     - Supports `ilDateTimeInputGUI`
-    - Hide remove button if only one row
+    - Hide remove button if only one line
+    - Allow to remove all elements if not required
 
 ## [0.27.3]
 - Optimized `MultiSelectSearchInputGUI` ajax
