@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.28.0]
+- Improve `MultiLineNewInputGUI`
+    - Fix input fields with show label once
+    - Supports `ilDateTimeInputGUI`
+    - Hide remove button if only one line
+    - Allow to remove all elements if not required
+    - Fix empty info block in `ilNumberInputGUI`
+
 ## [0.27.3]
 - Optimized `MultiSelectSearchInputGUI` ajax
 
