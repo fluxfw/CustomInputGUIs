@@ -86,8 +86,6 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
 
                 if (!$input->checkInput()) {
                     $ok = false;
-                } else {
-                    $_POST[$this->getPostVar()][$i][$org_post_var] = Items::getValueFromItem($input);
                 }
 
                 $_POST[$input->getPostVar()] = $b_value;
