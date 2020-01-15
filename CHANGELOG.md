@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.28.4]
+- Fix `ilCheckboxInputGUI` in `MultiLineNewInputGUI`
+
 ## [0.28.3]
 - Revert 'Fix `fields` in `MultiLineNewInputGUI`'
 
