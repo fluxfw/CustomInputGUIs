@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.29.1]
+- Fix
+
 ## [0.29.0]
 - `MultiLineNewInputGUI`
     - Move add button to right
