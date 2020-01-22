@@ -383,7 +383,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
     /**
      * @param int|null $limit_count
      */
-    public function setLimitCount(/*?int*/ $limit_count) : void
+    public function setLimitCount(/*?int*/ $limit_count)/* : void*/
     {
         $this->limit_count = $limit_count;
     }
