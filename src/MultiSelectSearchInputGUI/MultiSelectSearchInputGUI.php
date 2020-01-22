@@ -46,6 +46,10 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
      * @var ilTemplate
      */
     protected $input_template;
+    /**
+     * @var int|null
+     */
+    protected $limit_count = null;
 
 
     /**
@@ -83,9 +87,14 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
      */
     public function checkInput()/*: bool*/
     {
-        //var_dump($this->getValue());
-        if ($this->getRequired() && count($this->getValue()) == 0) {
+        if ($this->getRequired() && empty($this->getValue())) {
             $this->setAlert(self::dic()->language()->txt("msg_input_is_required"));
+
+            return false;
+        }
+
+        if ($this->getLimitCount() !== null && count($this->getValue()) > $this->getLimitCount()) {
+            $this->setAlert(self::dic()->language()->txt("form_input_not_valid"));
 
             return false;
         }
@@ -129,6 +138,7 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
         $tpl->setVariable("HEIGHT", $this->getHeight());
         $tpl->setVariable("PLACEHOLDER", "");
         $tpl->setVariable("MINIMUM_INPUT_LENGTH", $this->getMinimumInputLength());
+        $tpl->setVariable("LIMIT_COUNT", $this->getLimitCount());
         $tpl->setVariable("Class", $this->getCssClass());
 
         if (!empty($this->getAjaxLink())) {
@@ -358,5 +368,23 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
     public function getToolbarHTML()/*: string*/
     {
         return $this->render();
+    }
+
+
+    /**
+     * @return int|null
+     */
+    public function getLimitCount()/* : ?int*/
+    {
+        return $this->limit_count;
+    }
+
+
+    /**
+     * @param int|null $limit_count
+     */
+    public function setLimitCount(/*?int*/ $limit_count) : void
+    {
+        $this->limit_count = $limit_count;
     }
 }

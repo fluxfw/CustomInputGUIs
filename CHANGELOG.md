@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.29.0]
+- `MultiLineNewInputGUI`
+    - Move add button to right
+    - Show sort buttons only if it's possible to move
+- `MultiSelectSearchInputGUI`
+    - Add limit count (default `null` with unlimited, like before)
+
 ## [0.28.5]
 - Deprecate `ConfigPropertyFormGUI` and `ObjectPropertyFormGUI`
 

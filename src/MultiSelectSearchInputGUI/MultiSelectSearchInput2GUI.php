@@ -87,6 +87,7 @@ class MultiSelectSearchInput2GUI extends MultiSelectSearchInputGUI
         $tpl->setVariable('HEIGHT', $this->getHeight());
         $tpl->setVariable('PLACEHOLDER', $this->getPlaceholder());
         $tpl->setVariable('MINIMUM_INPUT_LENGTH', $this->getMinimumInputLength());
+        $tpl->setVariable("LIMIT_COUNT", $this->getLimitCount());
         $tpl->setVariable('CONTAINER_TYPE', $this->getContainerType());
         $tpl->setVariable('Class', $this->getCssClass());
 
