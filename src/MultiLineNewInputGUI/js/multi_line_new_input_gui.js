@@ -160,6 +160,12 @@ il.MultiLineNewInputGUI = {
      * @param {jQuery} el
      */
     update: function (el) {
+        $("span[data-action=up]", el).show();
+        $("> div:first-of-type span[data-action=up]", el).hide();
+
+        $("span[data-action=down]", el).show();
+        $("> div:last-of-type span[data-action=down]", el).hide();
+
         for (const key of ["aria-controls", "aria-labelledby", "href", "id", "name"]) {
             el.children().each(function (i, el) {
                 $("[" + key + "]", el).each(function (i2, el2) {
