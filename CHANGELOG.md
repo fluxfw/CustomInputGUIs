@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.30.1]
+- Fix
+
 ## [0.30.0]
 - `MultiSelectSearchNewInputGUI`
 - Imrpove `MultiLineNewInputGUI`
