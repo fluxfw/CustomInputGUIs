@@ -136,11 +136,17 @@ class MultiSelectSearchNewInputGUI extends ilMultiSelectInputGUI implements ilTa
 
         $tpl->setVariable("POST_VAR", $this->getPostVar());
 
-        $tpl->setVariable("AJAX_LINK", $this->getAjaxLink());
+        $options = [
+            "maximumSelectionLength" => $this->getLimitCount(),
+            "minimumInputLength"     => $this->getMinimumInputLength()
+        ];
+        if (!empty($this->getAjaxLink())) {
+            $options["ajax"] = [
+                "url" => $this->getAjaxLink()
+            ];
+        }
 
-        $tpl->setVariable("LIMIT_COUNT", $this->getLimitCount());
-
-        $tpl->setVariable("MINIMUM_INPUT_LENGTH", $this->getMinimumInputLength());
+        $tpl->setVariable("OPTIONS", json_encode($options));
 
         if (!empty($this->getOptions())) {
 
