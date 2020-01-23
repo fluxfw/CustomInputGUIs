@@ -12,11 +12,13 @@ use srag\DIC\DICTrait;
 /**
  * Class MultiSelectSearchInputGUI
  *
- * @package srag\CustomInputGUIs\MultiSelectSearchInputGUI
+ * @package    srag\CustomInputGUIs\MultiSelectSearchInputGUI
  *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
- * @author  Oskar Truffer <ot@studer-raimann.ch>
- * @author  Martin Studer <ms@studer-raimann.ch>
+ * @author     studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
+ * @author     Oskar Truffer <ot@studer-raimann.ch>
+ * @author     Martin Studer <ms@studer-raimann.ch>
+ *
+ * @deprecated Please switch to `MultiSelectSearchNewInputGUI`
  */
 class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTableFilterItem, ilToolbarItem
 {
@@ -24,32 +26,40 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
     use DICTrait;
     /**
      * @var string
+     *
+     * @deprecated
      */
     protected $width;
     /**
      * @var string
+     *
+     * @deprecated
      */
     protected $height;
     /**
      * @var string
+     *
+     * @deprecated
      */
     protected $css_class;
     /**
      * @var int|null
+     *
+     * @deprecated
      */
     protected $minimum_input_length = null;
     /**
      * @var string
+     *
+     * @deprecated
      */
     protected $ajax_link;
     /**
      * @var ilTemplate
+     *
+     * @deprecated
      */
     protected $input_template;
-    /**
-     * @var int|null
-     */
-    protected $limit_count = null;
 
 
     /**
@@ -57,6 +67,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
      *
      * @param string $title
      * @param string $post_var
+     *
+     * @deprecated
      */
     public function __construct(/*string*/
         $title = "", /*string*/
@@ -84,6 +96,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
      * Check input, strip slashes etc. set alert, if input is not ok.
      *
      * @return boolean Input ok, true/false
+     *
+     * @deprecated
      */
     public function checkInput()/*: bool*/
     {
@@ -105,6 +119,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @return array
+     *
+     * @deprecated
      */
     public function getSubItems()/*: array*/
     {
@@ -114,6 +130,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @return string
+     *
+     * @deprecated
      */
     public function render()/*: string*/
     {
@@ -138,7 +156,6 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
         $tpl->setVariable("HEIGHT", $this->getHeight());
         $tpl->setVariable("PLACEHOLDER", "");
         $tpl->setVariable("MINIMUM_INPUT_LENGTH", $this->getMinimumInputLength());
-        $tpl->setVariable("LIMIT_COUNT", $this->getLimitCount());
         $tpl->setVariable("Class", $this->getCssClass());
 
         if (!empty($this->getAjaxLink())) {
@@ -179,6 +196,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
      * @param string $height
      *
      * @deprecated setting inline style items from the controller is bad practice. please use the setClass together with an appropriate css class.
+     *
+     * @deprecated
      */
     public function setHeight(/*string*/
         $height
@@ -192,6 +211,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
      * @return string
      *
      * @deprecated setting inline style items from the controller is bad practice. please use the setClass together with an appropriate css class.
+     *
+     * @deprecated
      */
     public function getHeight()/*: string*/
     {
@@ -203,6 +224,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
      * @param string $width
      *
      * @deprecated setting inline style items from the controller is bad practice. please use the setClass together with an appropriate css class.
+     *
+     * @deprecated
      */
     public function setWidth(/*string*/
         $width
@@ -216,6 +239,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
      * @return string
      *
      * @deprecated setting inline style items from the controller is bad practice. please use the setClass together with an appropriate css class.
+     *
+     * @deprecated
      */
     public function getWidth()/*: string*/
     {
@@ -225,6 +250,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @param string $css_class
+     *
+     * @deprecated
      */
     public function setCssClass(/*string*/
         $css_class
@@ -236,6 +263,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @return string
+     *
+     * @deprecated
      */
     public function getCssClass()/*: string*/
     {
@@ -245,6 +274,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @param int|null $minimum_input_length
+     *
+     * @deprecated
      */
     public function setMinimumInputLength(/*?int*/ $minimum_input_length = null)/*: void*/
     {
@@ -254,6 +285,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @return int
+     *
+     * @deprecated
      */
     public function getMinimumInputLength()/*: int*/
     {
@@ -267,6 +300,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @param string $ajax_link setting the ajax link will lead to ignoration of the "setOptions" function as the link given will be used to get the
+     *
+     * @deprecated
      */
     public function setAjaxLink(/*string*/
         $ajax_link
@@ -278,6 +313,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @return string
+     *
+     * @deprecated
      */
     public function getAjaxLink()/*: string*/
     {
@@ -287,6 +324,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @param ilTemplate $input_template
+     *
+     * @deprecated
      */
     public function setInputTemplate(/*ilTemplate*/
         $input_template
@@ -298,6 +337,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @return ilTemplate
+     *
+     * @deprecated
      */
     public function getInputTemplate()/*ilTemplate*/
     {
@@ -309,6 +350,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
      * This implementation might sound silly. But the multiple select input used parses the post vars differently if you use ajax. thus we have to do this stupid "trick". Shame on select2 project ;)
      *
      * @return string the real postvar.
+     *
+     * @deprecated
      */
     protected function searchPostVar()/*: string*/
     {
@@ -322,6 +365,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @param array $array
+     *
+     * @deprecated
      */
     public function setValueByArray(/*array*/ $array)/*: void*/
     {
@@ -341,6 +386,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @param string $a_postvar
+     *
+     * @deprecated
      */
     public function setPostVar(/*string*/
         $a_postvar
@@ -355,6 +402,8 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @inheritDoc
+     *
+     * @deprecated
      */
     public function getTableFilterHTML()/*: string*/
     {
@@ -364,27 +413,11 @@ class MultiSelectSearchInputGUI extends ilMultiSelectInputGUI implements ilTable
 
     /**
      * @inheritDoc
+     *
+     * @deprecated
      */
     public function getToolbarHTML()/*: string*/
     {
         return $this->render();
-    }
-
-
-    /**
-     * @return int|null
-     */
-    public function getLimitCount()/* : ?int*/
-    {
-        return $this->limit_count;
-    }
-
-
-    /**
-     * @param int|null $limit_count
-     */
-    public function setLimitCount(/*?int*/ $limit_count)/* : void*/
-    {
-        $this->limit_count = $limit_count;
     }
 }
