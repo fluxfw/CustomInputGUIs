@@ -263,8 +263,9 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
                 $tpl->setVariable("SORT", self::output()->getHTML($sort_tpl));
             }
 
-            $tpl->setVariable("ADD", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->add()->withAdditionalOnLoadCode(function (string $id) : string {
-                return 'il.MultiLineNewInputGUI.init($("#' . $id . '").parent().parent().parent())';
+            $tpl->setVariable("ADD", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->add()->withAdditionalOnLoadCode(function (string $id) use ($i) : string {
+                return 'il.MultiLineNewInputGUI.init($("#' . $id . '").parent().parent().parent())' . ($i === (count($this->getInputs()) - 1) ? ';il.MultiLineNewInputGUI.update($("#' . $id
+                        . '").parent().parent().parent().parent())' : '');
             })));
 
             $tpl->setVariable("REMOVE", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->remove()));

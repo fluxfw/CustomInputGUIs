@@ -1,0 +1,14 @@
+<select data-multipleselectnewinputgui data-multipleselectnewinputgui_ajaxurl="{AJAX_LINK}" data-multipleselectnewinputgui_maximumselectionlength="{LIMIT_COUNT}" data-multipleselectnewinputgui_minimuminputlength="{MINIMUM_INPUT_LENGTH}" id="{ID}" multiple name="{POST_VAR}[]" style="display:none;">
+	<!-- BEGIN option -->
+	<option value="{VAL}" {SELECTED}>{TEXT}</option>
+	<!-- END option -->
+</select>
+<script>
+    $("#{ID}").select2({
+	    ajax:{
+	        url:"{AJAX_LINK}"
+	    },
+        maximumSelectionLength:"{LIMIT_COUNT}",
+        minimumInputLength:"{MINIMUM_INPUT_LENGTH}"
+    });
+</script>
