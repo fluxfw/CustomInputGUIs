@@ -4,7 +4,7 @@ namespace srag\CustomInputGUIs\TextInputGUI;
 
 use iljQueryUtil;
 use ilUtil;
-use srag\CustomInputGUIs\H5P\Template\Template;
+use srag\CustomInputGUIs\Template\Template;
 
 /**
  * Class TextInputGUIWithModernAutoComplete
