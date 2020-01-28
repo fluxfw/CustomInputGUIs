@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.31.1]
+- Fix
+
 ## [0.31.0]
 - `Template::setVariableEscaped`
 
