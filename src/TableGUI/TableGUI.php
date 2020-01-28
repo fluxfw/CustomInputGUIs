@@ -50,6 +50,10 @@ abstract class TableGUI extends ilTable2GUI
      * @var ilFormPropertyGUI[]
      */
     private $filter_cache = [];
+    /**
+     * @var Template
+     */
+    protected $tpl;
 
 
     /**
@@ -172,6 +176,8 @@ abstract class TableGUI extends ilTable2GUI
         if (!(strpos($this->parent_cmd, "applyFilter") === 0
             || strpos($this->parent_cmd, "resetFilter") === 0)
         ) {
+            $this->tpl = new Template($this->tpl->lastTemplatefile, $this->tpl->removeUnknownVariables, $this->tpl->removeEmptyBlocks);
+
             $this->initAction();
 
             $this->initTitle();
