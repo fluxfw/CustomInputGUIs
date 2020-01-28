@@ -7,10 +7,10 @@ use ilExcel;
 use ilFormPropertyGUI;
 use ilHtmlToPdfTransformerFactory;
 use ilTable2GUI;
-use ilTemplate;
 use srag\CustomInputGUIs\PropertyFormGUI\Items\Items;
 use srag\CustomInputGUIs\PropertyFormGUI\PropertyFormGUI;
 use srag\CustomInputGUIs\TableGUI\Exception\TableGUIException;
+use srag\CustomInputGUIs\Template\Template;
 use srag\DIC\DICTrait;
 
 /**
@@ -372,7 +372,7 @@ abstract class TableGUI extends ilTable2GUI
 
         $css = file_get_contents(__DIR__ . "/css/table_pdf_export.css");
 
-        $tpl = new ilTemplate(__DIR__ . "/templates/table_pdf_export.html", true, true);
+        $tpl = new Template(__DIR__ . "/templates/table_pdf_export.html");
 
         $tpl->setVariable("CSS", $css);
 
@@ -385,7 +385,7 @@ abstract class TableGUI extends ilTable2GUI
 
         $tpl->setCurrentBlock("body");
         foreach ($this->row_data as $row) {
-            $tpl_row = new ilTemplate(__DIR__ . "/templates/table_pdf_export_row.html", true, true);
+            $tpl_row = new Template(__DIR__ . "/templates/table_pdf_export_row.html");
 
             $tpl_row->setCurrentBlock("row");
 
