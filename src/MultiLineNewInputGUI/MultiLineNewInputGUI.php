@@ -123,6 +123,8 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
             }
         }
 
+        $this->inputs_generated = null;
+
         if ($ok) {
             return true;
         } else {
