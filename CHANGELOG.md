@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.31.7]
+- Fix multiple `MultiLineNewInputGUI` on same page
+
 ## [0.31.6]
 - Fix
 
