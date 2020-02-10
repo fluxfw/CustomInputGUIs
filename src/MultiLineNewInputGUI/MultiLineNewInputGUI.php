@@ -31,7 +31,7 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     /**
      * @var int
      */
-    protected static $count = 0;
+    protected static $counter = 0;
 
 
     /**
@@ -243,11 +243,11 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
      */
     public function render() : string
     {
-        $count = ++self::$count;
+        $counter = ++self::$counter;
 
         $tpl = new Template(__DIR__ . "/templates/multi_line_new_input_gui.html");
 
-        $tpl->setVariableEscaped("COUNT", $count);
+        $tpl->setVariableEscaped("COUNTER", $counter);
 
         $remove_first_line = (!$this->getRequired() && empty($this->getValue(false)));
         $tpl->setVariableEscaped("REMOVE_FIRST_LINE", $remove_first_line);
@@ -261,8 +261,8 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
                 $tpl->setVariable("HIDE_ADD_FIRST_LINE", self::output()->getHTML(new Template(__DIR__ . "/templates/multi_line_new_input_gui_hide.html", false, false)));
             }
 
-            $tpl->setVariable("ADD_FIRST_LINE", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->add()->withAdditionalOnLoadCode(function (string $id) use ($count): string {
-                return 'il.MultiLineNewInputGUI.init(' . $count . ', $("#' . $id . '").parent().parent().parent(), true)';
+            $tpl->setVariable("ADD_FIRST_LINE", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->add()->withAdditionalOnLoadCode(function (string $id) use ($counter): string {
+                return 'il.MultiLineNewInputGUI.init(' . $counter . ', $("#' . $id . '").parent().parent().parent(), true)';
             })));
 
             $tpl->parseCurrentBlock();
@@ -286,22 +286,22 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
                 }
 
                 $sort_tpl->setVariable("DOWN", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->sortDescending()));
-                if ($i === (count($this->getInputs()) - 1)) {
+                if ($i === (counter($this->getInputs()) - 1)) {
                     $sort_tpl->setVariable("HIDE_DOWN", self::output()->getHTML(new Template(__DIR__ . "/templates/multi_line_new_input_gui_hide.html", false, false)));
                 }
 
                 $tpl->setVariable("SORT", self::output()->getHTML($sort_tpl));
             }
 
-            $tpl->setVariable("ADD", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->add()->withAdditionalOnLoadCode(function (string $id) use ($i, $count) : string {
-                return 'il.MultiLineNewInputGUI.init(' . $count . ', $("#' . $id . '").parent().parent().parent())' . ($i === (count($this->getInputs()) - 1) ? ';il.MultiLineNewInputGUI.update('
-                        . $count . ', $("#'
+            $tpl->setVariable("ADD", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->add()->withAdditionalOnLoadCode(function (string $id) use ($i, $counter) : string {
+                return 'il.MultiLineNewInputGUI.init(' . $counter . ', $("#' . $id . '").parent().parent().parent())' . ($i === (counter($this->getInputs()) - 1) ? ';il.MultiLineNewInputGUI.update('
+                        . $counter . ', $("#'
                         . $id
                         . '").parent().parent().parent().parent())' : '');
             })));
 
             $tpl->setVariable("REMOVE", self::output()->getHTML(self::dic()->ui()->factory()->glyph()->remove()));
-            if ($this->getRequired() && count($this->getInputs()) < 2) {
+            if ($this->getRequired() && counter($this->getInputs()) < 2) {
                 $tpl->setVariable("HIDE_REMOVE", self::output()->getHTML(new Template(__DIR__ . "/templates/multi_line_new_input_gui_hide.html", false, false)));
             }
 
