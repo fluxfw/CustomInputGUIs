@@ -1,5 +1,8 @@
 # Changelog
 
+## [x]
+- Show whole option text
+
 ## [0.31.8]
 - Fix
 
