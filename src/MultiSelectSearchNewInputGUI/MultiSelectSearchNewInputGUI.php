@@ -163,7 +163,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
         if ($this->minimum_input_length !== null) {
             return $this->minimum_input_length;
         } else {
-            return ($this->getAjaxAutoCompleteCtrl() !== null ? 2 : 0);
+            return ($this->getAjaxAutoCompleteCtrl() !== null ? 3 : 0);
         }
     }
 
