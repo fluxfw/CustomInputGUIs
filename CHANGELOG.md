@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.32.1]
+- Fix
+
 ## [0.32.0]
 - MultiSelectSearchNewInputGUI:
     - New ajax auto complete concept (`AbstractAjaxAutoCompleteCtrl`)
