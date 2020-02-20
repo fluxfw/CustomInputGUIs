@@ -14,8 +14,8 @@ use srag\DIC\DICTrait;
 abstract class AbstractAjaxAutoCompleteCtrl
 {
 
-    const CMD_AJAX_AUTO_COMPLETE = "ajaxAutoComplete";
     use DICTrait;
+    const CMD_AJAX_AUTO_COMPLETE = "ajaxAutoComplete";
 
 
     /**
