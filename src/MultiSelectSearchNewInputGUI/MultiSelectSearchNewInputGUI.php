@@ -234,7 +234,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
         ];
         if ($this->getAjaxAutoCompleteCtrl() !== null) {
             $config["ajax"] = [
-                "url" => self::dic()->ctrl()->getLinkTarget($this->getAjaxAutoCompleteCtrl(), AbstractAjaxAutoCompleteCtrl::CMD_AJAX_AUTO_COMPLETE)
+                "url" => self::dic()->ctrl()->getLinkTarget($this->getAjaxAutoCompleteCtrl(), AbstractAjaxAutoCompleteCtrl::CMD_AJAX_AUTO_COMPLETE, "", true, false)
             ];
 
             $options = $this->getAjaxAutoCompleteCtrl()->fillOptions($this->getValue());
