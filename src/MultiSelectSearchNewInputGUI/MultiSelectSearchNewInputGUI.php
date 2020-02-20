@@ -6,7 +6,6 @@ use ilFormPropertyGUI;
 use ilTableFilterItem;
 use ilTemplate;
 use ilToolbarItem;
-use srag\CustomInputGUIs\MultiSelectSearchNewInputGUI\AjaxAutoComplete\AbstractAjaxAutoCompleteCtrl;
 use srag\CustomInputGUIs\Template\Template;
 use srag\DIC\DICTrait;
 
