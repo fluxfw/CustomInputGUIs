@@ -163,7 +163,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
         if ($this->minimum_input_length !== null) {
             return $this->minimum_input_length;
         } else {
-            return ($this->getAjaxAutoCompleteCtrl() !== null ? 1 : 0);
+            return ($this->getAjaxAutoCompleteCtrl() !== null ? 2 : 0);
         }
     }
 
@@ -248,7 +248,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
 
             $tpl->setCurrentBlock("option");
 
-            foreach ($this->getOptions() as $option_value => $option_text) {
+            foreach ($options as $option_value => $option_text) {
                 $selected = in_array($option_value, $this->getValue());
 
                 if ($selected) {

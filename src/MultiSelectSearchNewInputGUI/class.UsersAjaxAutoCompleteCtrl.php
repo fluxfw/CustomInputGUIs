@@ -16,6 +16,15 @@ class UsersAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
 {
 
     /**
+     * UsersAjaxAutoCompleteCtrl constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+
+    /**
      * @inheritDoc
      */
     public function searchOptions(string $search = null) : array
@@ -44,8 +53,8 @@ class UsersAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
     {
         $formatted_users = [];
 
-        foreach ($formatted_users as $user) {
-            $users[$user["usr_id"]] = $user["firstname"] . " " . $user["lastname"] . " (" . $user["login"] . ")";
+        foreach ($users as $user) {
+            $formatted_users[$user["usr_id"]] = $user["firstname"] . " " . $user["lastname"] . " (" . $user["login"] . ")";
         }
 
         return $formatted_users;
