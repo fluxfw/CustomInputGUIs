@@ -140,7 +140,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     /**
      * @return AbstractAjaxAutoCompleteCtrl|null
      */
-    public function getAjaxAutoCompleteCtrl()/*: ?AbstractMultiSelectSearchNewInputGUIAjaxAutoCompleteCtrl*/
+    public function getAjaxAutoCompleteCtrl()/*: ?AbstractAjaxAutoCompleteCtrl*/
     {
         return $this->ajax_auto_complete_ctrl;
     }
