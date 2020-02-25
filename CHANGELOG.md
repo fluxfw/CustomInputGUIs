@@ -1,5 +1,8 @@
 # Changelog
 
+## [x]
+- `AjaxCheckbox`
+
 ## [0.32.5]
 - Fix
 
