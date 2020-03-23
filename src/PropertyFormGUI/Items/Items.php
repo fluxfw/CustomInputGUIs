@@ -9,6 +9,7 @@ use ILIAS\UI\Component\Input\Field\Input;
 use ilNumberInputGUI;
 use ilPropertyFormGUI;
 use ilRadioOption;
+use ilRepositorySelector2InputGUI;
 use ilUtil;
 use srag\CustomInputGUIs\MultiLineInputGUI\MultiLineInputGUI;
 use srag\CustomInputGUIs\PropertyFormGUI\Exception\PropertyFormGUIException;
@@ -87,7 +88,11 @@ final class Items
                     . " not exists!", PropertyFormGUIException::CODE_INVALID_PROPERTY_CLASS);
             }
 
-            $item = new $field[PropertyFormGUI::PROPERTY_CLASS]();
+            if ($field[PropertyFormGUI::PROPERTY_CLASS] === ilRepositorySelector2InputGUI::class) {
+                $item = new $field[PropertyFormGUI::PROPERTY_CLASS]("", $key, false, get_class($parent));
+            } else {
+                $item = new $field[PropertyFormGUI::PROPERTY_CLASS]();
+            }
 
             if ($item instanceof ilFormSectionHeaderGUI) {
                 if (!$field["setTitle"]) {
@@ -264,7 +269,21 @@ final class Items
                     $property_value = [$property_value];
                 }
 
-                call_user_func_array([$item, $property], $property_value);
+                if (method_exists($item, $property)) {
+                    call_user_func_array([$item, $property], $property_value);
+                } else {
+                    if ($item instanceof ilRepositorySelector2InputGUI) {
+                        if (method_exists($item->getExplorerGUI(), $property)) {
+                            call_user_func_array([$item->getExplorerGUI(), $property], $property_value);
+                        } else {
+                            throw new PropertyFormGUIException("Class " . get_class($item)
+                                . " has no method " . $property . "!", PropertyFormGUIException::CODE_INVALID_FIELD);
+                        }
+                    } else {
+                        throw new PropertyFormGUIException("Class " . get_class($item)
+                            . " has no method " . $property . "!", PropertyFormGUIException::CODE_INVALID_FIELD);
+                    }
+                }
             }
         }
     }

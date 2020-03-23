@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.33.4]
+- Fix `ilRepositorySelector2InputGUI`
+
 ## [0.33.3]
 - `OrgUnitAjaxAutoCompleteCtrl`
 
