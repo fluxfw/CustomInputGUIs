@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.33.6]
+- Fix
+
 ## [0.33.5]
 - Deprecated `TableGUI`
 

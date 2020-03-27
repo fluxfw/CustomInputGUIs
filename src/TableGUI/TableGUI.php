@@ -80,7 +80,7 @@ abstract class TableGUI extends ilTable2GUI
      *
      * @deprecated
      */
-    public function __construct($parent, /*string*/ $parent_cmd)
+    public function __construct(/*object*/ $parent, /*string*/ $parent_cmd)
     {
         $this->parent_obj = $parent;
         $this->parent_cmd = $parent_cmd;
