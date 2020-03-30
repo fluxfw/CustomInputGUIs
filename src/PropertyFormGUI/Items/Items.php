@@ -355,20 +355,26 @@ final class Items
      * @param object $object
      * @param string $property
      * @param mixed  $value
+     *
+     * @return mixed
      */
-    public static function setter(/*object*/ $object,/*string*/ $property, $value)/*: void*/
+    public static function setter(/*object*/ $object,/*string*/ $property, $value)
     {
-        if (method_exists($object, $method = "set" . self::strToCamelCase($property))) {
+        $res = null;
+
+        if (method_exists($object, $method = "with" . self::strToCamelCase($property)) || method_exists($object, $method = "set" . self::strToCamelCase($property))) {
             try {
-                $object->{$method}($value);
+                $res = $object->{$method}($value);
             } catch (TypeError $ex) {
                 try {
-                    $object->{$method}(intval($value));
+                    $res = $object->{$method}(intval($value));
                 } catch (TypeError $ex) {
-                    $object->{$method}(boolval($value));
+                    $res = $object->{$method}(boolval($value));
                 }
             }
         }
+
+        return $res;
     }
 
 
