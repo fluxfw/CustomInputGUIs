@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.34.0]
+- `AbstractFormBuilder`
+- Deprecated `PropertyFormGUI`
+
 ## [0.33.7]
 - Fix
 
