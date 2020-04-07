@@ -79,7 +79,7 @@ abstract class AbstractFormBuilder
             case strtolower(ilFormPropertyDispatchGUI::class):
                 foreach ($this->getForm()->getInputs()["form"]->getInputs() as $input) {
                     if ($input instanceof InputGUIWrapperUIInputComponent) {
-                        if ($input->getInput()->getPostVar() === filter_input(INPUT_GET, "postvar")) {
+                        if ($input->getInput()->getPostVar() === strval(filter_input(INPUT_GET, "postvar"))) {
                             $form_dispatcher = new ilFormPropertyDispatchGUI();
                             $form_dispatcher->setItem($input->getInput());
                             self::dic()->ctrl()->forwardCommand($form_dispatcher);
