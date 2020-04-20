@@ -8,6 +8,7 @@ use ilFormPropertyDispatchGUI;
 use ILIAS\UI\Component\Input\Container\Form\Form;
 use ILIAS\UI\Component\Input\Field\DependantGroupProviding;
 use ILIAS\UI\Component\Input\Field\Radio as RadioInterface;
+use ILIAS\UI\Component\Input\Field\Section;
 use ILIAS\UI\Implementation\Component\Input\Field\Group;
 use ILIAS\UI\Implementation\Component\Input\Field\Radio;
 use ilSubmitButton;
@@ -29,6 +30,7 @@ abstract class AbstractFormBuilder implements FormBuilder
 {
 
     use DICTrait;
+
     /**
      * @var object
      */
@@ -244,6 +246,26 @@ abstract class AbstractFormBuilder implements FormBuilder
                             $this->dependant_fields[$data[$key]["value"]] = $inputs2;
                         }, $field, Radio::class)();
                         continue;
+                    } else {
+                        if ($field instanceof Section) {
+                            $inputs2 = $field->getInputs();
+                            if (!empty($inputs2)) {
+                                $data2 = $data[$key];
+                                foreach ($inputs2 as $key2 => $field2) {
+                                    if (isset($data2[$key2])) {
+                                        try {
+                                            $inputs2[$key2] = $field2 = $field2->withValue($data2[$key2]);
+                                        } catch (Throwable $ex) {
+
+                                        }
+                                    }
+                                }
+                                Closure::bind(function () use ($inputs2): void {
+                                    $this->inputs = $inputs2;
+                                }, $field, Group::class)();
+                                continue;
+                            }
+                        }
                     }
                 }
             }
