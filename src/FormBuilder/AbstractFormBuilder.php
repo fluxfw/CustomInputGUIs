@@ -9,10 +9,10 @@ use ILIAS\UI\Component\Input\Container\Form\Form;
 use ILIAS\UI\Component\Input\Field\DependantGroupProviding;
 use ILIAS\UI\Component\Input\Field\Radio as RadioInterface;
 use ILIAS\UI\Component\Input\Field\Section;
+use ILIAS\UI\Component\MessageBox\MessageBox;
 use ILIAS\UI\Implementation\Component\Input\Field\Group;
 use ILIAS\UI\Implementation\Component\Input\Field\Radio;
 use ilSubmitButton;
-use ilUtil;
 use srag\CustomInputGUIs\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
 use srag\DIC\DICTrait;
 use Throwable;
@@ -39,6 +39,10 @@ abstract class AbstractFormBuilder implements FormBuilder
      * @var Form|null
      */
     protected $form = null;
+    /**
+     * @var MessageBox[]
+     */
+    protected $messages = [];
 
 
     /**
@@ -149,7 +153,7 @@ abstract class AbstractFormBuilder implements FormBuilder
 
         $html = $this->setButtonsToForm($html);
 
-        return $html;
+        return self::output()->getHTML([$this->messages, $html]);
     }
 
 
@@ -303,7 +307,7 @@ abstract class AbstractFormBuilder implements FormBuilder
 
             $this->storeData($data);
         } catch (Throwable $ex) {
-            ilUtil::sendFailure(self::dic()->language()->txt("form_input_not_valid"));
+            $this->messages[] = self::dic()->ui()->factory()->messageBox()->failure(self::dic()->language()->txt("form_input_not_valid"));
 
             return false;
         }
