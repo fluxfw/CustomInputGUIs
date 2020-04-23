@@ -295,7 +295,13 @@ abstract class AbstractFormBuilder implements FormBuilder
                 throw new Exception();
             }
 
-            $this->storeData($data["form"] ?? []);
+            $data = $data["form"] ?? [];
+
+            if (!$this->validateData($data)) {
+                throw new Exception();
+            }
+
+            $this->storeData($data);
         } catch (Throwable $ex) {
             ilUtil::sendFailure(self::dic()->language()->txt("form_input_not_valid"));
 
@@ -310,4 +316,15 @@ abstract class AbstractFormBuilder implements FormBuilder
      * @param array $data
      */
     protected abstract function storeData(array $data) : void;
+
+
+    /**
+     * @param array $data
+     *
+     * @return bool
+     */
+    protected function validateData(array $data) : bool
+    {
+        return true;
+    }
 }
