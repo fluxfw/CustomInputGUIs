@@ -29,6 +29,7 @@ final class CustomInputGUIs
 {
 
     use DICTrait;
+
     /**
      * @var self|null
      */

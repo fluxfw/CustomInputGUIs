@@ -24,6 +24,7 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
 {
 
     use DICTrait;
+
     /**
      * @var bool
      */

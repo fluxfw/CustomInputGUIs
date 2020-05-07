@@ -24,6 +24,7 @@ class InputGUIWrapperUIInputComponent extends Input
 {
 
     use DICTrait;
+
     /**
      * @var ilFormPropertyGUI
      */
