@@ -38,7 +38,7 @@ class InputGUIWrapperUIInputComponent extends Input
     {
         $this->input = $input;
 
-        if (self::version()->is60()) {
+        if (self::version()->is6()) {
             parent::__construct(new DataFactory(), self::dic()->refinery(), "", null);
         } else {
             parent::__construct($data_factory = new DataFactory(), new ValidationFactory($data_factory, self::dic()->language()), new TransformationFactory(), "", null);
@@ -96,7 +96,7 @@ class InputGUIWrapperUIInputComponent extends Input
      */
     protected function getConstraintForRequirement()/*:?Constraint*/
     {
-        if (self::version()->is60()) {
+        if (self::version()->is6()) {
             return new InputGUIWrapperConstraint($this->input, $this->data_factory, self::dic()->language());
         } else {
             return new InputGUIWrapperConstraint54($this->input, $this->data_factory, self::dic()->language());
