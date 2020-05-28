@@ -27,7 +27,7 @@ class CustomInputGUIsLoaderDetector extends AbstractLoaderDetector
      */
     public static function exchangeUIRendererAfterInitialization() : callable
     {
-        $previous_renderer = Closure::bind(function () {
+        $previous_renderer = Closure::bind(function () : callable {
             return $this->raw("ui.renderer");
         }, self::dic()->dic(), Container::class)();
 
