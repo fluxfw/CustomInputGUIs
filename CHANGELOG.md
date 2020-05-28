@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.35.0]
+- `CustomInputGUIsLoaderDetector`
+
 ## [0.34.18]
 - Fix ILIAS 6
 
