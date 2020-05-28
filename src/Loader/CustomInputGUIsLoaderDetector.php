@@ -2,10 +2,12 @@
 
 namespace srag\CustomInputGUIs\Loader;
 
+use Closure;
 use ILIAS\UI\Component\Component;
 use ILIAS\UI\Implementation\DefaultRenderer;
 use ILIAS\UI\Implementation\Render\ComponentRenderer;
 use ILIAS\UI\Renderer;
+use Pimple\Container;
 use srag\CustomInputGUIs\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
 use srag\CustomInputGUIs\InputGUIWrapperUIInputComponent\Renderer as InputGUIWrapperUIInputComponentRenderer;
 use srag\DIC\Loader\AbstractLoaderDetector;
@@ -25,8 +27,22 @@ class CustomInputGUIsLoaderDetector extends AbstractLoaderDetector
      */
     public static function exchangeUIRendererAfterInitialization() : callable
     {
-        return function () : Renderer {
-            return new DefaultRenderer(new self(self::dic()->rendererLoader()));
+        $previous_renderer = Closure::bind(function () {
+            return $this->raw("ui.renderer");
+        }, self::dic()->dic(), Container::class)();
+
+        return function () use ($previous_renderer) : Renderer {
+            $previous_renderer = $previous_renderer(self::dic()->dic());
+
+            if ($previous_renderer instanceof DefaultRenderer) {
+                $previous_renderer_loader = Closure::bind(function () {
+                    return $this->component_renderer_loader;
+                }, $previous_renderer, DefaultRenderer::class)();
+            } else {
+                $previous_renderer_loader = null;
+            }
+
+            return new DefaultRenderer(new self($previous_renderer_loader));
         };
     }
 

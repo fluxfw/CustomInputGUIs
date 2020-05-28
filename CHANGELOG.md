@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.35.1]
+- Fix
+
 ## [0.35.0]
 - `CustomInputGUIsLoaderDetector`
 
