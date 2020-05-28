@@ -39,7 +39,7 @@ class CustomInputGUIsLoaderDetector extends AbstractLoaderDetector
                     return $this->component_renderer_loader;
                 }, $previous_renderer, DefaultRenderer::class)();
             } else {
-                $previous_renderer_loader = null;
+                $previous_renderer_loader = null; // TODO:
             }
 
             return new DefaultRenderer(new self($previous_renderer_loader));
