@@ -32,14 +32,14 @@ class CustomInputGUIsLoaderDetector extends AbstractLoaderDetector
         }, self::dic()->dic(), Container::class)();
 
         return function () use ($previous_renderer) : Renderer {
-            $previous_renderer_loader = null;
-
             $previous_renderer = $previous_renderer(self::dic()->dic());
 
             if ($previous_renderer instanceof DefaultRenderer) {
                 $previous_renderer_loader = Closure::bind(function () {
                     return $this->component_renderer_loader;
                 }, $previous_renderer, DefaultRenderer::class)();
+            } else {
+                $previous_renderer_loader = null;
             }
 
             return new DefaultRenderer(new self($previous_renderer_loader));
