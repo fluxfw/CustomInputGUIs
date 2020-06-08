@@ -6,6 +6,7 @@ use Closure;
 use ILIAS\UI\Component\Component;
 use ILIAS\UI\Implementation\DefaultRenderer;
 use ILIAS\UI\Implementation\Render\ComponentRenderer;
+use ILIAS\UI\Implementation\Render\Loader;
 use ILIAS\UI\Renderer;
 use Pimple\Container;
 use srag\CustomInputGUIs\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
@@ -35,7 +36,7 @@ class CustomInputGUIsLoaderDetector extends AbstractLoaderDetector
             $previous_renderer = $previous_renderer(self::dic()->dic());
 
             if ($previous_renderer instanceof DefaultRenderer) {
-                $previous_renderer_loader = Closure::bind(function () {
+                $previous_renderer_loader = Closure::bind(function () : Loader {
                     return $this->component_renderer_loader;
                 }, $previous_renderer, DefaultRenderer::class)();
             } else {
