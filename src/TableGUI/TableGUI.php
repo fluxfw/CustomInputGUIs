@@ -531,7 +531,7 @@ abstract class TableGUI extends ilTable2GUI
      *
      * @deprecated
      */
-    protected abstract function getColumnValue(string $column, array $row, int $format = self::DEFAULT_FORMAT) : string;
+    protected abstract function getColumnValue(string $column, /*array*/ $row, int $format = self::DEFAULT_FORMAT) : string;
 
 
     /**
