@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.36.2]
+- Fix language select meta bar which current ctrl gui has namespaces (public page)
+
 ## [0.36.1]
 - Fix disabled `ilCheckboxInputGUI` in `InputGUIWrapperUIInputComponent` on form error
 
