@@ -196,154 +196,151 @@ abstract class AbstractFormBuilder implements FormBuilder
      */
     protected function setDataToForm(Form $form) : void
     {
-        $data = $this->getData();
+        $this->setDataToFormGroup($form->getInputs()["form"], $this->getData());
+    }
 
-        $inputs = $form->getInputs()["form"]->getInputs();
-        foreach ($inputs as $key => $field) {
-            if (isset($data[$key])) {
 
-                if ($field instanceof OptionalGroup) {
-                    $inputs2 = $field->getInputs();
-                    if (!empty($inputs2)) {
-                        if (isset($data[$key]["value"])) {
-                            try {
-                                $inputs[$key] = $field = $field->withValue($data[$key]["value"] ? [] : null);
-                            } catch (Throwable $ex) {
+    /**
+     * @param Group $group
+     * @param array $data
+     */
+    private function setDataToFormGroup(Group $group, array $data) : void
+    {
+        $inputs = $group->getInputs();
 
-                            }
-                        }
-                        $data2 = (isset($data[$key]["group_values"]) ? $data[$key]["group_values"] : $data[$key])["dependant_group"];
-                        foreach ($inputs2 as $key2 => $field2) {
-                            if (isset($data2[$key2])) {
+        if (!empty($inputs)) {
+            foreach ($inputs as $key => $field) {
+                if (isset($data[$key])) {
+
+                    if ($field instanceof OptionalGroup) {
+                        $inputs2 = $field->getInputs();
+                        if (!empty($inputs2)) {
+                            if (isset($data[$key]["value"])) {
                                 try {
-                                    $inputs2[$key2] = $field2 = $field2->withValue($data2[$key2]);
+                                    $inputs[$key] = $field = $field->withValue($data[$key]["value"] ? [] : null);
                                 } catch (Throwable $ex) {
 
                                 }
                             }
-                        }
-                        Closure::bind(function (array $inputs2) : void {
-                            $this->inputs = $inputs2;
-                        }, $field, Group::class)($inputs2);
-                    }
-                    continue;
-                }
-                if ($field instanceof DependantGroupProviding && !empty($field->getDependantGroup())) {
-                    $inputs2 = $field->getDependantGroup()->getInputs();
-                    if (!empty($inputs2)) {
-                        if (isset($data[$key]["value"])) {
-                            try {
-                                $inputs[$key] = $field = $field->withValue($data[$key]["value"]);
-                            } catch (Throwable $ex) {
+                            $data2 = (isset($data[$key]["group_values"]) ? $data[$key]["group_values"] : $data[$key])["dependant_group"];
+                            foreach ($inputs2 as $key2 => $field2) {
+                                if (isset($data2[$key2])) {
+                                    try {
+                                        $inputs2[$key2] = $field2 = $field2->withValue($data2[$key2]);
+                                    } catch (Throwable $ex) {
 
-                            }
-                        }
-                        $data2 = (isset($data[$key]["group_values"]) ? $data[$key]["group_values"] : $data[$key])["dependant_group"];
-                        foreach ($inputs2 as $key2 => $field2) {
-                            if (isset($data2[$key2])) {
-                                try {
-                                    $inputs2[$key2] = $field2 = $field2->withValue($data2[$key2]);
-                                } catch (Throwable $ex) {
-
-                                }
-                            }
-                        }
-                        Closure::bind(function (array $inputs2) : void {
-                            $this->inputs = $inputs2;
-                        }, $field->getDependantGroup(), Group::class)($inputs2);
-                    }
-                    continue;
-                }
-
-                if ($field instanceof SwitchableGroup) {
-                    $inputs2 = $field->getInputs();
-                    if (!empty($inputs2)) {
-                        if (isset($data[$key]["value"])) {
-                            try {
-                                $inputs[$key] = $field = $field->withValue($data[$key]["value"]);
-                            } catch (Throwable $ex) {
-
-                            }
-                        }
-                        $data2 = $data[$key]["group_values"];
-                        foreach ($inputs2 as $field2) {
-                            $inputs3 = $field2->getInputs();
-                            if (!empty($inputs3)) {
-                                foreach ($inputs3 as $key3 => $field3) {
-                                    if (isset($data2[$key3])) {
-                                        try {
-                                            $inputs3[$key3] = $field3 = $field3->withValue($data2[$key3]);
-                                        } catch (Throwable $ex) {
-
-                                        }
                                     }
                                 }
-                                Closure::bind(function (array $inputs3)/* : void*/ {
-                                    $this->inputs = $inputs3;
-                                }, $field2, Group::class)($inputs3);
+                            }
+                            Closure::bind(function (array $inputs2) : void {
+                                $this->inputs = $inputs2;
+                            }, $field, Group::class)($inputs2);
+                        }
+                        continue;
+                    }
+                    if ($field instanceof DependantGroupProviding && !empty($field->getDependantGroup())) {
+                        $inputs2 = $field->getDependantGroup()->getInputs();
+                        if (!empty($inputs2)) {
+                            if (isset($data[$key]["value"])) {
+                                try {
+                                    $inputs[$key] = $field = $field->withValue($data[$key]["value"]);
+                                } catch (Throwable $ex) {
+
+                                }
+                            }
+                            $data2 = (isset($data[$key]["group_values"]) ? $data[$key]["group_values"] : $data[$key])["dependant_group"];
+                            foreach ($inputs2 as $key2 => $field2) {
+                                if (isset($data2[$key2])) {
+                                    try {
+                                        $inputs2[$key2] = $field2 = $field2->withValue($data2[$key2]);
+                                    } catch (Throwable $ex) {
+
+                                    }
+                                }
+                            }
+                            Closure::bind(function (array $inputs2) : void {
+                                $this->inputs = $inputs2;
+                            }, $field->getDependantGroup(), Group::class)($inputs2);
+                        }
+                        continue;
+                    }
+
+                    if ($field instanceof SwitchableGroup) {
+                        $inputs2 = $field->getInputs();
+                        if (!empty($inputs2)) {
+                            if (isset($data[$key]["value"])) {
+                                try {
+                                    $inputs[$key] = $field = $field->withValue($data[$key]["value"]);
+                                } catch (Throwable $ex) {
+
+                                }
+                            }
+                            $data2 = $data[$key]["group_values"];
+                            foreach ($inputs2 as $field2) {
+                                $inputs3 = $field2->getInputs();
+                                if (!empty($inputs3)) {
+                                    foreach ($inputs3 as $key3 => $field3) {
+                                        if (isset($data2[$key3])) {
+                                            try {
+                                                $inputs3[$key3] = $field3 = $field3->withValue($data2[$key3]);
+                                            } catch (Throwable $ex) {
+
+                                            }
+                                        }
+                                    }
+                                    Closure::bind(function (array $inputs3)/* : void*/ {
+                                        $this->inputs = $inputs3;
+                                    }, $field2, Group::class)($inputs3);
+                                }
+                            }
+                            Closure::bind(function (array $inputs2)/* : void*/ {
+                                $this->inputs = $inputs2;
+                            }, $field, Group::class)($inputs2);
+                        }
+                    }
+                    if ($field instanceof RadioInterface
+                        && isset($data[$key]["value"])
+                        && !empty($inputs2 = Closure::bind(function (array $data, string $key) : array {
+                            return $this->dependant_fields[$data[$key]["value"]];
+                        }, $field, Radio::class)($data, $key))
+                    ) {
+                        try {
+                            $inputs[$key] = $field = $field->withValue($data[$key]["value"]);
+                        } catch (Throwable $ex) {
+
+                        }
+                        $data2 = $data[$key]["group_values"];
+                        foreach ($inputs2 as $key2 => $field2) {
+                            if (isset($data2[$key2])) {
+                                try {
+                                    $inputs2[$key2] = $field2 = $field2->withValue($data2[$key2]);
+                                } catch (Throwable $ex) {
+
+                                }
                             }
                         }
-                        Closure::bind(function (array $inputs2)/* : void*/ {
-                            $this->inputs = $inputs2;
-                        }, $field, Group::class)($inputs2);
+                        Closure::bind(function (array $data, string $key, array $inputs2) : void {
+                            $this->dependant_fields[$data[$key]["value"]] = $inputs2;
+                        }, $field, Radio::class)($data, $key, $inputs2);
+                        continue;
                     }
-                }
-                if ($field instanceof RadioInterface
-                    && isset($data[$key]["value"])
-                    && !empty($inputs2 = Closure::bind(function (array $data, string $key) : array {
-                        return $this->dependant_fields[$data[$key]["value"]];
-                    }, $field, Radio::class)($data, $key))
-                ) {
+
+                    if ($field instanceof Section) {
+                        $this->setDataToFormGroup($field, $data[$key]);
+                        continue;
+                    }
                     try {
-                        $inputs[$key] = $field = $field->withValue($data[$key]["value"]);
+                        $inputs[$key] = $field = $field->withValue($data[$key]);
                     } catch (Throwable $ex) {
 
                     }
-                    $data2 = $data[$key]["group_values"];
-                    foreach ($inputs2 as $key2 => $field2) {
-                        if (isset($data2[$key2])) {
-                            try {
-                                $inputs2[$key2] = $field2 = $field2->withValue($data2[$key2]);
-                            } catch (Throwable $ex) {
-
-                            }
-                        }
-                    }
-                    Closure::bind(function (array $data, string $key, array $inputs2) : void {
-                        $this->dependant_fields[$data[$key]["value"]] = $inputs2;
-                    }, $field, Radio::class)($data, $key, $inputs2);
-                    continue;
-                }
-
-                if ($field instanceof Section) {
-                    $inputs2 = $field->getInputs();
-                    if (!empty($inputs2)) {
-                        $data2 = $data[$key];
-                        foreach ($inputs2 as $key2 => $field2) {
-                            if (isset($data2[$key2])) {
-                                try {
-                                    $inputs2[$key2] = $field2 = $field2->withValue($data2[$key2]);
-                                } catch (Throwable $ex) {
-
-                                }
-                            }
-                        }
-                        Closure::bind(function (array $inputs2) : void {
-                            $this->inputs = $inputs2;
-                        }, $field, Group::class)($inputs2);
-                    }
-                    continue;
-                }
-                try {
-                    $inputs[$key] = $field = $field->withValue($data[$key]);
-                } catch (Throwable $ex) {
-
                 }
             }
+
+            Closure::bind(function (array $inputs) : void {
+                $this->inputs = $inputs;
+            }, $group, Group::class)($inputs);
         }
-        Closure::bind(function (array $inputs) : void {
-            $this->inputs = $inputs;
-        }, $form->getInputs()["form"], Group::class)($inputs);
     }
 
 
