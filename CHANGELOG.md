@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.36.3]
+- `AbstractFormBuilder`: Fix radios in section
+
 ## [0.36.2]
 - Fix language select meta bar which current ctrl gui has namespaces (public page)
 
