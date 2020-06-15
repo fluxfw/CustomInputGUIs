@@ -35,10 +35,6 @@ abstract class AbstractFormBuilder implements FormBuilder
 
     const REPLACE_BUTTONS_REG_EXP = '/(<button\s+class\s*=\s*"btn btn-default"\s+data-action\s*=\s*"#?"(\s+id\s*=\s*"[a-z0-9_]+")?\s*>)(.+)(<\/button\s*>)/';
     /**
-     * @var object
-     */
-    protected $parent;
-    /**
      * @var Form|null
      */
     protected $form = null;
@@ -46,6 +42,10 @@ abstract class AbstractFormBuilder implements FormBuilder
      * @var MessageBox[]
      */
     protected $messages = [];
+    /**
+     * @var object
+     */
+    protected $parent;
 
 
     /**
@@ -56,21 +56,6 @@ abstract class AbstractFormBuilder implements FormBuilder
     public function __construct(object $parent)
     {
         $this->parent = $parent;
-    }
-
-
-    /**
-     * @return Form
-     */
-    protected function buildForm() : Form
-    {
-        $form = self::dic()->ui()->factory()->input()->container()->form()->standard($this->getAction(), [
-            "form" => self::dic()->ui()->factory()->input()->field()->section($this->getFields(), $this->getTitle())
-        ]);
-
-        $this->setDataToForm($form);
-
-        return $form;
     }
 
 
@@ -102,6 +87,78 @@ abstract class AbstractFormBuilder implements FormBuilder
 
 
     /**
+     * @inheritDoc
+     */
+    public function getForm() : Form
+    {
+        if ($this->form === null) {
+            $this->form = $this->buildForm();
+        }
+
+        return $this->form;
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function render() : string
+    {
+        $html = self::output()->getHTML($this->getForm());
+
+        $html = $this->setButtonsToForm($html);
+
+        return self::output()->getHTML([$this->messages, $html]);
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function storeForm() : bool
+    {
+        try {
+            $this->form = $this->getForm()->withRequest(self::dic()->http()->request());
+
+            $data = $this->form->getData();
+
+            if (empty($data)) {
+                throw new Exception();
+            }
+
+            $data = $data["form"] ?? [];
+
+            if (!$this->validateData($data)) {
+                throw new Exception();
+            }
+
+            $this->storeData($data);
+        } catch (Throwable $ex) {
+            $this->messages[] = self::dic()->ui()->factory()->messageBox()->failure(self::dic()->language()->txt("form_input_not_valid"));
+
+            return false;
+        }
+
+        return true;
+    }
+
+
+    /**
+     * @return Form
+     */
+    protected function buildForm() : Form
+    {
+        $form = self::dic()->ui()->factory()->input()->container()->form()->standard($this->getAction(), [
+            "form" => self::dic()->ui()->factory()->input()->field()->section($this->getFields(), $this->getTitle())
+        ]);
+
+        $this->setDataToForm($form);
+
+        return $form;
+    }
+
+
+    /**
      * @return string
      */
     protected function getAction() : string
@@ -129,35 +186,9 @@ abstract class AbstractFormBuilder implements FormBuilder
 
 
     /**
-     * @inheritDoc
-     */
-    public function getForm() : Form
-    {
-        if ($this->form === null) {
-            $this->form = $this->buildForm();
-        }
-
-        return $this->form;
-    }
-
-
-    /**
      * @return string
      */
     protected abstract function getTitle() : string;
-
-
-    /**
-     * @inheritDoc
-     */
-    public function render() : string
-    {
-        $html = self::output()->getHTML($this->getForm());
-
-        $html = $this->setButtonsToForm($html);
-
-        return self::output()->getHTML([$this->messages, $html]);
-    }
 
 
     /**
@@ -197,6 +228,23 @@ abstract class AbstractFormBuilder implements FormBuilder
     protected function setDataToForm(Form $form) : void
     {
         $this->setDataToFormGroup($form->getInputs()["form"], $this->getData());
+    }
+
+
+    /**
+     * @param array $data
+     */
+    protected abstract function storeData(array $data) : void;
+
+
+    /**
+     * @param array $data
+     *
+     * @return bool
+     */
+    protected function validateData(array $data) : bool
+    {
+        return true;
     }
 
 
@@ -341,53 +389,5 @@ abstract class AbstractFormBuilder implements FormBuilder
                 $this->inputs = $inputs;
             }, $group, Group::class)($inputs);
         }
-    }
-
-
-    /**
-     * @inheritDoc
-     */
-    public function storeForm() : bool
-    {
-        try {
-            $this->form = $this->getForm()->withRequest(self::dic()->http()->request());
-
-            $data = $this->form->getData();
-
-            if (empty($data)) {
-                throw new Exception();
-            }
-
-            $data = $data["form"] ?? [];
-
-            if (!$this->validateData($data)) {
-                throw new Exception();
-            }
-
-            $this->storeData($data);
-        } catch (Throwable $ex) {
-            $this->messages[] = self::dic()->ui()->factory()->messageBox()->failure(self::dic()->language()->txt("form_input_not_valid"));
-
-            return false;
-        }
-
-        return true;
-    }
-
-
-    /**
-     * @param array $data
-     */
-    protected abstract function storeData(array $data) : void;
-
-
-    /**
-     * @param array $data
-     *
-     * @return bool
-     */
-    protected function validateData(array $data) : bool
-    {
-        return true;
     }
 }
