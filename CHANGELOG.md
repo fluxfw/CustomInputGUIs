@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.36.4]
+- Fix
+
 ## [0.36.3]
 - `AbstractFormBuilder`: Fix radios in section
 
