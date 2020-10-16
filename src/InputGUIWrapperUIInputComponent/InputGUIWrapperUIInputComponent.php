@@ -5,7 +5,6 @@ namespace srag\CustomInputGUIs\InputGUIWrapperUIInputComponent;
 use Closure;
 use ilCheckboxInputGUI;
 use ilFormPropertyGUI;
-use ILIAS\Data\Factory as DataFactory;
 use ILIAS\Transformation\Factory as TransformationFactory;
 use ILIAS\UI\Implementation\Component\Input\Field\Input;
 use ILIAS\UI\Implementation\Component\Input\NameSource;
@@ -40,9 +39,9 @@ class InputGUIWrapperUIInputComponent extends Input
         $this->input = $input;
 
         if (self::version()->is6()) {
-            parent::__construct(new DataFactory(), self::dic()->refinery(), "", null);
+            parent::__construct(self::dic()->data(), self::dic()->refinery(), "", null);
         } else {
-            parent::__construct($data_factory = new DataFactory(), new ValidationFactory($data_factory, self::dic()->language()), new TransformationFactory(), "", null);
+            parent::__construct($data_factory = self::dic()->data(), new ValidationFactory($data_factory, self::dic()->language()), new TransformationFactory(), "", null);
         }
     }
 

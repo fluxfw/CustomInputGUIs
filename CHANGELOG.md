@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.39.2]
+- Use `DataFactory` from dic
+
 ## [0.39.1]
 - Make `cleanValues` static in `MultiSelectSearchNewInputGUI`
 
