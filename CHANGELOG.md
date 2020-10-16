@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.39.3]
+- Fix not required `ilDateTimeInputGUI` in `InputGUIWrapperUIInputComponent`
+
 ## [0.39.2]
 - Use `DataFactory` from dic
 
