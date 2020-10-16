@@ -4,6 +4,7 @@ namespace srag\CustomInputGUIs\InputGUIWrapperUIInputComponent;
 
 use Closure;
 use ilCheckboxInputGUI;
+use ilDateTimeInputGUI;
 use ilFormPropertyGUI;
 use ILIAS\Transformation\Factory as TransformationFactory;
 use ILIAS\UI\Implementation\Component\Input\Field\Input;
@@ -230,6 +231,10 @@ class InputGUIWrapperUIInputComponent extends Input
      */
     public function withValue($value) : self
     {
+        if ($this->input instanceof ilDateTimeInputGUI && !$this->isRequired()) {
+            $this->isClientSideValueOk($value);
+        }
+
         if (!($value === null && $this->input instanceof ilCheckboxInputGUI && $this->isDisabled())) {
             Items::setValueToItem($this->input, $value);
         }
