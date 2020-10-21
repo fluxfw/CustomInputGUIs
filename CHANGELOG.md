@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.40.0]
+- Custom hooks for `CustomInputGUIsLoaderDetector::getRendererFor`
+
 ## [0.39.3]
 - Fix not required `ilDateTimeInputGUI` in `InputGUIWrapperUIInputComponent`
 
