@@ -40,7 +40,13 @@
   "autoload": {
     "psr-4": {
       "srag\\CustomInputGUIs\\": "src/"
-    }
+    },
+    "classmap": [
+      "src/MultiSelectSearchNewInputGUI/class.ObjectChildrenAjaxAutoCompleteCtrl.php",
+      "src/MultiSelectSearchNewInputGUI/class.ObjectsAjaxAutoCompleteCtrl.php",
+      "src/MultiSelectSearchNewInputGUI/class.OrgUnitAjaxAutoCompleteCtrl.php",
+      "src/MultiSelectSearchNewInputGUI/class.UsersAjaxAutoCompleteCtrl.php"
+    ]
   },
   "config": {
     "classmap-authoritative": true,
