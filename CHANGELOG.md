@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.42.2]
+## [0.41.2]
 - Fix composer 2
 - Move doc/DESCRIPTION.md to src/LONG_DESCRIPTION.md
 
