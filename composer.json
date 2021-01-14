@@ -11,11 +11,11 @@
   },
   "type": "library",
   "keywords": [
-    "ILIAS",
-    "PropertyForm",
-    "Table",
-    "Input",
-    "GUI"
+    "gui",
+    "ilias",
+    "input",
+    "propertyform",
+    "table"
   ],
   "homepage": "https://github.com/studer-raimann/CustomInputGUIs",
   "license": "GPL-3.0-only",
