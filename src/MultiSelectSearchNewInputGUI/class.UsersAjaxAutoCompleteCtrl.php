@@ -2,6 +2,8 @@
 
 namespace srag\CustomInputGUIs\MultiSelectSearchNewInputGUI;
 
+require_once __DIR__ . "/../../../../autoload.php";
+
 use ilDBConstants;
 use ilObjUser;
 
