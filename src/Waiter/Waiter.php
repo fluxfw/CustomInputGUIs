@@ -41,12 +41,13 @@ final class Waiter
 
 
     /**
-     * @param string     $type
-     * @param ilTemplate $tpl
+     * @param string          $type
+     * @param ilTemplate|null $tpl
      */
-    public static final function init(string $type, $tpl = null)/*: void*/
+    public static final function init(string $type, /*?*/ ilTemplate $tpl = null)/*: void*/
     {
         $tpl = $tpl ?? self::dic()->ui()->mainTemplate();
+
         if (self::$init === false) {
             self::$init = true;
 
