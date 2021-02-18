@@ -95,7 +95,7 @@ il.waiter = {
     },
 
 
-    resetProgress: function() {
+    resetProgress: function () {
         this.setPercentage(0);
         $('#srag_waiter_progress_text').text('');
     },
@@ -143,25 +143,25 @@ il.waiter = {
      *
      * @return Formatted string.
      */
-    humanFileSize: function(bytes, si=false, dp=1) {
-    const thresh = si ? 1000 : 1024;
+    humanFileSize: function (bytes, si = false, dp = 1) {
+        const thresh = si ? 1000 : 1024;
 
-    if (Math.abs(bytes) < thresh) {
-        return bytes + ' B';
+        if (Math.abs(bytes) < thresh) {
+            return bytes + ' B';
+        }
+
+        const units = si
+            ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+            : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+        let u = -1;
+        const r = 10 ** dp;
+
+        do {
+            bytes /= thresh;
+            ++u;
+        } while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
+
+
+        return bytes.toFixed(dp) + ' ' + units[u];
     }
-
-    const units = si
-      ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-      : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
-    let u = -1;
-    const r = 10**dp;
-
-    do {
-        bytes /= thresh;
-        ++u;
-    } while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
-
-
-    return bytes.toFixed(dp) + ' ' + units[u];
-}
 };

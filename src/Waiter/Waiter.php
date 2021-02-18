@@ -7,7 +7,9 @@ use srag\DIC\DICTrait;
 
 /**
  * Class Waiter
+ *
  * @package srag\CustomInputGUIs\Waiter
+ *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 final class Waiter
@@ -32,7 +34,11 @@ final class Waiter
     /**
      * Waiter constructor
      */
-    private function __construct(){}
+    private function __construct()
+    {
+
+    }
+
 
     /**
      * @param string     $type
