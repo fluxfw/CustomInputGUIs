@@ -42,22 +42,22 @@ final class Waiter
 
     /**
      * @param string     $type
-     * @param ilTemplate $ilTemplate
+     * @param ilTemplate $tpl
      */
-    public static final function init(string $type, $ilTemplate = null)/*: void*/
+    public static final function init(string $type, $tpl = null)/*: void*/
     {
-        $ilTemplate = $ilTemplate ?? self::dic()->ui()->mainTemplate();
+        $tpl = $tpl ?? self::dic()->ui()->mainTemplate();
         if (self::$init === false) {
             self::$init = true;
 
             $dir = __DIR__;
             $dir = "./" . substr($dir, strpos($dir, "/Customizing/") + 1);
 
-            $ilTemplate->addCss($dir . "/css/waiter.css");
+            $tpl->addCss($dir . "/css/waiter.css");
 
-            $ilTemplate->addJavaScript($dir . "/js/waiter.min.js");
+            $tpl->addJavaScript($dir . "/js/waiter.min.js");
         }
 
-        $ilTemplate->addOnLoadCode('il.waiter.init("' . $type . '");');
+        $tpl->addOnLoadCode('il.waiter.init("' . $type . '");');
     }
 }
