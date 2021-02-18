@@ -116,7 +116,6 @@ il.waiter = {
     },
 
     /**
-     *
      * @param {string} dom_selector_string
      */
     addLinkOverlay: function (dom_selector_string) {
@@ -138,12 +137,12 @@ il.waiter = {
     /**
      * Format bytes as human-readable text.
      *
-     * @param bytes Number of bytes.
-     * @param si True to use metric (SI) units, aka powers of 1000. False to use
+     * @param {number} bytes Number of bytes.
+     * @param {boolean} si True to use metric (SI) units, aka powers of 1000. False to use
      *           binary (IEC), aka powers of 1024.
-     * @param dp Number of decimal places to display.
+     * @param {number} dp Number of decimal places to display.
      *
-     * @return Formatted string.
+     * @returns {string} Formatted string.
      */
     humanFileSize: function (bytes, si = false, dp = 1) {
         const thresh = si ? 1000 : 1024;
