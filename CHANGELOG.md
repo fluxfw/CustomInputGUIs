@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.42.0]
+- Add `Waiter.setBytes`
+- Add possibility to pass own tpl to `Waiter.init`
+
 ## [0.41.4]
 - Add require compose in ctrl entry classes
 
