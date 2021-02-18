@@ -94,7 +94,9 @@ il.waiter = {
         $('#srag_waiter_progress_text').text(this.humanFileSize(loaded, true) + " / " + this.humanFileSize(total, true));
     },
 
-
+    /**
+     *
+     */
     resetProgress: function () {
         this.setPercentage(0);
         $('#srag_waiter_progress_text').text('');
