@@ -1,6 +1,7 @@
 # Changelog
 
 ## [0.42.1]
+- Fix Waiter on ILIAS 6
 - Update project url
 
 ## [0.42.0]
