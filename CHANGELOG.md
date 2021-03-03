@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.42.1]
+- Update project url
+
 ## [0.42.0]
 - Add `Waiter.setBytes`
 - Add possibility to pass own tpl to `Waiter.init`
