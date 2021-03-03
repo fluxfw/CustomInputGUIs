@@ -2,6 +2,7 @@
 
 namespace srag\CustomInputGUIs\Waiter;
 
+use ilGlobalTemplateInterface;
 use ilTemplate;
 use srag\DIC\DICTrait;
 
@@ -41,10 +42,10 @@ final class Waiter
 
 
     /**
-     * @param string          $type
-     * @param ilTemplate|ilGlobalPageTemplate|null $tpl
+     * @param string                                    $type
+     * @param ilTemplate|ilGlobalTemplateInterface|null $tpl
      */
-    public static final function init(string $type, /*?ilGlobalPageTemplate*/ $tpl = null)/*: void*/
+    public static final function init(string $type, /*?ilGlobalTemplateInterface*/ $tpl = null)/*: void*/
     {
         $tpl = $tpl ?? self::dic()->ui()->mainTemplate();
 
