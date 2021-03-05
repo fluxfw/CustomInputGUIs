@@ -1,5 +1,8 @@
 # Changelog
 
+## [x]
+- Use `PluginVersionParameter`
+
 ## [0.42.1]
 - Fix Waiter on ILIAS 6
 - Update project url
