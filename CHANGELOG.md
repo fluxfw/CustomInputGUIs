@@ -1,7 +1,8 @@
 # Changelog
 
-## [x]
+## [0.42.2]
 - Use `PluginVersionParameter`
+- Fix waiter decimals
 
 ## [0.42.1]
 - Fix Waiter on ILIAS 6
