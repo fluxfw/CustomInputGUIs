@@ -59,7 +59,8 @@ class TextInputGUIWithModernAutoComplete extends TextInputGUI
 
             self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/../../node_modules/babel-polyfill/dist/polyfill.min.js"));
 
-            self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/js/text_input_gui_with_modern_auto_complete.min.js"));
+            self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/js/text_input_gui_with_modern_auto_complete.min.js",
+                $dir . "/js/text_input_gui_with_modern_auto_complete.js"));
 
             self::dic()->ui()->mainTemplate()->addOnLoadCode("il.textinput_more_txt = " . json_encode(self::dic()->language()->txt('autocomplete_more')
                     . ";") . ";");

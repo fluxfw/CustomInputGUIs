@@ -65,7 +65,7 @@ final class Waiter
 
             $tpl->addCss($version_parameter->appendToUrl($dir . "/css/waiter.css"));
 
-            $tpl->addJavaScript($version_parameter->appendToUrl($dir . "/js/waiter.min.js"));
+            $tpl->addJavaScript($version_parameter->appendToUrl($dir . "/js/waiter.min.js", $dir . "/js/waiter.js"));
         }
 
         $tpl->addOnLoadCode('il.waiter.init("' . $type . '");');

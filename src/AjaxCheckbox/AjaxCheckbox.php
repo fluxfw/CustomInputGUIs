@@ -64,7 +64,7 @@ class AjaxCheckbox
             $dir = __DIR__;
             $dir = "./" . substr($dir, strpos($dir, "/Customizing/") + 1);
 
-            self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/js/ajax_checkbox.min.js"));
+            self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/js/ajax_checkbox.min.js", $dir . "/js/ajax_checkbox.js"));
         }
     }
 

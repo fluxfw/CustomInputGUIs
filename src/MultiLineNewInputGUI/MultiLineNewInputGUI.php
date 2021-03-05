@@ -100,7 +100,7 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
 
             self::dic()->ui()->mainTemplate()->addCss($version_parameter->appendToUrl($dir . "/css/multi_line_new_input_gui.css"));
 
-            self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/js/multi_line_new_input_gui.min.js"));
+            self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/js/multi_line_new_input_gui.min.js", $dir . "/js/multi_line_new_input_gui.js"));
         }
     }
 
