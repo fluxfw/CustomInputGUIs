@@ -149,7 +149,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
             self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/../../node_modules/canvas-toBlob/canvas-toBlob.js"));
             self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/../../node_modules/html2canvas/dist/html2canvas.min.js"));
 
-            self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/js/ScreenshotsInputGUI.min.js"), false);
+            self::dic()->ui()->mainTemplate()->addJavaScript($version_parameter->appendToUrl($dir . "/js/ScreenshotsInputGUI.min.js", $dir . "/js/ScreenshotsInputGUI.js"), false);
             self::dic()->ui()->mainTemplate()->addOnLoadCode($this->getJSOnLoadCode());
         }
     }

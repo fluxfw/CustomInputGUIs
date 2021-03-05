@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.42.3]
+- Use `PluginVersionParameter`
+
 ## [0.42.2]
 - Use `PluginVersionParameter`
 - Fix waiter decimals
