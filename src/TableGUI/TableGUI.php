@@ -19,8 +19,6 @@ use srag\DIC\DICTrait;
  *
  * @package    srag\CustomInputGUIs\TableGUI
  *
- * @author     studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
- *
  * @deprecated Please use "srag/datatable" library (`AbstractTableBuilder`)
  */
 abstract class TableGUI extends ilTable2GUI
