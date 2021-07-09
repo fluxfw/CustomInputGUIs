@@ -12,7 +12,6 @@ use ilRadioOption;
 use ilRepositorySelector2InputGUI;
 use ilUtil;
 use srag\CustomInputGUIs\HiddenInputGUI\HiddenInputGUI;
-use srag\CustomInputGUIs\MultiLineInputGUI\MultiLineInputGUI;
 use srag\CustomInputGUIs\PropertyFormGUI\Exception\PropertyFormGUIException;
 use srag\CustomInputGUIs\PropertyFormGUI\PropertyFormGUI;
 use srag\CustomInputGUIs\TableGUI\TableGUI;
@@ -139,11 +138,6 @@ final class Items
      */
     public static function getValueFromItem($item)
     {
-        if ($item instanceof MultiLineInputGUI) {
-            //return filter_input(INPUT_POST,$item->getPostVar()); // Not work because MultiLineInputGUI modify $_POST
-            return $_POST[$item->getPostVar()];
-        }
-
         if (method_exists($item, "getChecked")) {
             return boolval($item->getChecked());
         }

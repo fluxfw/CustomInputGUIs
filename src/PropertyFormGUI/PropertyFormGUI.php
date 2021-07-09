@@ -9,7 +9,6 @@ use ilPropertyFormGUI;
 use ilRadioGroupInputGUI;
 use ilRadioOption;
 use ilSubEnabledFormPropertyGUI;
-use srag\CustomInputGUIs\MultiLineInputGUI\MultiLineInputGUI;
 use srag\CustomInputGUIs\MultiLineNewInputGUI\MultiLineNewInputGUI;
 use srag\CustomInputGUIs\PropertyFormGUI\Exception\PropertyFormGUIException;
 use srag\CustomInputGUIs\PropertyFormGUI\Items\Items;
@@ -275,7 +274,7 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 
             if ($item instanceof ilFormPropertyGUI) {
                 if (!isset($field[self::PROPERTY_VALUE])) {
-                    if (!($parent_item instanceof MultiLineInputGUI) && !($parent_item instanceof MultiLineNewInputGUI) && !($parent_item instanceof TabsInputGUI)
+                    if (!($parent_item instanceof MultiLineNewInputGUI) && !($parent_item instanceof TabsInputGUI)
                         && !($parent_item instanceof TabsInputGUITab)
                     ) {
                         $value = $this->getValue($key);
