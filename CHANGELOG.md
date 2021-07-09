@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.43.0]
+- Remove ILIAS 5.4 support
+
 ## [0.42.9]
 - Hide HiddenInputGUI in MultiLineNewInputGUI
 
