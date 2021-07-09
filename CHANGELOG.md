@@ -4,6 +4,7 @@
 - Remove ILIAS 5.4 support
 - Remove deprecated MultiLineInputGUI
 - Remove deprecated MultiSelectSearchInputGUI
+- Remove deprecated GlyphGUI
 
 ## [0.42.9]
 - Hide HiddenInputGUI in MultiLineNewInputGUI

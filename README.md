@@ -33,7 +33,6 @@ So I recommand to use [srag/librariesnamespacechanger](https://packagist.org/pac
 * [CheckboxInputGUI](./src/CheckboxInputGUI/doc/CheckboxInputGUI.md)
 * [ColorPickerInputGUI](./src/ColorPickerInputGUI/doc/ColorPickerInputGUI.md)
 * [DateDurationInputGUI](./src/DateDurationInputGUI/doc/DateDurationInputGUI.md)
-* [GlyphGUI](./src/GlyphGUI/doc/GlyphGUI.md)
 * [HiddenInputGUI](./src/HiddenInputGUI/doc/HiddenInputGUI.md)
 * [InputGUIWrapperUIInputComponent](./src/InputGUIWrapperUIInputComponent/doc/InputGUIWrapperUIInputComponent.md)
 * [MultilangualTabsInputGUI](./src/TabsInputGUI/doc/MultilangualTabsInputGUI.md)
