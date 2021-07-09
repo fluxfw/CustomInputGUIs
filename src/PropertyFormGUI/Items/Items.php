@@ -195,7 +195,7 @@ final class Items
     /**
      * @param PluginInterface|null $plugin
      */
-    public static function init(/*?*/ PluginInterface $plugin = null)/*: void*/
+    public static function init(/*?*/ PluginInterface $plugin = null) : void
     {
         if (self::$init === false) {
             self::$init = true;
@@ -270,7 +270,7 @@ final class Items
      *
      * @deprecated
      */
-    public static function setValueToItem($item, $value)/*: void*/
+    public static function setValueToItem($item, $value) : void
     {
         if ($item instanceof MultiLineInputGUI) {
             $item->setValueByArray([
@@ -352,7 +352,7 @@ final class Items
      *
      * @deprecated
      */
-    private static function setPropertiesToItem($item, array $properties)/*: void*/
+    private static function setPropertiesToItem($item, array $properties) : void
     {
         foreach ($properties as $property_key => $property_value) {
             $property = "";
