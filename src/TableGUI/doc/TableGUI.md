@@ -2,4 +2,4 @@
 
 ####
 
-- https://github.com/fluxapps/SrAutoMails/blob/main/src/Rule/RulesTableGUI.php
+- https://github.com/fluxfw/SrAutoMails/blob/main/src/Rule/RulesTableGUI.php

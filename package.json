@@ -8,9 +8,6 @@
     "GUI"
   ],
   "license": "GPL-3.0-only",
-  "contributors": [
-    "fluxlabs <support@fluxlabs.ch> (https://fluxlabs.ch)"
-  ],
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "canvas-toBlob": "1.0.0",
